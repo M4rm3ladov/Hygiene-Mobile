@@ -843,7 +843,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -898,7 +898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.23, y: -46.7}
+  m_AnchoredPosition: {x: -110.23047, y: -46.699997}
   m_SizeDelta: {x: 150, y: 36.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &285235305
@@ -1719,7 +1719,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1748,6 +1748,7 @@ GameObject:
   - component: {fileID: 718095849}
   - component: {fileID: 718095848}
   - component: {fileID: 718095847}
+  - component: {fileID: 718095851}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1844,6 +1845,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &718095851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718095846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c88514af9e2de4996f480938e776f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHygiene: {fileID: 1403125940}
+  CurrentHunger: {fileID: 1204226653}
+  CurrentEnergy: {fileID: 1034785725}
+  HygieneText: {fileID: 2108122011}
+  HungerText: {fileID: 919021058}
+  EnergyText: {fileID: 1228172674}
+  Feed: {fileID: 208880300}
+  Hygiene: {fileID: 675532850}
+  Play: {fileID: 1781433742}
 --- !u!1 &761368188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,7 +2100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2107,7 +2129,7 @@ GameObject:
   - component: {fileID: 919021059}
   - component: {fileID: 919021058}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text_hunger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2682,7 +2704,7 @@ GameObject:
   - component: {fileID: 1228172675}
   - component: {fileID: 1228172674}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text_energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3873,7 +3895,7 @@ GameObject:
   - component: {fileID: 2108122012}
   - component: {fileID: 2108122011}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text_clean
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

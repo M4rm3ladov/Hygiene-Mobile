@@ -5,31 +5,39 @@ using UnityEngine.UI;
 
 public class Needs : MonoBehaviour
 {
+    //Bar Image initialization
     [SerializeField] 
     private Image CurrentHygiene;
     [SerializeField]
     private Image CurrentHunger;
     [SerializeField]
     private Image CurrentEnergy;
-
+    //Bar Text initialization
     [SerializeField]
     public Text HygieneText;
     [SerializeField]
     public Text HungerText;
     [SerializeField]
     public Text EnergyText;
-
+    //Default bar initialization
     private float _hygiene = 100;
     private float _hunger = 100;
     private float _energy = 100;
     private float _max = 100;
-
+    //Satifiers Button initialization
     [SerializeField]
     private Button Feed;
     [SerializeField]
     private Button Hygiene;
     [SerializeField]
     private Button Play;
+    //Bar tick rate initialization
+    [SerializeField]
+    private float _hygieneTickRate;
+    [SerializeField]
+    private float _hungerTickRate;
+    [SerializeField]
+    private float _energyTickRate;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,27 +53,46 @@ public class Needs : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        _hygiene -= 5.5f * Time.deltaTime;
-        if(_hygiene < 0 )
+    {   
+        //Reduce needs values per time passing of gameHour
+        if(TimingManager.gameHourTimer < 0)
         {
-            _hygiene = 0;
-        }
-        _hunger -= 6f * Time.deltaTime;
-        if(_hunger < 0 )
-        {
-            _hunger = 0;
-        }
-        _energy -= 5.75f * Time.deltaTime;
-        if(_energy < 0 )
-        {
-            _energy = 0;
-        }
-
+            ChangeHygiene();
+            ChangeHunger();
+            ChangeEnergy();
+        }  
+        //Update UI
         UpdateCleanBar();
         UpdateHungerBar();
         UpdateEnergyBar();
     }
+    #region Reduce Needs
+    private void ChangeHygiene()
+    {
+         _hygiene -= _hygieneTickRate * Time.deltaTime;
+        if(_hygiene < 0 )
+        {
+            _hygiene = 0;
+        }
+    }
+    private void ChangeHunger()
+    {
+        _hunger -= _hungerTickRate * Time.deltaTime;
+        if(_hunger < 0 )
+        {
+            _hunger = 0;
+        }
+    }
+    private void ChangeEnergy()
+    {
+        _energy -= _energyTickRate * Time.deltaTime;
+        if(_energy < 0 )
+        {
+            _energy = 0;
+        }
+    }
+    #endregion
+    #region Reduce Needs Bar
     private void UpdateCleanBar()
     {
         float ratio = _hygiene / _max;
@@ -84,6 +111,8 @@ public class Needs : MonoBehaviour
         CurrentEnergy.rectTransform.localScale = new Vector3(ratio, 1, 1);
         EnergyText.text = (ratio * 100).ToString("0") + "%";
     }
+    #endregion
+    #region Satisfying Needs
     private void CleanTheChar()
     {
         Debug.Log("Clean clicked");
@@ -114,4 +143,5 @@ public class Needs : MonoBehaviour
         }
         UpdateEnergyBar();
     }
+    #endregion
 }

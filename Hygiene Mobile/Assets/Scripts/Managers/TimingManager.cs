@@ -5,18 +5,18 @@ using UnityEngine;
 public class TimingManager : MonoBehaviour
 {
     //Initialize global time length
-    public static float gameHourTimer;
+    public static float GameHourTimer;
     //Initialize default time length
     [SerializeField]
     private float _hourLegnth;
 
     private void Update() 
     {
-        if (gameHourTimer <= 0)
+        if (GameHourTimer <= 0)
         {
-            gameHourTimer = _hourLegnth;
+            GameHourTimer = _hourLegnth;
         }else{
-            gameHourTimer -= Time.deltaTime;
+            GameHourTimer -= Time.deltaTime;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Needs : MonoBehaviour
+public class NeedsController : MonoBehaviour
 {
     //Bar Image initialization
     [SerializeField] 
@@ -19,10 +19,7 @@ public class Needs : MonoBehaviour
     public Text HungerText;
     [SerializeField]
     public Text EnergyText;
-    //Default bar initialization
-    private float _hygiene = 100;
-    private float _hunger = 100;
-    private float _energy = 100;
+    //Maximum amount of a need
     private float _max = 100;
     //Satifiers Button initialization
     [SerializeField]
@@ -55,7 +52,7 @@ public class Needs : MonoBehaviour
     void Update()
     {   
         //Reduce needs values per time passing of gameHour
-        if(TimingManager.gameHourTimer < 0)
+        if(TimingManager.GameHourTimer < 0)
         {
             ChangeHygiene();
             ChangeHunger();
@@ -69,45 +66,45 @@ public class Needs : MonoBehaviour
     #region Reduce Needs
     private void ChangeHygiene()
     {
-         _hygiene -= _hygieneTickRate * Time.deltaTime;
-        if(_hygiene < 0 )
+         Player.Hygiene -= _hygieneTickRate * Time.deltaTime;
+        if(Player.Hygiene < 0 )
         {
-            _hygiene = 0;
+            Player.Hygiene = 0;
         }
     }
     private void ChangeHunger()
     {
-        _hunger -= _hungerTickRate * Time.deltaTime;
-        if(_hunger < 0 )
+        Player.Hunger -= _hungerTickRate * Time.deltaTime;
+        if(Player.Hunger < 0 )
         {
-            _hunger = 0;
+            Player.Hunger = 0;
         }
     }
     private void ChangeEnergy()
     {
-        _energy -= _energyTickRate * Time.deltaTime;
-        if(_energy < 0 )
+        Player.Energy -= _energyTickRate * Time.deltaTime;
+        if(Player.Energy < 0 )
         {
-            _energy = 0;
+            Player.Energy = 0;
         }
     }
     #endregion
     #region Reduce Needs Bar
     private void UpdateCleanBar()
     {
-        float ratio = _hygiene / _max;
+        float ratio = Player.Hygiene / _max;
         CurrentHygiene.rectTransform.localScale = new Vector3(ratio, 1, 1);
         HygieneText.text = (ratio * 100).ToString("0") + "%";
     }
     private void UpdateHungerBar()
     {
-        float ratio = _hunger / _max;
+        float ratio = Player.Hunger / _max;
         CurrentHunger.rectTransform.localScale = new Vector3(ratio, 1, 1);
         HungerText.text = (ratio * 100).ToString("0") + "%";
     }
     private void UpdateEnergyBar()
     {
-        float ratio = _energy / _max;
+        float ratio = Player.Energy / _max;
         CurrentEnergy.rectTransform.localScale = new Vector3(ratio, 1, 1);
         EnergyText.text = (ratio * 100).ToString("0") + "%";
     }
@@ -116,30 +113,30 @@ public class Needs : MonoBehaviour
     private void CleanTheChar()
     {
         Debug.Log("Clean clicked");
-        _hygiene += 10;
-        if(_hygiene > _max)
+        Player.Hygiene += 10;
+        if(Player.Hygiene > _max)
         {
-            _hygiene = _max;
+            Player.Hygiene = _max;
         }
         UpdateCleanBar();
     }
     private void FeedTheChar()
     {
          Debug.Log("Feed clicked");
-        _hunger += 10;
-        if(_hunger > _max)
+        Player.Hunger += 10;
+        if(Player.Hunger > _max)
         {
-            _hunger = _max;
+            Player.Hunger = _max;
         }
         UpdateHungerBar();
     }
     private void PlayTheChar()
     {
          Debug.Log("Energy clicked");
-        _energy += 10;
-        if(_energy > _max)
+        Player.Energy += 10;
+        if(Player.Energy > _max)
         {
-            _energy = _max;
+            Player.Energy = _max;
         }
         UpdateEnergyBar();
     }

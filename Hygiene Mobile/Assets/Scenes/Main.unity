@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4437e5724875f842a0e7b746c7b3e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hourLegnth: 1
+  _hourLegnth: 0.05
 --- !u!4 &6277939
 Transform:
   m_ObjectHideFlags: 0
@@ -1233,6 +1233,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392610767}
   m_CullTransparentMesh: 0
+--- !u!1 &407110089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8304843906251194563, guid: 98f54b88c32c91a4bb74f1cf6c380752,
+    type: 3}
+  m_PrefabInstance: {fileID: 4750112750806647995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &407110090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407110089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c157c90efc5f5e4792ebd8c5599e1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &490202772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,9 +1928,9 @@ MonoBehaviour:
   Feed: {fileID: 208880300}
   Hygiene: {fileID: 675532850}
   Play: {fileID: 1781433742}
-  _hygieneTickRate: 0
-  _hungerTickRate: 0
-  _energyTickRate: 0
+  _hygieneTickRate: 6
+  _hungerTickRate: 7
+  _energyTickRate: 5
 --- !u!1 &761368188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4042,7 +4060,7 @@ PrefabInstance:
     - target: {fileID: 8304843906251194563, guid: 98f54b88c32c91a4bb74f1cf6c380752,
         type: 3}
       propertyPath: m_Name
-      value: Character
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8304843906251234531, guid: 98f54b88c32c91a4bb74f1cf6c380752,
         type: 3}

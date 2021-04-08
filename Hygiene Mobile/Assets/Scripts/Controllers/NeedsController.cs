@@ -10,15 +10,15 @@ public class NeedsController : MonoBehaviour
     private Image CurrentHygiene;
     [SerializeField]
     private Image CurrentHunger;
-    [SerializeField]
-    private Image CurrentEnergy;
+    //[SerializeField]
+    //private Image CurrentEnergy;
     //Bar Text initialization
     [SerializeField]
     public Text HygieneText;
     [SerializeField]
     public Text HungerText;
     [SerializeField]
-    public Text EnergyText;
+    //public Text EnergyText;
     //Maximum amount of a need
     private float _max = 100;
     //Satifiers Button initialization
@@ -26,15 +26,17 @@ public class NeedsController : MonoBehaviour
     private Button Feed;
     [SerializeField]
     private Button Hygiene;
-    [SerializeField]
-    private Button Play;
+    //[SerializeField]
+    //private Button Play;
     //Bar tick rate initialization
     [SerializeField]
     private float _hygieneTickRate;
     [SerializeField]
     private float _hungerTickRate;
-    [SerializeField]
-    private float _energyTickRate;
+    //[SerializeField]
+    //private float _energyTickRate;
+    //[SerializeField]
+    //private float _energyIncrease;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +46,8 @@ public class NeedsController : MonoBehaviour
         Button btnFeed = Feed.GetComponent<Button>();
         btnFeed.onClick.AddListener(FeedTheChar);
 
-        Button btnPlay = Play.GetComponent<Button>();
-        btnPlay.onClick.AddListener(PlayTheChar);
+        //Button btnPlay = Play.GetComponent<Button>();
+        //btnPlay.onClick.AddListener(RestTheChar);
     }
 
     // Update is called once per frame
@@ -56,12 +58,12 @@ public class NeedsController : MonoBehaviour
         {
             ChangeHygiene();
             ChangeHunger();
-            ChangeEnergy();
+            //ChangeEnergy();
         }  
         //Update UI
         UpdateCleanBar();
         UpdateHungerBar();
-        UpdateEnergyBar();
+        //UpdateEnergyBar();
     }
     #region Reduce Needs
     private void ChangeHygiene()
@@ -80,14 +82,14 @@ public class NeedsController : MonoBehaviour
             Player.Hunger = 0;
         }
     }
-    private void ChangeEnergy()
+    /*private void ChangeEnergy()
     {
         Player.Energy -= _energyTickRate * Time.deltaTime;
         if(Player.Energy < 0 )
         {
             Player.Energy = 0;
         }
-    }
+    }*/
     #endregion
     #region Reduce Needs Bar
     private void UpdateCleanBar()
@@ -102,12 +104,12 @@ public class NeedsController : MonoBehaviour
         CurrentHunger.rectTransform.localScale = new Vector3(ratio, 1, 1);
         HungerText.text = (ratio * 100).ToString("0") + "%";
     }
-    private void UpdateEnergyBar()
+    /*private void UpdateEnergyBar()
     {
         float ratio = Player.Energy / _max;
         CurrentEnergy.rectTransform.localScale = new Vector3(ratio, 1, 1);
         EnergyText.text = (ratio * 100).ToString("0") + "%";
-    }
+    }*/
     #endregion
     #region Satisfying Needs
     private void CleanTheChar()
@@ -130,15 +132,15 @@ public class NeedsController : MonoBehaviour
         }
         UpdateHungerBar();
     }
-    private void PlayTheChar()
+    /*public void RestTheChar()
     {
          Debug.Log("Energy clicked");
-        Player.Energy += 10;
+        Player.Energy += _energyIncrease;
         if(Player.Energy > _max)
         {
             Player.Energy = _max;
         }
         UpdateEnergyBar();
-    }
+    }*/
     #endregion
 }

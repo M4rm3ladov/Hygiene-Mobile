@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public static float Hygiene = 100;
     public static float Hunger = 100;
     public static float Energy = 100;
+    public static int SleepState = 1;
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
         Hygiene = data.hygiene;
         Hunger = data.hunger;
         Energy = data.energy;
+        SleepState = data.sleepState;
     }
     private void OnApplicationQuit() {
         SavePlayer();

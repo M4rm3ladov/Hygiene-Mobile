@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     public static float Hunger = 100;
     public static float Energy = 100;
     public static int SleepState = 1;
+    public static DateTime LastIn;
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -19,8 +21,10 @@ public class Player : MonoBehaviour
         Hunger = data.hunger;
         Energy = data.energy;
         SleepState = data.sleepState;
+        LastIn = DateTime.Parse(data.lastIn);
     }
     private void OnApplicationQuit() {
+        Debug.Log("Date Now:" + DateTime.Now);
         SavePlayer();
     }
     private void OnApplicationPause(bool pauseStatus) {
@@ -34,6 +38,7 @@ public class Player : MonoBehaviour
     }
     private void Awake() {
         LoadPlayer();
+        Debug.Log(LastIn);
         Input.backButtonLeavesApp = true;
 
     }

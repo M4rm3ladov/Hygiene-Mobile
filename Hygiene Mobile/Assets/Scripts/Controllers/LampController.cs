@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class LampController : MonoBehaviour
 {
@@ -24,16 +25,24 @@ public class LampController : MonoBehaviour
     private float _energyTickRate;
     [SerializeField]
     private float _energyIncrease;
+    private TimeSpan _timeDifference;
     //loads sleep state of player
     private void Start() 
     {
+        _timeDifference = DateTime.Now - Player.LastIn;
         if(Player.SleepState == 0)
         {
             TurnOffLight();
+            Debug.Log(Player.Energy);
+            Player.Energy += (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
+            Debug.Log("LightOff: " + Player.Energy);
         }else
         {
             TurnOnLight();
+            Player.Energy -= (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
+            Debug.Log("LightOn" + Player.Energy);
         }
+        UpdateEnergyBar();
     }
     void Update()
     {   
@@ -42,7 +51,7 @@ public class LampController : MonoBehaviour
         { 
             if(Player.SleepState == 0)
             {
-                Debug.Log("MOshi");
+                Debug.Log("Moshi");
                 RestTheChar();
             }
             else
@@ -64,8 +73,7 @@ public class LampController : MonoBehaviour
         if(Player.Energy < 0 )
         {
             Player.Energy = 0;
-        }
-      
+        }  
     }
     public void RestTheChar()
     {

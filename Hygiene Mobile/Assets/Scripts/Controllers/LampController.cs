@@ -34,32 +34,22 @@ public class LampController : MonoBehaviour
         if(Player.SleepState == 0)
         {
             TurnOffLight();
-            Debug.Log(Player.Energy);
             Player.Energy += (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
-            Debug.Log("LightOff: " + Player.Energy);
         }else
         {
             TurnOnLight();
             Player.Energy -= (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
-            Debug.Log("LightOn" + Player.Energy);
+        }
+        //to avoid delayed Energy Bar update 
+        if(Player.Energy < 0){
+            Player.Energy = 0;
+        }else if(Player.Energy > _max){
+            Player.Energy = _max;
         }
         UpdateEnergyBar();
     }
     void Update()
     {   
-        if(Input.GetMouseButtonDown(0))
-        {   
-            if(Player.SleepState == 1)
-            {
-                TurnOffLight();  
-            }
-            
-            else if(Player.SleepState == 0)
-            {   
-                TurnOnLight();
-            }     
-        }
-        
         //Reduce needs values per time passing of gameHour
         if(TimingManager.GameHourTimer < 0)
         { 
@@ -75,7 +65,17 @@ public class LampController : MonoBehaviour
             UpdateEnergyBar();     
         }     
     }   
-    
+    private void OnMouseDown() {
+        if(Player.SleepState == 1)
+        {
+            TurnOffLight();  
+        }
+        
+        else if(Player.SleepState == 0)
+        {   
+           TurnOnLight();
+        }     
+    }
     //change values of bar and its indicator
     private void UpdateEnergyBar()
     {

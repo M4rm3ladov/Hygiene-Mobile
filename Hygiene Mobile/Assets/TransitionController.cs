@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class TransitionController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator transition;
+    public float transitionTime = 1f;
+    // Update is called once per frame
+    private void OnMouseDown() {
+        LoadNextLevel();
+    }
+    public void LoadNextLevel()
     {
-        
+        StartCoroutine(LoadLevel());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    IEnumerator LoadLevel(){
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
         
     }
 }

@@ -15,7 +15,7 @@ public class LampController : MonoBehaviour
     //Head for sleeping initialization
     [SerializeField]
     private GameObject SleepHead;
-    //light switch on-1 and off-0
+    //max of the energy bar
     private float _max = 100;
     [SerializeField]
     private Image CurrentEnergy;
@@ -29,6 +29,7 @@ public class LampController : MonoBehaviour
     //loads sleep state of player
     private void Start() 
     {
+        //calculates the time last in and out then added the product to the energy
         _timeDifference = DateTime.Now - Player.LastIn;
         if(Player.SleepState == 0)
         {
@@ -46,6 +47,19 @@ public class LampController : MonoBehaviour
     }
     void Update()
     {   
+        if(Input.GetMouseButtonDown(0))
+        {   
+            if(Player.SleepState == 1)
+            {
+                TurnOffLight();  
+            }
+            
+            else if(Player.SleepState == 0)
+            {   
+                TurnOnLight();
+            }     
+        }
+        
         //Reduce needs values per time passing of gameHour
         if(TimingManager.GameHourTimer < 0)
         { 
@@ -60,13 +74,16 @@ public class LampController : MonoBehaviour
             } 
             UpdateEnergyBar();     
         }     
-    }
+    }   
+    
+    //change values of bar and its indicator
     private void UpdateEnergyBar()
     {
         float ratio = Player.Energy / _max;
         CurrentEnergy.rectTransform.localScale = new Vector3(ratio, 1, 1);
         EnergyText.text = (ratio * 100).ToString("0") + "%";
     }
+    //depleting the energy need with an alterable value
     private void ChangeEnergy()
     {
         Player.Energy -= _energyTickRate * Time.deltaTime;
@@ -75,6 +92,7 @@ public class LampController : MonoBehaviour
             Player.Energy = 0;
         }  
     }
+    //satisfying the energy need with an alterable value
     public void RestTheChar()
     {
         Player.Energy += _energyIncrease * Time.deltaTime;
@@ -83,19 +101,6 @@ public class LampController : MonoBehaviour
             Player.Energy = _max;
         }
     }
-
-    private void OnMouseDown() {
-        if(Player.SleepState == 1)
-        {
-            TurnOffLight();  
-        }
-        
-        else if(Player.SleepState == 0)
-        {   
-           TurnOnLight();
-        }     
-    }
-
     private void TurnOffLight()
     {
         //gameobjects Room light activate, Body deactivate and light switch state to ON

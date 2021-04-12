@@ -5,7 +5,8 @@ using UnityEngine;
 public class TransitionController : MonoBehaviour
 {
     public Animator transition;
-    public float transitionTime = 1f;
+    [SerializeField]
+    private float _transitionTime = 1f;
     // Update is called once per frame
     private void OnMouseDown() {
         LoadNextLevel();
@@ -17,7 +18,8 @@ public class TransitionController : MonoBehaviour
 
     IEnumerator LoadLevel(){
         transition.SetTrigger("Start");
-        yield return new WaitForSeconds(transitionTime);
-        
+        yield return new WaitForSeconds(_transitionTime);
+        transition.SetTrigger("End");
+        yield return new WaitForSeconds(_transitionTime);
     }
 }

@@ -42,5 +42,8 @@ public class Player : MonoBehaviour
         Input.backButtonLeavesApp = true;
 
     }
+    private void OnDestroy() {
+        SavePlayer();
+    }
     
 }

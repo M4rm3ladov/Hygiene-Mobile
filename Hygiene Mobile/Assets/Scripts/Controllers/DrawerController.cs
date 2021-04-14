@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DrawerController : MonoBehaviour
 {   
+    [SerializeField]
+    private GameObject gameObject;
     private int _objState = 1;
     [SerializeField]
     private float _transitionTime = 1f;

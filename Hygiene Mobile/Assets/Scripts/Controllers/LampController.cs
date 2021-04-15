@@ -16,7 +16,7 @@ public class LampController : MonoBehaviour
     [SerializeField]
     private GameObject SleepHead;
     //max of the energy bar
-    private float _max = 100;
+    /*private float _max = 100;
     [SerializeField]
     private Image CurrentEnergy;
     [SerializeField]
@@ -24,8 +24,10 @@ public class LampController : MonoBehaviour
     [SerializeField]
     private float _energyTickRate;
     [SerializeField]
-    private float _energyIncrease;
+    private float _energyIncrease;*/
     private TimeSpan _timeDifference;
+    [SerializeField]
+    EnergyManager energyManager;
     //loads sleep state of player
     private void Start() 
     {
@@ -34,21 +36,32 @@ public class LampController : MonoBehaviour
         if(Player.SleepState == 0)
         {
             TurnOffLight();
-            Player.Energy += (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
+            Player.Energy += (float)(energyManager._energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
         }else
         {
             TurnOnLight();
-            Player.Energy -= (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
+            Player.Energy -= (float)(energyManager._energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
         }
         //to avoid delayed Energy Bar update 
         if(Player.Energy < 0){
             Player.Energy = 0;
-        }else if(Player.Energy > _max){
-            Player.Energy = _max;
+        }else if(Player.Energy > energyManager._max){
+            Player.Energy = energyManager._max;
         }
-        UpdateEnergyBar();
+        energyManager.UpdateEnergyBar();
     }
-    void Update()
+    private void Update() {
+        if(TimingManager.GameHourTimer < 0)
+        {
+            if(Player.SleepState == 0)
+            {
+                Debug.Log("Moshi");
+                RestTheChar();
+            }
+        }
+        
+    }
+    /*void Update()
     {   
         //Reduce needs values per time passing of gameHour
         if(TimingManager.GameHourTimer < 0)
@@ -64,7 +77,7 @@ public class LampController : MonoBehaviour
             } 
             UpdateEnergyBar();     
         }     
-    }   
+    } */  
     private void OnMouseDown() {
         if(Player.SleepState == 1)
         {
@@ -77,7 +90,7 @@ public class LampController : MonoBehaviour
         }     
     }
     //change values of bar and its indicator
-    private void UpdateEnergyBar()
+    /*private void UpdateEnergyBar()
     {
         float ratio = Player.Energy / _max;
         CurrentEnergy.rectTransform.localScale = new Vector3(ratio, 1, 1);
@@ -91,14 +104,14 @@ public class LampController : MonoBehaviour
         {
             Player.Energy = 0;
         }  
-    }
+    }*/
     //satisfying the energy need with an alterable value
     public void RestTheChar()
     {
-        Player.Energy += _energyIncrease * Time.deltaTime;
-        if(Player.Energy > _max)
+        Player.Energy += energyManager._energyIncrease * Time.deltaTime;
+        if(Player.Energy > energyManager._max)
         {
-            Player.Energy = _max;
+            Player.Energy = energyManager._max;
         }
     }
     private void TurnOffLight()

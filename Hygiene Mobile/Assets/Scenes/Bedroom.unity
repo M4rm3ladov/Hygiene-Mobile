@@ -919,7 +919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dff17ffa0c63804ea7ed7d7a19f894d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 1203244854}
   _transitionTime: 1
 --- !u!114 &1108273343
 MonoBehaviour:
@@ -1047,10 +1046,7 @@ MonoBehaviour:
   RoomLight: {fileID: 847774230}
   Body: {fileID: 3651137168753673338}
   SleepHead: {fileID: 2541101176080340615}
-  CurrentEnergy: {fileID: 1034785725}
-  EnergyText: {fileID: 1228172674}
-  _energyTickRate: 11
-  _energyIncrease: 5
+  energyManager: {fileID: 2986190911545128935}
 --- !u!61 &1203244859
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1645,6 +1641,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2986190912195457550, guid: 56aa4dbb891015d4f9d217da922203a3,
+        type: 3}
+      propertyPath: CurrentEnergy
+      value: 
+      objectReference: {fileID: 1034785725}
+    - target: {fileID: 2986190912195457550, guid: 56aa4dbb891015d4f9d217da922203a3,
+        type: 3}
+      propertyPath: EnergyText
+      value: 
+      objectReference: {fileID: 1228172674}
+    - target: {fileID: 2986190912195457550, guid: 56aa4dbb891015d4f9d217da922203a3,
+        type: 3}
+      propertyPath: _energyTickRate
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986190912195457550, guid: 56aa4dbb891015d4f9d217da922203a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2986190912195457551, guid: 56aa4dbb891015d4f9d217da922203a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1752,6 +1768,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56aa4dbb891015d4f9d217da922203a3, type: 3}
+--- !u!1 &2986190911545128934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2986190911731632588, guid: 56aa4dbb891015d4f9d217da922203a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2986190911545128933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2986190911545128935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986190911545128934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a81d7601d0c724e984d78147fe71a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _max: 100
+  CurrentEnergy: {fileID: 1034785725}
+  EnergyText: {fileID: 1228172674}
+  _energyTickRate: 11
+  _energyIncrease: 5
 --- !u!1 &3651137168753673338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1496683712651728619, guid: 91d71afae1780bf44be2a09080dee037,

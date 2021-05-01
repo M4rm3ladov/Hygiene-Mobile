@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hungry
+  m_Name: HungrySleepy
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -233,17 +233,22 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300004, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
-    - time: 0.9
-      value: {fileID: 21300000, guid: a09a211dfb4063b4c89a4a59e013affc, type: 3}
-    - time: 1
+      value: {fileID: 21300000, guid: 27424a81c0e0c0f45a6d5167653b4a4a, type: 3}
+    attribute: m_Sprite
+    path: Body/Head/Eyebrows
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 103146a5847022f4a9b231e4ea294ee5, type: 3}
+    - time: 0.2
       value: {fileID: 21300000, guid: 0cf9b9b26d7efd34e9bf7c0ff3d42d92, type: 3}
-    - time: 1.05
-      value: {fileID: 21300000, guid: a09a211dfb4063b4c89a4a59e013affc, type: 3}
-    - time: 1.1333333
-      value: {fileID: 21300000, guid: cce994104a2d71843ad076279493eb7e, type: 3}
+    - time: 0.4
+      value: {fileID: 21300000, guid: 103146a5847022f4a9b231e4ea294ee5, type: 3}
     - time: 1.75
-      value: {fileID: 21300004, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
+      value: {fileID: 21300000, guid: 103146a5847022f4a9b231e4ea294ee5, type: 3}
+    - time: 1.5833334
+      value: {fileID: 21300000, guid: 0cf9b9b26d7efd34e9bf7c0ff3d42d92, type: 3}
     attribute: m_Sprite
     path: Body/Head/Eyes
     classID: 212
@@ -253,13 +258,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: 6a728bc56765da04a8aed83c342a3d99, type: 3}
     attribute: m_Sprite
     path: Body/Head/Mouth
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-    - time: 0
-      value: {fileID: 21300000, guid: 157026a54745b3e49a76f7f9d0f1219f, type: 3}
-    attribute: m_Sprite
-    path: Body/Head/Eyebrows
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -305,6 +303,13 @@ AnimationClip:
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
+      path: 2690859470
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
       path: 1855643408
       attribute: 0
       script: {fileID: 0}
@@ -319,13 +324,6 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     - serializedVersion: 2
-      path: 2690859470
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    - serializedVersion: 2
       path: 3042559857
       attribute: 1
       script: {fileID: 0}
@@ -333,20 +331,19 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300004, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
-    - {fileID: 21300000, guid: a09a211dfb4063b4c89a4a59e013affc, type: 3}
+    - {fileID: 21300000, guid: 27424a81c0e0c0f45a6d5167653b4a4a, type: 3}
+    - {fileID: 21300000, guid: 103146a5847022f4a9b231e4ea294ee5, type: 3}
     - {fileID: 21300000, guid: 0cf9b9b26d7efd34e9bf7c0ff3d42d92, type: 3}
-    - {fileID: 21300000, guid: a09a211dfb4063b4c89a4a59e013affc, type: 3}
-    - {fileID: 21300000, guid: cce994104a2d71843ad076279493eb7e, type: 3}
-    - {fileID: 21300004, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
+    - {fileID: 21300000, guid: 103146a5847022f4a9b231e4ea294ee5, type: 3}
+    - {fileID: 21300000, guid: 103146a5847022f4a9b231e4ea294ee5, type: 3}
+    - {fileID: 21300000, guid: 0cf9b9b26d7efd34e9bf7c0ff3d42d92, type: 3}
     - {fileID: 21300000, guid: 6a728bc56765da04a8aed83c342a3d99, type: 3}
-    - {fileID: 21300000, guid: 157026a54745b3e49a76f7f9d0f1219f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.7666667
+    m_StopTime: 1.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -1062,7 +1059,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
+    attribute: m_LocalEulerAngles.z
     path: Body/Left Arm
     classID: 4
     script: {fileID: 0}
@@ -1082,7 +1079,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
+    attribute: m_LocalEulerAngles.x
     path: Body/Left Arm
     classID: 4
     script: {fileID: 0}

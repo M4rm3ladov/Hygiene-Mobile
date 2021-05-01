@@ -15,19 +15,12 @@ public class LampController : MonoBehaviour
     //Head for sleeping initialization
     [SerializeField]
     private GameObject SleepHead;
-    //max of the energy bar
-    /*private float _max = 100;
-    [SerializeField]
-    private Image CurrentEnergy;
-    [SerializeField]
-    public Text EnergyText;
-    [SerializeField]
-    private float _energyTickRate;
-    [SerializeField]
-    private float _energyIncrease;*/
     private TimeSpan _timeDifference;
     [SerializeField]
     EnergyManager energyManager;
+    [SerializeField]
+    PlayerController playerController;
+    
     //loads sleep state of player
     private void Start() 
     {
@@ -55,29 +48,10 @@ public class LampController : MonoBehaviour
         {
             if(Player.SleepState == 0)
             {
-                Debug.Log("Moshi");
                 RestTheChar();
             }
-        }
-        
-    }
-    /*void Update()
-    {   
-        //Reduce needs values per time passing of gameHour
-        if(TimingManager.GameHourTimer < 0)
-        { 
-            if(Player.SleepState == 0)
-            {
-                Debug.Log("Moshi");
-                RestTheChar();
-            }
-            else
-            {
-                ChangeEnergy();
-            } 
-            UpdateEnergyBar();     
-        }     
-    } */  
+        }   
+    } 
     private void OnMouseDown() {
         if(Player.SleepState == 1)
         {
@@ -87,24 +61,14 @@ public class LampController : MonoBehaviour
         else if(Player.SleepState == 0)
         {   
            TurnOnLight();
-        }     
-    }
-    //change values of bar and its indicator
-    /*private void UpdateEnergyBar()
-    {
-        float ratio = Player.Energy / _max;
-        CurrentEnergy.rectTransform.localScale = new Vector3(ratio, 1, 1);
-        EnergyText.text = (ratio * 100).ToString("0") + "%";
-    }
-    //depleting the energy need with an alterable value
-    private void ChangeEnergy()
-    {
-        Player.Energy -= _energyTickRate * Time.deltaTime;
-        if(Player.Energy < 0 )
+        }
+        //checks after lamp press if player rested
+        if((int)Player.Energy >= playerController.tiredTrigger)
         {
-            Player.Energy = 0;
-        }  
-    }*/
+            Debug.Log("rested");
+            playerController.NormalStateTransition();
+        }       
+    }
     //satisfying the energy need with an alterable value
     public void RestTheChar()
     {

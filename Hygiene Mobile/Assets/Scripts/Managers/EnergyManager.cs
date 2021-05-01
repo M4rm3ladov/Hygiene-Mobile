@@ -25,7 +25,7 @@ public class EnergyManager : MonoBehaviour
             UpdateEnergyBar();     
         }     
     } 
-
+    //update the energybar UI
     public void UpdateEnergyBar()
     {
         float ratio = Player.Energy / _max;

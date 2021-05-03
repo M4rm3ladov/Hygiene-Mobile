@@ -21,6 +21,7 @@ public class LampController : MonoBehaviour
     [SerializeField]
     PlayerController playerController;
     
+    
     //loads sleep state of player
     private void Start() 
     {
@@ -63,11 +64,12 @@ public class LampController : MonoBehaviour
            TurnOnLight();
         }
         //checks after lamp press if player rested
-        if((int)Player.Energy >= playerController.tiredTrigger)
+        /*if((int)Player.Energy >= playerController.tiredTrigger)
         {
-            Debug.Log("rested");
-            playerController.NormalStateTransition();
-        }       
+            playerController.animTransition.SetTrigger("Idle");
+            //Debug.Log("rested");
+            //playerController.NormalStateTransition();
+        }*/ 
     }
     //satisfying the energy need with an alterable value
     public void RestTheChar()

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public int tiredTrigger;
     [SerializeField]
     private int hungerTrigger;
-    [Header("Mouth Sprite")]
+    /*[Header("Mouth Sprite")]
     public SpriteRenderer Mouth;
     [Header("Cycle Through")]
     public List<Sprite> MouthSpriteOptions = new List<Sprite>();
@@ -21,25 +21,35 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer Eyebrows;
     [Header("Cycle Through")]
     public List<Sprite> EyebrowsSpriteOptions = new List<Sprite>();
-    //[Header("Mouth Sprite")]
-    
+    //[Header("Mouth Sprite")]*/
+    public Animator animTransition;
+    [SerializeField]
     private void Start() {
         if((int)Player.Energy <= tiredTrigger)
         {
+            animTransition.SetBool("isSleepy", true);
+            //animTransition.SetTrigger("Sleepy");
             //Debug.Log("sleepy");
-            SleepyStateTransition();         
+            //SleepyStateTransition();         
         }
         else if((int)Player.Energy > tiredTrigger)
         {
+            animTransition.SetBool("isSleepy", false);
+            //animTransition.SetTrigger("Idle");
             //Debug.Log("rested");
-            NormalStateTransition();
+            //NormalStateTransition();
         }  
     }
     private void Update() {
-        if((int)Player.Energy == tiredTrigger)
+        //if((int)Player.Energy == tiredTrigger)
+        if((int)Player.Energy <= tiredTrigger)
         {
+            animTransition.SetBool("isSleepy", true);
+            //animTransition.SetTrigger("Sleepy");
             //Debug.Log("sleepy");
-            SleepyStateTransition();         
+            //SleepyStateTransition();         
+        }else{
+            animTransition.SetBool("isSleepy", false);
         }
         /*else if((int)Player.Energy == tiredTrigger + 1)
         {
@@ -47,7 +57,13 @@ public class PlayerController : MonoBehaviour
             NormalStateTransition();
         } */ 
     }
-    public void SleepyStateTransition(){
+    private void OnMouseDown() {
+        if(!){
+            animTransition.SetBool("isSleepy", false);
+            animTransition.SetTrigger("Wave");
+        }      
+    }
+    /*public void SleepyStateTransition(){
         Eyes.sprite = EyesSpriteOptions[3];
         Eyebrows.sprite = EyebrowsSpriteOptions[1];
         Mouth.sprite = MouthSpriteOptions[1];
@@ -56,5 +72,5 @@ public class PlayerController : MonoBehaviour
         Eyes.sprite = EyesSpriteOptions[0];
         Eyebrows.sprite = EyebrowsSpriteOptions[0];
         Mouth.sprite = MouthSpriteOptions[0];
-    }
+    }*/
 }

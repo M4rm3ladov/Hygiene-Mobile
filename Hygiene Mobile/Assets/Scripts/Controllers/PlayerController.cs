@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     public int tiredTrigger;
     [SerializeField]
     private int hungerTrigger;
+    [Header("Mouth Sprite")]
+    public SpriteRenderer Mouth;
+    [Header("Cycle Through")]
+    public List<Sprite> MouthSpriteOptions = new List<Sprite>();
 
     [Header("Eyes Sprite")]
     public SpriteRenderer Eyes;
@@ -17,26 +21,24 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer Eyebrows;
     [Header("Cycle Through")]
     public List<Sprite> EyebrowsSpriteOptions = new List<Sprite>();
-    [Header("Mouth Sprite")]
-    public SpriteRenderer Mouth;
-    [Header("Cycle Through")]
-    public List<Sprite> MouthSpriteOptions = new List<Sprite>();
+    //[Header("Mouth Sprite")]
+    
     private void Start() {
         if((int)Player.Energy <= tiredTrigger)
         {
-            Debug.Log("sleepy");
+            //Debug.Log("sleepy");
             SleepyStateTransition();         
         }
         else if((int)Player.Energy > tiredTrigger)
         {
-            Debug.Log("rested");
+            //Debug.Log("rested");
             NormalStateTransition();
         }  
     }
     private void Update() {
         if((int)Player.Energy == tiredTrigger)
         {
-            Debug.Log("sleepy");
+            //Debug.Log("sleepy");
             SleepyStateTransition();         
         }
         /*else if((int)Player.Energy == tiredTrigger + 1)

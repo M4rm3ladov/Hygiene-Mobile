@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BodySkinManager : MonoBehaviour
+public class SkinsManager : MonoBehaviour
 {
     [Header("Torso")]
     public SpriteRenderer Torso;
@@ -24,14 +24,9 @@ public class BodySkinManager : MonoBehaviour
     public SpriteRenderer RightLeg;
     [Header("Cycle Through")]
     public List<Sprite> RightLegSpriteOptions = new List<Sprite>();
-    private int _currentOption = 0;
-    public void NextOption()
-    {
-        
-    }
-    public void PreviousOption()
-    {
-        
-    }
 
+    [Header("Hair")]
+    public SpriteRenderer Hair;
+    [Header("Cycle Through")]
+    public List<Sprite> HairSpriteOptions = new List<Sprite>();
 }

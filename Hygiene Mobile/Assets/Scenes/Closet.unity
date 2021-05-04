@@ -428,18 +428,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 71810048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 144514319}
-        m_MethodName: NextOption
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &138873566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,18 +1038,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 568408239}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 144514319}
-        m_MethodName: PreviousOption
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1267912989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,6 +2393,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f64d8675c3ca45f469223e703b7f1665, type: 3}
   - {fileID: 21300000, guid: cfe9b000bd92c254593a7534640004ce, type: 3}
   - {fileID: 21300000, guid: e268774146806bc4ca63159a931b0598, type: 3}
+  Hair: {fileID: 1496683712699665529}
+  HairSpriteOptions:
+  - {fileID: 21300000, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
+  - {fileID: 21300000, guid: b048f54fe7bacba40bdcd6ad7d7139d8, type: 3}
+  - {fileID: 21300000, guid: 24230769a9608ab4a9832f83edcda113, type: 3}
+  - {fileID: 21300000, guid: c3255c9f6c23d9140b77ce29c1501f3f, type: 3}
+  - {fileID: 21300000, guid: 4f1c1b73c05a61747bf92da1e5e85007, type: 3}
+  - {fileID: 21300000, guid: 5d334e8365114b441b5f40d9ab537b85, type: 3}
 --- !u!4 &1496683712720857707
 Transform:
   m_ObjectHideFlags: 0
@@ -2689,6 +2675,7 @@ GameObject:
   - component: {fileID: 2986190911936433327}
   - component: {fileID: 2986190911936433326}
   - component: {fileID: 2986190911936433313}
+  - component: {fileID: 2986190911936433314}
   m_Layer: 5
   m_Name: CanvasUI
   m_TagString: Untagged
@@ -2713,6 +2700,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2986190911936433314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986190911936433312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a15b08232577a14b8ba0541c218fc80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinsManager: {fileID: 1496683712720500320}
+  LeftButton: {fileID: 568408241}
+  RightButton: {fileID: 71810050}
+  HairButton: {fileID: 250048064}
+  ClothesButton: {fileID: 138873570}
 --- !u!224 &2986190911936433324
 RectTransform:
   m_ObjectHideFlags: 0

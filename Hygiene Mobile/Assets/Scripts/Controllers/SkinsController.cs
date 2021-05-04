@@ -15,12 +15,17 @@ public class SkinsController : MonoBehaviour
     private Button HairButton;
     [SerializeField]
     private Button ClothesButton;
+    [SerializeField]
+    private Text ItemText;
+    [SerializeField]
+    private Text PriceText;
     //0 for hair 1 for clothes
     private int buttonOption = 0;
-    private int currentOption;
+    private int currentOption = 0;
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(skinsManager.HairSpriteOptions.Count);
         Button btnLeft = LeftButton.GetComponent<Button>();
         btnLeft.onClick.AddListener(PreviousOption);
 
@@ -44,43 +49,49 @@ public class SkinsController : MonoBehaviour
     private void PreviousOption(){
         if(buttonOption == 0){
             currentOption++;
-            if(currentOption >= skinsManager.HairSpriteOptions.Count)
+            if(currentOption > skinsManager.HairSpriteOptions.Count -1)
             {
                 currentOption = 0;
             }
-            skinsManager.Hair.sprite = skinsManager.HairSpriteOptions[currentOption];
+            LoadHair();    
         }else{
             currentOption++;
-            if(currentOption >= skinsManager.TorsoSpriteOptions.Count)
+            if(currentOption > skinsManager.TorsoSpriteOptions.Count - 1)
             {
                 currentOption = 0;
             }
-            skinsManager.Torso.sprite = skinsManager.TorsoSpriteOptions[currentOption];
-            skinsManager.LeftArm.sprite = skinsManager.LeftArmSpriteOptions[currentOption];
-            skinsManager.RightArm.sprite = skinsManager.RightArmSpriteOptions[currentOption];
-            skinsManager.LeftLeg.sprite = skinsManager.LeftLegSpriteOptions[currentOption];
-            skinsManager.RightLeg.sprite = skinsManager.RightLegSpriteOptions[currentOption];
+            LoadClothes();
         }
     }
     private void NextOption(){
         if(buttonOption == 0){
             currentOption--;
-            if(currentOption <= 0)
+            if(currentOption < 0)
             {
                 currentOption = skinsManager.HairSpriteOptions.Count - 1;
             }
-            skinsManager.Hair.sprite = skinsManager.HairSpriteOptions[currentOption];
+            LoadHair();
         }else{
             currentOption--;
-            if(currentOption <= 0)
+            if(currentOption < 0)
             {
                 currentOption = skinsManager.TorsoSpriteOptions.Count - 1;
             }
-            skinsManager.Torso.sprite = skinsManager.TorsoSpriteOptions[currentOption];
-            skinsManager.LeftArm.sprite = skinsManager.LeftArmSpriteOptions[currentOption];
-            skinsManager.RightArm.sprite = skinsManager.RightArmSpriteOptions[currentOption];
-            skinsManager.LeftLeg.sprite = skinsManager.LeftLegSpriteOptions[currentOption];
-            skinsManager.RightLeg.sprite = skinsManager.RightLegSpriteOptions[currentOption];
+            LoadClothes();
         }
     }
+    private void LoadHair(){
+        skinsManager.Hair.sprite = skinsManager.HairSpriteOptions[currentOption];
+        ItemText.text = skinsManager.HairNames[currentOption];
+        PriceText.text = skinsManager.HairPrices[currentOption].ToString(); 
+    }   
+    private void LoadClothes(){
+        skinsManager.Torso.sprite = skinsManager.TorsoSpriteOptions[currentOption];
+        skinsManager.LeftArm.sprite = skinsManager.LeftArmSpriteOptions[currentOption];
+        skinsManager.RightArm.sprite = skinsManager.RightArmSpriteOptions[currentOption];
+        skinsManager.LeftLeg.sprite = skinsManager.LeftLegSpriteOptions[currentOption];
+        skinsManager.RightLeg.sprite = skinsManager.RightLegSpriteOptions[currentOption];
+        ItemText.text = skinsManager.ClothesNames[currentOption];
+        PriceText.text = skinsManager.ClothesPrices[currentOption].ToString(); 
+    }   
 }

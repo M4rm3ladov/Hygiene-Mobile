@@ -29,4 +29,12 @@ public class SkinsManager : MonoBehaviour
     public SpriteRenderer Hair;
     [Header("Cycle Through")]
     public List<Sprite> HairSpriteOptions = new List<Sprite>();
+    [Header("Hair Prices")]
+    public List<float> HairPrices = new List<float>();
+    [Header("Clothes Prices")]
+    public List<float> ClothesPrices = new List<float>();
+    [Header("Hair Names")]
+    public List<string> HairNames = new List<string>();
+    [Header("Clothes Names")]
+    public List<string> ClothesNames = new List<string>();
 }

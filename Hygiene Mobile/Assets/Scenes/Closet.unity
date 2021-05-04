@@ -783,7 +783,7 @@ GameObject:
   - component: {fileID: 504596868}
   - component: {fileID: 504596867}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Price_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tuxedo
+  m_Text: 
 --- !u!222 &513562350
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2401,6 +2401,34 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c3255c9f6c23d9140b77ce29c1501f3f, type: 3}
   - {fileID: 21300000, guid: 4f1c1b73c05a61747bf92da1e5e85007, type: 3}
   - {fileID: 21300000, guid: 5d334e8365114b441b5f40d9ab537b85, type: 3}
+  HairPrices:
+  - 0
+  - 25
+  - 50
+  - 100
+  - 125
+  - 200
+  ClothesPrices:
+  - 0
+  - 100
+  - 150
+  - 220
+  - 300
+  - 250
+  HairNames:
+  - Bald
+  - Emo
+  - Head Band
+  - Hat
+  - Rock
+  - Oppa
+  ClothesNames:
+  - Sando
+  - Casual
+  - Sporty
+  - Jumper
+  - Super Hero
+  - Tuxedo
 --- !u!4 &1496683712720857707
 Transform:
   m_ObjectHideFlags: 0
@@ -2717,6 +2745,8 @@ MonoBehaviour:
   RightButton: {fileID: 71810050}
   HairButton: {fileID: 250048064}
   ClothesButton: {fileID: 138873570}
+  ItemText: {fileID: 513562349}
+  PriceText: {fileID: 504596867}
 --- !u!224 &2986190911936433324
 RectTransform:
   m_ObjectHideFlags: 0

@@ -24,17 +24,17 @@ public class SkinsManager : MonoBehaviour
     public SpriteRenderer RightLeg;
     [Header("Cycle Through")]
     public List<Sprite> RightLegSpriteOptions = new List<Sprite>();
-
     [Header("Hair")]
     public SpriteRenderer Hair;
     [Header("Cycle Through")]
     public List<Sprite> HairSpriteOptions = new List<Sprite>();
-    [Header("Hair Prices")]
-    public List<float> HairPrices = new List<float>();
-    [Header("Clothes Prices")]
-    public List<float> ClothesPrices = new List<float>();
-    [Header("Hair Names")]
-    public List<string> HairNames = new List<string>();
-    [Header("Clothes Names")]
-    public List<string> ClothesNames = new List<string>();
+    private void Start() {
+        Hair.sprite = HairSpriteOptions[Player.EquippedSkins[0]];
+        Torso.sprite = TorsoSpriteOptions[Player.EquippedSkins[1]];
+        LeftArm.sprite = LeftArmSpriteOptions[Player.EquippedSkins[1]];
+        RightArm.sprite = RightArmSpriteOptions[Player.EquippedSkins[1]];
+        LeftLeg.sprite = LeftLegSpriteOptions[Player.EquippedSkins[1]];
+        RightLeg.sprite = RightLegSpriteOptions[Player.EquippedSkins[1]];    
+    }
+    
 }

@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         //play sleepy anim if other animation is playing and if energy is below/equal to alloted thereshold
         //else turn it off
         if((int)Player.Energy <= tiredTrigger && !animTransition.GetCurrentAnimatorStateInfo(0).IsName("Dirty") &&
-        !animTransition.GetCurrentAnimatorStateInfo(0).IsName("Hungry"))
+        !animTransition.GetCurrentAnimatorStateInfo(0).IsName("Hungry") && !animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
         {
             animTransition.SetBool("isSleepy", true);       
         }else{

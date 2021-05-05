@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 50541730}
   - component: {fileID: 50541734}
-  - component: {fileID: 50541733}
   - component: {fileID: 50541732}
   - component: {fileID: 50541731}
   m_Layer: 5
@@ -131,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &50541730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -186,21 +185,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50541729}
   m_CullTransparentMesh: 0
---- !u!114 &50541733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50541729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f505e68bdf08ccc4bbd427f739eb1002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 6448886127429108501}
-  _transitionTime: 1
-  _levelName: Bedroom
 --- !u!114 &50541734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1267912990
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1152,18 +1136,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1267912991}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6448886125955878554}
-        m_MethodName: LoadNextLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &1499347375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1688,7 +1661,7 @@ SpriteRenderer:
   m_SortingLayerID: 894108053
   m_SortingLayer: 3
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e268774146806bc4ca63159a931b0598, type: 3}
+  m_Sprite: {fileID: 21300016, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1736,7 +1709,7 @@ SpriteRenderer:
   m_SortingLayerID: 894108053
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6a152433307f48a4698995557ff2d5d6, type: 3}
+  m_Sprite: {fileID: 21300018, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1832,7 +1805,7 @@ SpriteRenderer:
   m_SortingLayerID: 894108053
   m_SortingLayer: 3
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: a131c81335432d442ad40260888ec3d1, type: 3}
+  m_Sprite: {fileID: 21300014, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1880,7 +1853,7 @@ SpriteRenderer:
   m_SortingLayerID: 894108053
   m_SortingLayer: 3
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 82b8b62f9e83a0f48b93d51579677da5, type: 3}
+  m_Sprite: {fileID: 21300008, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1976,7 +1949,7 @@ SpriteRenderer:
   m_SortingLayerID: 894108053
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 5d334e8365114b441b5f40d9ab537b85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2120,7 +2093,7 @@ SpriteRenderer:
   m_SortingLayerID: 894108053
   m_SortingLayer: 3
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 6bfba86cc608e1640a8ea95f8130892d, type: 3}
+  m_Sprite: {fileID: 21300012, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2401,34 +2374,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c3255c9f6c23d9140b77ce29c1501f3f, type: 3}
   - {fileID: 21300000, guid: 4f1c1b73c05a61747bf92da1e5e85007, type: 3}
   - {fileID: 21300000, guid: 5d334e8365114b441b5f40d9ab537b85, type: 3}
-  HairPrices:
-  - 0
-  - 25
-  - 50
-  - 100
-  - 125
-  - 200
-  ClothesPrices:
-  - 0
-  - 100
-  - 150
-  - 220
-  - 300
-  - 250
-  HairNames:
-  - Bald
-  - Emo
-  - Head Band
-  - Hat
-  - Rock
-  - Oppa
-  ClothesNames:
-  - Sando
-  - Casual
-  - Sporty
-  - Jumper
-  - Super Hero
-  - Tuxedo
 --- !u!4 &1496683712720857707
 Transform:
   m_ObjectHideFlags: 0
@@ -2741,12 +2686,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinsManager: {fileID: 1496683712720500320}
+  HairPrices:
+  - 0
+  - 50
+  - 25
+  - 100
+  - 125
+  - 150
+  ClothesPrices:
+  - 0
+  - 100
+  - 150
+  - 200
+  - 300
+  - 250
+  HairBought: 
+  ClothesBought: 
   LeftButton: {fileID: 568408241}
   RightButton: {fileID: 71810050}
   HairButton: {fileID: 250048064}
   ClothesButton: {fileID: 138873570}
   ItemText: {fileID: 513562349}
   PriceText: {fileID: 504596867}
+  EquipButton: {fileID: 50541734}
 --- !u!224 &2986190911936433324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3217,7 +3179,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2986190912541947779}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6448886125955878554}
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &2986190912541947778
 RectTransform:
   m_ObjectHideFlags: 0

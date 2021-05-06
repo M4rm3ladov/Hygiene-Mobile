@@ -41,8 +41,6 @@ public class SkinsController : MonoBehaviour
     private int buttonOption = 0;
     //index for selected item
     private int currentOption;
-    //trigger to check if item is equipped to change default hair or clothe
-    private int equipClicked = 0;
     //default index of hair and clothe in relation to sprite
     private int defaultHair;
     private int defaultClothes;
@@ -192,6 +190,18 @@ public class SkinsController : MonoBehaviour
         ClothesButton.interactable = false;
         HairButton.interactable = true;
     }
+    private void UpdateItemsDictionary(){
+        for (int i = 0; i < Player.BoughtSkins.Length; i++)
+        {
+            for (int j = 0; j < Player.BoughtSkins[i].Length; j++)
+            {
+                if(i == 0)
+                    hairBought[j] = Player.BoughtSkins[i][j];
+                else
+                    clothesBought[j] = Player.BoughtSkins[i][j];
+            }      
+        }
+    }
     #endregion
     private void BuyButtonTransition(){
         if(buttonOption == 0)
@@ -220,15 +230,14 @@ public class SkinsController : MonoBehaviour
             Player.BoughtSkins[0][currentOption] = 1;
         else
             Player.BoughtSkins[1][currentOption] = 1;
+        UpdateItemsDictionary();
     }
     public void EquipItem(){
         if(buttonOption == 0){
             Player.EquippedSkins[0] = currentOption;
-            equipClicked = 1;
             defaultHair = currentOption;
         }else{
             Player.EquippedSkins[1] = currentOption;
-            equipClicked = 1;
             defaultClothes = currentOption;
         }
     }

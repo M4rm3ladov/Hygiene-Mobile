@@ -203,10 +203,10 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.8784314, b: 0.64705884, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 0.77254903, b: 0.60784316, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -215,7 +215,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300000, guid: cc9aa0f0d4a0f3c46a1d8ee2c53d8a70,
       type: 3}
     m_PressedSprite: {fileID: 21300000, guid: 4f69417498cf4c4428212eb72cbce220, type: 3}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 4f69417498cf4c4428212eb72cbce220, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -517,7 +517,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300000, guid: a6e113b44ef3db3469a456f1ca5a6c10,
       type: 3}
     m_PressedSprite: {fileID: 21300000, guid: 25444a6834aea704eb09429b7affd47a, type: 3}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 25444a6834aea704eb09429b7affd47a, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -652,7 +652,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300000, guid: a6e113b44ef3db3469a456f1ca5a6c10,
       type: 3}
     m_PressedSprite: {fileID: 21300000, guid: 25444a6834aea704eb09429b7affd47a, type: 3}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 25444a6834aea704eb09429b7affd47a, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 504596868}
   - component: {fileID: 504596867}
   m_Layer: 5
-  m_Name: Price_Text
+  m_Name: Text_Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -789,8 +789,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.7, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 12.54, y: 0}
+  m_SizeDelta: {x: 124.921875, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &504596867
 MonoBehaviour:
@@ -823,7 +823,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: Equip
 --- !u!222 &504596868
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1564,12 +1564,12 @@ GameObject:
   - component: {fileID: 1819732047}
   - component: {fileID: 1819732046}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image_Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1819732045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2326,6 +2326,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0351eeecaf922f345af7d98b08e1a7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hair: {fileID: 1496683712699665529}
+  HairSpriteOptions:
+  - {fileID: 21300000, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
+  - {fileID: 21300000, guid: b048f54fe7bacba40bdcd6ad7d7139d8, type: 3}
+  - {fileID: 21300000, guid: 24230769a9608ab4a9832f83edcda113, type: 3}
+  - {fileID: 21300000, guid: c3255c9f6c23d9140b77ce29c1501f3f, type: 3}
+  - {fileID: 21300000, guid: 4f1c1b73c05a61747bf92da1e5e85007, type: 3}
+  - {fileID: 21300000, guid: 5d334e8365114b441b5f40d9ab537b85, type: 3}
   Torso: {fileID: 1496683712699665535}
   TorsoSpriteOptions:
   - {fileID: 21300012, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
@@ -2366,14 +2374,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f64d8675c3ca45f469223e703b7f1665, type: 3}
   - {fileID: 21300000, guid: cfe9b000bd92c254593a7534640004ce, type: 3}
   - {fileID: 21300000, guid: e268774146806bc4ca63159a931b0598, type: 3}
-  Hair: {fileID: 1496683712699665529}
-  HairSpriteOptions:
-  - {fileID: 21300000, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
-  - {fileID: 21300000, guid: b048f54fe7bacba40bdcd6ad7d7139d8, type: 3}
-  - {fileID: 21300000, guid: 24230769a9608ab4a9832f83edcda113, type: 3}
-  - {fileID: 21300000, guid: c3255c9f6c23d9140b77ce29c1501f3f, type: 3}
-  - {fileID: 21300000, guid: 4f1c1b73c05a61747bf92da1e5e85007, type: 3}
-  - {fileID: 21300000, guid: 5d334e8365114b441b5f40d9ab537b85, type: 3}
 --- !u!4 &1496683712720857707
 Transform:
   m_ObjectHideFlags: 0
@@ -2648,6 +2648,7 @@ GameObject:
   - component: {fileID: 2986190911936433327}
   - component: {fileID: 2986190911936433326}
   - component: {fileID: 2986190911936433313}
+  - component: {fileID: 2986190911936433315}
   - component: {fileID: 2986190911936433314}
   m_Layer: 5
   m_Name: CanvasUI
@@ -2686,6 +2687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinsManager: {fileID: 1496683712720500320}
+  monetaryManager: {fileID: 2986190911936433315}
   HairPrices:
   - 0
   - 50
@@ -2700,15 +2702,28 @@ MonoBehaviour:
   - 200
   - 300
   - 250
-  HairBought: 
-  ClothesBought: 
   LeftButton: {fileID: 568408241}
   RightButton: {fileID: 71810050}
   HairButton: {fileID: 250048064}
   ClothesButton: {fileID: 138873570}
   ItemText: {fileID: 513562349}
   PriceText: {fileID: 504596867}
-  EquipButton: {fileID: 50541734}
+  CoinImage: {fileID: 1819732044}
+  BuyButton: {fileID: 1267912989}
+  EquipButton: {fileID: 50541729}
+--- !u!114 &2986190911936433315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986190911936433312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0863391b1d6ae449a66af6f581fefc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalCoins: {fileID: 2986190913329013657}
 --- !u!224 &2986190911936433324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3208,7 +3223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -81.3}
+  m_AnchoredPosition: {x: 80, y: -80.22}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2986190912541947779
@@ -3767,7 +3782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

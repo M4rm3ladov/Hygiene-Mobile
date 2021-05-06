@@ -260,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 6448886126123997180, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6448886127674781355, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
@@ -704,6 +704,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847774230}
   m_CullTransparentMesh: 0
+--- !u!212 &997139036 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8152902919154631529, guid: 5bb49d0f88f4f5d449c9caa8242aeabb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5937749870624337858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1033794228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,6 +1075,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39627de659e92640818d387fc0e2613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinsManager: {fileID: 3651137168753673341}
+  hair: {fileID: 997139036}
   RoomLight: {fileID: 847774230}
   Body: {fileID: 3651137168753673338}
   SleepHead: {fileID: 2541101176080340615}
@@ -1278,6 +1286,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415456056}
   m_CullTransparentMesh: 0
+--- !u!114 &1585001104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2986190913084710202, guid: 56aa4dbb891015d4f9d217da922203a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2986190911545128933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2002972741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2986190911830355842, guid: 56aa4dbb891015d4f9d217da922203a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2986190911545128933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2002972742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002972741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0863391b1d6ae449a66af6f581fefc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalCoins: {fileID: 1585001104}
 --- !u!1 &2021887364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,6 +2460,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0351eeecaf922f345af7d98b08e1a7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hair: {fileID: 3651137168732798558}
+  HairSpriteOptions:
+  - {fileID: 21300000, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
+  - {fileID: 21300000, guid: b048f54fe7bacba40bdcd6ad7d7139d8, type: 3}
+  - {fileID: 21300000, guid: 24230769a9608ab4a9832f83edcda113, type: 3}
+  - {fileID: 21300000, guid: c3255c9f6c23d9140b77ce29c1501f3f, type: 3}
+  - {fileID: 21300000, guid: 4f1c1b73c05a61747bf92da1e5e85007, type: 3}
+  - {fileID: 21300000, guid: 5d334e8365114b441b5f40d9ab537b85, type: 3}
   Torso: {fileID: 3651137168732798552}
   TorsoSpriteOptions:
   - {fileID: 21300012, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
@@ -2461,14 +2508,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f64d8675c3ca45f469223e703b7f1665, type: 3}
   - {fileID: 21300000, guid: cfe9b000bd92c254593a7534640004ce, type: 3}
   - {fileID: 21300000, guid: e268774146806bc4ca63159a931b0598, type: 3}
-  Hair: {fileID: 3651137168732798558}
-  HairSpriteOptions:
-  - {fileID: 21300000, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
-  - {fileID: 21300000, guid: b048f54fe7bacba40bdcd6ad7d7139d8, type: 3}
-  - {fileID: 21300000, guid: 24230769a9608ab4a9832f83edcda113, type: 3}
-  - {fileID: 21300000, guid: c3255c9f6c23d9140b77ce29c1501f3f, type: 3}
-  - {fileID: 21300000, guid: 4f1c1b73c05a61747bf92da1e5e85007, type: 3}
-  - {fileID: 21300000, guid: 5d334e8365114b441b5f40d9ab537b85, type: 3}
 --- !u!1 &3651137168753673342
 GameObject:
   m_ObjectHideFlags: 0

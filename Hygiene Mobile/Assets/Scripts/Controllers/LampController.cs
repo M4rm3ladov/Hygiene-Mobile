@@ -6,6 +6,10 @@ using System;
 
 public class LampController : MonoBehaviour
 {
+    [SerializeField]
+    SkinsManager skinsManager;
+    [SerializeField]
+    private SpriteRenderer hair;
     //Panel light effect initialization
     [SerializeField]
     private GameObject RoomLight;
@@ -22,6 +26,7 @@ public class LampController : MonoBehaviour
     //loads sleep state of player
     private void Start() 
     {
+        hair.sprite = skinsManager.HairSpriteOptions[Player.EquippedSkins[0]];
         //calculates the time last in and out then added the product to the energy
         _timeDifference = DateTime.Now - Player.LastIn;
         if(Player.SleepState == 0)

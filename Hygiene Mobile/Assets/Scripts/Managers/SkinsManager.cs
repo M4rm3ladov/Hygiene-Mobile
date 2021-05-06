@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SkinsManager : MonoBehaviour
 {
+    [Header("Hair")]
+    public SpriteRenderer Hair;
+    [Header("Cycle Through")]
+    public List<Sprite> HairSpriteOptions = new List<Sprite>();
     [Header("Torso")]
     public SpriteRenderer Torso;
     [Header("Cycle Through")]
@@ -23,11 +27,7 @@ public class SkinsManager : MonoBehaviour
     [Header("Right Leg")]
     public SpriteRenderer RightLeg;
     [Header("Cycle Through")]
-    public List<Sprite> RightLegSpriteOptions = new List<Sprite>();
-    [Header("Hair")]
-    public SpriteRenderer Hair;
-    [Header("Cycle Through")]
-    public List<Sprite> HairSpriteOptions = new List<Sprite>();
+    public List<Sprite> RightLegSpriteOptions = new List<Sprite>();  
     private void Start() {
         Hair.sprite = HairSpriteOptions[Player.EquippedSkins[0]];
         Torso.sprite = TorsoSpriteOptions[Player.EquippedSkins[1]];

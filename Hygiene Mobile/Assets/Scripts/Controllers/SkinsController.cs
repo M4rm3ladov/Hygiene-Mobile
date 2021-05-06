@@ -8,14 +8,12 @@ public class SkinsController : MonoBehaviour
     #region declarations
     [SerializeField]
     SkinsManager skinsManager;
+    [SerializeField]
+    MonetaryManager monetaryManager;
     [Header("Hair Prices")]
     public List<float> HairPrices = new List<float>();
     [Header("Clothes Prices")]
-    public List<float> ClothesPrices = new List<float>();   
-    [Header("Bought Hairs")]
-    public List<int> HairBought = new List<int>();
-    [Header("Bought Clothes")]
-    public List<int> ClothesBought = new List<int>();
+    public List<float> ClothesPrices = new List<float>(); 
     [SerializeField]
     private Button LeftButton;
     [SerializeField]
@@ -29,14 +27,20 @@ public class SkinsController : MonoBehaviour
     [SerializeField]
     private Text PriceText;
     [SerializeField]
-    private Button EquipButton;
+    private GameObject CoinImage;
+    [SerializeField]
+    private GameObject BuyButton;
+    [SerializeField]
+    private GameObject EquipButton;
     //dictionary of hair and clothes index with names as value
     private Dictionary<int, string> hairNames = new Dictionary<int, string>();
     private Dictionary<int, string> clothesNames = new Dictionary<int, string>();
+    private Dictionary<int, int> hairBought = new Dictionary<int, int>();
+    private Dictionary<int, int> clothesBought = new Dictionary<int, int>();
     //trigger for hair and clothes buttons 1 or 0
     private int buttonOption = 0;
     //index for selected item
-    private int currentOption = 0;
+    private int currentOption;
     //trigger to check if item is equipped to change default hair or clothe
     private int equipClicked = 0;
     //default index of hair and clothe in relation to sprite
@@ -47,6 +51,24 @@ public class SkinsController : MonoBehaviour
     #region start
     void Start()
     {
+        Button btnLeft = LeftButton.GetComponent<Button>();
+        btnLeft.onClick.AddListener(PreviousOption);
+
+        Button btnRight = RightButton.GetComponent<Button>();
+        btnRight.onClick.AddListener(NextOption);
+
+        Button btnHair = HairButton.GetComponent<Button>();
+        btnHair.onClick.AddListener(HairClick);
+
+        Button btnClothes = ClothesButton.GetComponent<Button>();
+        btnClothes.onClick.AddListener(ClothesClick);
+
+        Button btnBuy = BuyButton.GetComponent<Button>();
+        btnBuy.onClick.AddListener(BuyItem);
+
+        Button btnEquip = EquipButton.GetComponent<Button>();
+        btnEquip.onClick.AddListener(EquipItem);
+        //item names to dictionary
         hairNames.Add(0,"Bald");
         hairNames.Add(1,"Emo");
         hairNames.Add(2,"Head Band");
@@ -60,26 +82,27 @@ public class SkinsController : MonoBehaviour
         clothesNames.Add(3,"Jumper");
         clothesNames.Add(4,"Super Hero");
         clothesNames.Add(5,"Tuxedo");
-
+        //items bought to dictionary
+        for (int i = 0; i < Player.BoughtSkins.Length; i++)
+        {
+            for (int j = 0; j < Player.BoughtSkins[i].Length; j++)
+            {
+                if(i == 0)
+                    hairBought.Add(j, Player.BoughtSkins[i][j]);
+                else
+                    clothesBought.Add(j, Player.BoughtSkins[i][j]);
+            }      
+        }
+        //set item name of currently equipped hair
         ItemText.text = hairNames[Player.EquippedSkins[0]];
-
+        //set default items 
         defaultHair = Player.EquippedSkins[0];
         defaultClothes = Player.EquippedSkins[1];
-
-        Button btnLeft = LeftButton.GetComponent<Button>();
-        btnLeft.onClick.AddListener(PreviousOption);
-
-        Button btnRight = RightButton.GetComponent<Button>();
-        btnRight.onClick.AddListener(NextOption);
-
-        Button btnHair = HairButton.GetComponent<Button>();
-        btnHair.onClick.AddListener(HairClick);
-
-        Button btnClothes = ClothesButton.GetComponent<Button>();
-        btnClothes.onClick.AddListener(ClothesClick);
-
-        Button btnEquip = EquipButton.GetComponent<Button>();
-        btnEquip.onClick.AddListener(EquipItem);
+        currentOption = defaultHair;
+        //set button to button equip
+        EquipButtonTransition();
+        //set hair button to uninteractable since selected by default
+        HairButton.interactable = false;
     }
     #endregion
     #region left-right-buttons
@@ -87,16 +110,16 @@ public class SkinsController : MonoBehaviour
         if(buttonOption == 0){
             currentOption++;
             if(currentOption > skinsManager.HairSpriteOptions.Count -1)
-            {
                 currentOption = 0;
-            }
+
+            CheckHairBought();
             LoadHair();    
         }else{
             currentOption++;
             if(currentOption > skinsManager.TorsoSpriteOptions.Count - 1)
-            {
                 currentOption = 0;
-            }
+
+            CheckClothesBought();
             LoadClothes();
         }
     }
@@ -104,21 +127,33 @@ public class SkinsController : MonoBehaviour
         if(buttonOption == 0){
             currentOption--;
             if(currentOption < 0)
-            {
                 currentOption = skinsManager.HairSpriteOptions.Count - 1;
-            }
+            
+            CheckHairBought();
             LoadHair();
         }else{
             currentOption--;
             if(currentOption < 0)
-            {
                 currentOption = skinsManager.TorsoSpriteOptions.Count - 1;
-            }
+            
+            CheckClothesBought();
             LoadClothes();
         }
     }
     #endregion
     #region hair-clothes-methods
+    private void CheckHairBought(){
+        if(hairBought[currentOption] == 0)
+            BuyButtonTransition();
+        else
+            EquipButtonTransition();
+    }
+    private void CheckClothesBought(){
+        if(clothesBought[currentOption] == 0)
+            BuyButtonTransition();
+        else
+            EquipButtonTransition();
+    } 
     private void LoadDefaultHair(){
         skinsManager.Hair.sprite = skinsManager.HairSpriteOptions[defaultHair];
     }
@@ -132,7 +167,6 @@ public class SkinsController : MonoBehaviour
     private void LoadHair(){
         skinsManager.Hair.sprite = skinsManager.HairSpriteOptions[currentOption];
         ItemText.text = hairNames[currentOption];
-        PriceText.text = HairPrices[currentOption].ToString(); 
     }   
     private void LoadClothes(){
         skinsManager.Torso.sprite = skinsManager.TorsoSpriteOptions[currentOption];
@@ -141,20 +175,51 @@ public class SkinsController : MonoBehaviour
         skinsManager.LeftLeg.sprite = skinsManager.LeftLegSpriteOptions[currentOption];
         skinsManager.RightLeg.sprite = skinsManager.RightLegSpriteOptions[currentOption];
         ItemText.text = clothesNames[currentOption];
-        PriceText.text = ClothesPrices[currentOption].ToString(); 
-    }   
-    #endregion
+    }  
     private void HairClick(){
         buttonOption = 0;
         currentOption = 0;
         LoadDefaultClothes();
         ItemText.text = hairNames[defaultHair];
+        HairButton.interactable = false;
+        ClothesButton.interactable = true;
     }
     private void ClothesClick(){        
         buttonOption = 1;
         currentOption = 0;
         LoadDefaultHair();
         ItemText.text = clothesNames[defaultClothes];
+        ClothesButton.interactable = false;
+        HairButton.interactable = true;
+    }
+    #endregion
+    private void BuyButtonTransition(){
+        if(buttonOption == 0)
+            PriceText.text = HairPrices[currentOption].ToString();
+        else
+            PriceText.text = ClothesPrices[currentOption].ToString();
+        CoinImage.SetActive(true);
+        BuyButton.SetActive(true);
+        EquipButton.SetActive(false);
+    }
+    private void EquipButtonTransition(){
+        PriceText.text = "Equip";
+        CoinImage.SetActive(false);
+        BuyButton.SetActive(false);
+        EquipButton.SetActive(true);
+    }
+    public void BuyItem(){
+        //calculate bought item
+        if(Player.GoldCoins < float.Parse(PriceText.text) )
+            return;
+        monetaryManager.ComputeBoughtItem(float.Parse(PriceText.text));
+        
+        EquipItem();
+        EquipButtonTransition();
+        if(buttonOption == 0)
+            Player.BoughtSkins[0][currentOption] = 1;
+        else
+            Player.BoughtSkins[1][currentOption] = 1;
     }
     public void EquipItem(){
         if(buttonOption == 0){

@@ -16,6 +16,8 @@ public class TransitionController : MonoBehaviour
     }
     public void LoadNextLevel()
     {
+        //wakes up character when switching scene
+        Player.SleepState = 1;
         StartCoroutine(LoadLevel(_levelName));
     }
 

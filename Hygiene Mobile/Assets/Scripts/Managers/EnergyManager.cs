@@ -11,6 +11,16 @@ public class EnergyManager : MonoBehaviour
     public Text EnergyText;
     public float _energyTickRate;
     public float _energyIncrease;
+    private TimeSpan _timeDifference;
+    private void Start() 
+    {
+        _timeDifference = DateTime.Now - Player.LastIn;
+        if(Player.SleepState == 1)
+            Player.Energy -= (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
+        if(Player.Energy < 0)
+            Player.Energy = 0;
+        UpdateEnergyBar();
+    }
 
     // Update is called once per frame
     void Update()

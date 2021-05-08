@@ -53,3 +53,6 @@ TagManager:
   - name: Button
     uniqueID: 746309977
     locked: 0
+  - name: Table
+    uniqueID: 111324231
+    locked: 0

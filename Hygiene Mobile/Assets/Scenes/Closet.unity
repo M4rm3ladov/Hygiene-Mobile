@@ -540,14 +540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c71069106899c44a1e5f71bf8c606f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BodyPart: {fileID: 1496683712699665529}
-  SpriteOptions:
-  - {fileID: 21300000, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
-  - {fileID: 21300000, guid: b048f54fe7bacba40bdcd6ad7d7139d8, type: 3}
-  - {fileID: 21300000, guid: 24230769a9608ab4a9832f83edcda113, type: 3}
-  - {fileID: 21300000, guid: 5d334e8365114b441b5f40d9ab537b85, type: 3}
-  - {fileID: 21300000, guid: c3255c9f6c23d9140b77ce29c1501f3f, type: 3}
-  - {fileID: 21300000, guid: 4f1c1b73c05a61747bf92da1e5e85007, type: 3}
 --- !u!1 &250048060
 GameObject:
   m_ObjectHideFlags: 0
@@ -3782,7 +3774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

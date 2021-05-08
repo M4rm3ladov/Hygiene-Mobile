@@ -36,14 +36,11 @@ public class LampController : MonoBehaviour
         }else
         {
             TurnOnLight();
-            Player.Energy -= (float)(energyManager._energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
         }
         //to avoid delayed Energy Bar update 
-        if(Player.Energy < 0){
-            Player.Energy = 0;
-        }else if(Player.Energy > energyManager._max){
+        if(Player.Energy > energyManager._max)
             Player.Energy = energyManager._max;
-        }
+    
         energyManager.UpdateEnergyBar();
     }
     private void Update() {

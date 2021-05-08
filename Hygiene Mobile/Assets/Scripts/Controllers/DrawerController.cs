@@ -7,7 +7,6 @@ public class DrawerController : MonoBehaviour
     [SerializeField]
     private float _transitionTime = 1f;
     private void OnMouseDown() {
-        Debug.Log("Tap");
         StartCoroutine(FadeOjbect());      
     }
     IEnumerator FadeOjbect(){

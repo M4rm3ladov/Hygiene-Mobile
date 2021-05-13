@@ -30,7 +30,8 @@ public class FoodController : MonoBehaviour
         btnRight.onClick.AddListener(NextOption);
 
         Button btnBuy = BuyButton.GetComponent<Button>();
-        //btnBuy.onClick.AddListener();
+        btnBuy.onClick.AddListener(BuyFood);
+
         LoadFoodInfo();
     }
 
@@ -51,5 +52,17 @@ public class FoodController : MonoBehaviour
         ItemText.text = foodManager.Food.sprite.name;
         StatsText.text = "+" + foodManager.FoodStats[currentOption].ToString() + "%";
         PriceText.text = foodManager.FoodPrices[currentOption].ToString();
+    }
+    public void BuyFood(){
+        if(CheckFoodExistsInDictionary())
+            Player.BoughtFood.Add(foodManager.Food.sprite.name, 1);
+        Debug.Log(Player.BoughtFood[foodManager.Food.sprite.name]);
+    }
+    public bool CheckFoodExistsInDictionary(){
+        if(Player.BoughtFood.ContainsKey(foodManager.Food.sprite.name)){
+            Player.BoughtFood[foodManager.Food.sprite.name]++;
+            return false;
+        }
+        return true;
     }
 }

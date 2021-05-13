@@ -16,6 +16,7 @@ public class PlayerData
     public int[][] boughtSkins = new int[2][]{
     new int[6],
     new int[6]};
+    public Dictionary<string, int> boughtFood = new Dictionary<string, int>();
     public PlayerData(Player player)
     {
         hygiene = Player.Hygiene;
@@ -37,5 +38,6 @@ public class PlayerData
                 boughtSkins[i][j] = Player.BoughtSkins[i][j];      
             }      
         }
+        boughtFood = Player.BoughtFood;
     }
 }

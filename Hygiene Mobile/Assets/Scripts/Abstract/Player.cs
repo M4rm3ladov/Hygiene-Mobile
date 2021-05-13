@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
         new int[6]{1,0,0,0,0,0},
         new int[6]{1,0,0,0,0,0}
     };
+    public static Dictionary<string, int> BoughtFood = new Dictionary<string, int>();
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
                 BoughtSkins[i][j] = data.boughtSkins[i][j];
             }      
         }
+        BoughtFood = data.boughtFood;
     }
     private void OnApplicationQuit() {
         SavePlayer();

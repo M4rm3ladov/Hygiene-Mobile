@@ -5,9 +5,13 @@ using UnityEngine;
 public class StoveController : MonoBehaviour
 {
     [SerializeField]
+    private GameObject ItemCount;
+    [SerializeField]
     private GameObject Table;
     [SerializeField]
-    private float _transitionTime = 1f;
+    private GameObject Left;
+    [SerializeField]
+    private GameObject Right;
     private int _clicked = 0;
     private void OnMouseDown() {
         StoveClicked();           
@@ -15,11 +19,17 @@ public class StoveController : MonoBehaviour
     private void StoveClicked(){
         if(_clicked == 0){
             _clicked = 1;
+            ItemCount.SetActive(true);
             Table.SetActive(true);
+            Left.SetActive(true);
+            Right.SetActive(true);
             return;
         }
         _clicked = 0;
+        ItemCount.SetActive(false);
         Table.SetActive(false);
+        Left.SetActive(false);
+        Right.SetActive(false);
         return;  
     }
 }

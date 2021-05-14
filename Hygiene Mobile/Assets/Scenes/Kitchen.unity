@@ -448,6 +448,36 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9140377510333334610, guid: d14a40373bbfad244abf7270736ad007,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140377510333334610, guid: d14a40373bbfad244abf7270736ad007,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140377510333334610, guid: d14a40373bbfad244abf7270736ad007,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140377510333334610, guid: d14a40373bbfad244abf7270736ad007,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5264457202846852512}
+    - target: {fileID: 9140377510333334610, guid: d14a40373bbfad244abf7270736ad007,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextOption
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140377510333334610, guid: d14a40373bbfad244abf7270736ad007,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d14a40373bbfad244abf7270736ad007, type: 3}
 --- !u!1001 &252502020
@@ -1205,6 +1235,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 828491315001782423, guid: d9c68c0c86d3e13449a957539a3df5ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 828491315001782423, guid: d9c68c0c86d3e13449a957539a3df5ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 828491315001782423, guid: d9c68c0c86d3e13449a957539a3df5ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 828491315001782423, guid: d9c68c0c86d3e13449a957539a3df5ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5264457202846852512}
+    - target: {fileID: 828491315001782423, guid: d9c68c0c86d3e13449a957539a3df5ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PreviousOption
+      objectReference: {fileID: 0}
+    - target: {fileID: 828491315001782423, guid: d9c68c0c86d3e13449a957539a3df5ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9c68c0c86d3e13449a957539a3df5ee, type: 3}
 --- !u!1001 &1230325905
@@ -1431,13 +1491,14 @@ GameObject:
   - component: {fileID: 1461306580}
   - component: {fileID: 1461306581}
   - component: {fileID: 1461306582}
+  - component: {fileID: 1461306583}
   m_Layer: 0
   m_Name: Meal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1461306579
 Transform:
   m_ObjectHideFlags: 0
@@ -1540,6 +1601,43 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.0370855, y: 2.6887875}
   m_EdgeRadius: 0
+--- !u!114 &1461306583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461306578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e95d9f96061d8e4b8a0e7dde177975d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Food: {fileID: 1461306580}
+  FoodSpriteOptions:
+  - {fileID: 21300000, guid: ad053e5ee378d14498251ea88cbfd7c5, type: 3}
+  - {fileID: 21300000, guid: 5c004422c05e68c41b44909d587698c7, type: 3}
+  - {fileID: 21300000, guid: 545514047f61f30428e0716747a40e1e, type: 3}
+  - {fileID: 21300000, guid: e174f27c7852c2f4fb6ea4d1fba32bc2, type: 3}
+  - {fileID: 21300000, guid: a137e9e0da242d3409bb1b07d5ca35e1, type: 3}
+  - {fileID: 21300000, guid: e4f739155a0286449a5a4752bafe409b, type: 3}
+  - {fileID: 21300000, guid: adc105410f018964a8c4a569550d4b46, type: 3}
+  FoodPrices:
+  - 5
+  - 8
+  - 3
+  - 2
+  - 10
+  - 12
+  - 6
+  FoodStats:
+  - 15
+  - 25
+  - 10
+  - 5
+  - 35
+  - 30
+  - 20
 --- !u!1001 &1532782104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1793,11 +1891,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d6558d620e1bd4c88dace068ac28f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Meal: {fileID: 1461306578}
   ItemCount: {fileID: 610818953}
   Table: {fileID: 1028791658}
   Left: {fileID: 1770990781}
   Right: {fileID: 1048202075}
-  _transitionTime: 1
 --- !u!1 &1770990781 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 828491315001782411, guid: d9c68c0c86d3e13449a957539a3df5ee,
@@ -2359,6 +2457,8 @@ GameObject:
   - component: {fileID: 5264457202846852497}
   - component: {fileID: 5264457202846852496}
   - component: {fileID: 5264457202846852511}
+  - component: {fileID: 5264457202846852513}
+  - component: {fileID: 5264457202846852512}
   m_Layer: 5
   m_Name: CanvasUI
   m_TagString: Untagged
@@ -2383,6 +2483,34 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5264457202846852512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264457202846852510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a487a359e4b9b1842bcbcbdbc9d4e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodManager: {fileID: 1461306583}
+  monetaryManager: {fileID: 5264457202846852513}
+  ItemCount: {fileID: 59132484}
+--- !u!114 &5264457202846852513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264457202846852510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0863391b1d6ae449a66af6f581fefc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalCoins: {fileID: 5264457204675627687}
 --- !u!224 &5264457202875333400
 RectTransform:
   m_ObjectHideFlags: 0

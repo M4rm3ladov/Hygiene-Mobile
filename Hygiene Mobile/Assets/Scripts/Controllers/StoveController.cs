@@ -5,6 +5,8 @@ using UnityEngine;
 public class StoveController : MonoBehaviour
 {
     [SerializeField]
+    private GameObject Meal;
+    [SerializeField]
     private GameObject ItemCount;
     [SerializeField]
     private GameObject Table;
@@ -18,18 +20,29 @@ public class StoveController : MonoBehaviour
     }
     private void StoveClicked(){
         if(_clicked == 0){
-            _clicked = 1;
-            ItemCount.SetActive(true);
-            Table.SetActive(true);
-            Left.SetActive(true);
-            Right.SetActive(true);
+            CheckFoodCount();    
             return;
         }
         _clicked = 0;
+        Meal.SetActive(false);
         ItemCount.SetActive(false);
         Table.SetActive(false);
         Left.SetActive(false);
         Right.SetActive(false);
-        return;  
+    }
+    private void CheckFoodCount(){
+        _clicked = 1;
+        Table.SetActive(true);
+        if(Player.BoughtFood.Count > 0)
+            CheckFoodCountIfOne();                 
+    }
+    private void CheckFoodCountIfOne(){
+        Meal.SetActive(true);
+        ItemCount.SetActive(true);
+
+        if(Player.BoughtFood.Count != 1){
+            Left.SetActive(true);
+            Right.SetActive(true);
+        }  
     }
 }

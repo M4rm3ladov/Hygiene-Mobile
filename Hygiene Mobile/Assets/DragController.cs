@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class DragController : MonoBehaviour
 {
+    //public Draggable LastDragged => _lastDragged;
     private bool _isDragActive = false;
     private Vector2 _screenPosition;
     private Vector3 _worldPosition;
     private Draggable _lastDragged;
+    
     private void Awake() 
     {
         DragController[] controllers = FindObjectsOfType<DragController>();
         if(controllers.Length > 1)
-            Destroy(gameObject);
+            Destroy(gameObject);        
     }
     private void Update() {
         if(_isDragActive){
             if(Input.GetMouseButtonDown(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)){
+                Debug.Log("dropped");
                 Drop();
                 return;
             }
@@ -44,12 +47,21 @@ public class DragController : MonoBehaviour
         }
     }
     void InitDrag(){
+        //_lastDragged.LastPosition = _lastDragged.transform.position;
+        //UpdateDragStatus(true);
         _isDragActive = true;
     }
     void Drag(){
         _lastDragged.transform.position = new Vector2(_worldPosition.x, _worldPosition.y);
     }
     void Drop(){
+        //UpdateDragStatus(false);
         _isDragActive = false;
+        //_lastDragged.transform.position = new Vector2(_lastDragged._startPosition.x, _lastDragged._startPosition.y);
     }
+    /*void UpdateDragStatus(bool isDragging){
+        _isDragActive = _lastDragged.IsDragging = isDragging;
+       _lastDragged.gameObject.layer = isDragging ? Layer.Dragging : Layer.Default;
+    }*/
+    
 }

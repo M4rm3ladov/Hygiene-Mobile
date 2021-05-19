@@ -60,6 +60,7 @@ public class Draggable : MonoBehaviour
     private bool isDragged = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
+    private bool collided = false;
 
     private List<string> FoodIndex = new List<string>();
     private void OnMouseDown() 
@@ -77,20 +78,27 @@ public class Draggable : MonoBehaviour
     {
         isDragged = false;
         transform.position = spriteDragStartPosition;
-    }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.name == "Head"){
-            Debug.Log("hit obj"); 
+        if(collided){
+            Debug.Log("triggered");
+            
             SubtractRemoveFoodItem();  
             CheckFoodStashCount(); 
 
-            if(Player.BoughtFood.Count != 0){
+            if(Player.BoughtFood.Count >= 1)
+            {
                 foreach (KeyValuePair<string, int> _key in Player.BoughtFood)   
                 FoodIndex.Add(_key.Key);
 
                 LoadFoodToTable();
-            }           
-        }          
+            }      
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.name == "Head")
+            collided = true;             
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        collided = false;
     }
     private void LoadFoodToTable(){
         int foodSpriteOptionsIterator = 0;
@@ -105,7 +113,6 @@ public class Draggable : MonoBehaviour
     }
     private void SubtractRemoveFoodItem(){
         if(Player.BoughtFood[foodManager.Food.sprite.name] == 1){
-            Debug.Log("triggered");
             Player.BoughtFood.Remove(foodManager.Food.sprite.name);
             return;
         }

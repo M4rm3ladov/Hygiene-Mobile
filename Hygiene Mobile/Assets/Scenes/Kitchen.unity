@@ -986,7 +986,7 @@ PrefabInstance:
     - target: {fileID: 1864447021317443779, guid: 8ac3c27fae19df544b3052fd5dc0e243,
         type: 3}
       propertyPath: orthographic size
-      value: 0.3
+      value: 0.28125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac3c27fae19df544b3052fd5dc0e243, type: 3}
@@ -1426,7 +1426,7 @@ PrefabInstance:
     - target: {fileID: 4369109844248516459, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.33
+      value: -0.31125
       objectReference: {fileID: 0}
     - target: {fileID: 4369109844248516459, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
         type: 3}
@@ -1579,7 +1579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1461306579
 Transform:
   m_ObjectHideFlags: 0
@@ -1738,6 +1738,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4dfb1335b3f7f4c8e1addcf5a58d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodManager: {fileID: 1461306583}
+  consumeFoodManager: {fileID: 5264457202846852514}
+  consumeFoodcontroller: {fileID: 5264457202846852512}
 --- !u!1 &1635697904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,11 +1875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d6558d620e1bd4c88dace068ac28f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Meal: {fileID: 1461306578}
-  ItemCount: {fileID: 610818953}
-  Table: {fileID: 1028791658}
-  Left: {fileID: 1770990781}
-  Right: {fileID: 1048202075}
+  consumeFoodManager: {fileID: 5264457202846852514}
 --- !u!1 &1770990781 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 828491315001782411, guid: d9c68c0c86d3e13449a957539a3df5ee,
@@ -2439,6 +2438,7 @@ GameObject:
   - component: {fileID: 5264457202846852496}
   - component: {fileID: 5264457202846852511}
   - component: {fileID: 5264457202846852513}
+  - component: {fileID: 5264457202846852514}
   - component: {fileID: 5264457202846852512}
   m_Layer: 5
   m_Name: CanvasUI
@@ -2492,6 +2492,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalCoins: {fileID: 5264457204675627687}
+--- !u!114 &5264457202846852514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264457202846852510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8954ddc852e7dbb45934d7897ad16d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Meal: {fileID: 1461306578}
+  ItemCountUI: {fileID: 610818953}
+  ItemCount: {fileID: 59132484}
+  Table: {fileID: 1028791658}
+  Left: {fileID: 1770990781}
+  Right: {fileID: 1048202075}
 --- !u!224 &5264457202875333400
 RectTransform:
   m_ObjectHideFlags: 0

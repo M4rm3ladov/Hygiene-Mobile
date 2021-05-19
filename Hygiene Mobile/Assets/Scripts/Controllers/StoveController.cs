@@ -5,15 +5,7 @@ using UnityEngine;
 public class StoveController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Meal;
-    [SerializeField]
-    private GameObject ItemCount;
-    [SerializeField]
-    private GameObject Table;
-    [SerializeField]
-    private GameObject Left;
-    [SerializeField]
-    private GameObject Right;
+    ConsumeFoodManager consumeFoodManager;
     private int _clicked = 0;
     private void OnMouseDown() {
         StoveClicked();           
@@ -24,25 +16,25 @@ public class StoveController : MonoBehaviour
             return;
         }
         _clicked = 0;
-        Meal.SetActive(false);
-        ItemCount.SetActive(false);
-        Table.SetActive(false);
-        Left.SetActive(false);
-        Right.SetActive(false);
+        consumeFoodManager.Meal.SetActive(false);
+        consumeFoodManager.ItemCountUI.SetActive(false);
+        consumeFoodManager.Table.SetActive(false);
+        consumeFoodManager.Left.SetActive(false);
+        consumeFoodManager.Right.SetActive(false);
     }
     private void CheckFoodCount(){
         _clicked = 1;
-        Table.SetActive(true);
+        consumeFoodManager.Table.SetActive(true);
         if(Player.BoughtFood.Count > 0)
             CheckFoodCountIfOne();                 
     }
     private void CheckFoodCountIfOne(){
-        Meal.SetActive(true);
-        ItemCount.SetActive(true);
+        consumeFoodManager.Meal.SetActive(true);
+        consumeFoodManager.ItemCountUI.SetActive(true);
 
         if(Player.BoughtFood.Count != 1){
-            Left.SetActive(true);
-            Right.SetActive(true);
+            consumeFoodManager.Left.SetActive(true);
+            consumeFoodManager.Right.SetActive(true);
         }  
     }
 }

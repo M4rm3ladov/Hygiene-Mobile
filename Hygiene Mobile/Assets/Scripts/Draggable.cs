@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Draggable : MonoBehaviour
 {
@@ -8,10 +9,7 @@ public class Draggable : MonoBehaviour
     private void Start() {
         _startPosition = transform.position;
     }*/
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.name == "Head")
-            Debug.Log("hit obj");    
-    }
+    
     /*public bool IsDragging;
     public Vector3 LastPosition;
     private Collider2D _collider;
@@ -55,9 +53,15 @@ public class Draggable : MonoBehaviour
             _movementDestination = LastPosition;
         }
     }*/
+    [SerializeField]
+    FoodManager foodManager;
+    [SerializeField]
+    ConsumeFoodManager consumeFoodManager;
     private bool isDragged = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
+
+    private List<string> FoodIndex = new List<string>();
     private void OnMouseDown() 
     {
         isDragged = true;
@@ -73,5 +77,49 @@ public class Draggable : MonoBehaviour
     {
         isDragged = false;
         transform.position = spriteDragStartPosition;
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.name == "Head"){
+            Debug.Log("hit obj"); 
+            SubtractRemoveFoodItem();  
+            CheckFoodStashCount(); 
+
+            if(Player.BoughtFood.Count != 0){
+                foreach (KeyValuePair<string, int> _key in Player.BoughtFood)   
+                FoodIndex.Add(_key.Key);
+
+                LoadFoodToTable();
+            }           
+        }          
+    }
+    private void LoadFoodToTable(){
+        int foodSpriteOptionsIterator = 0;
+        foreach (Sprite foodSprite in foodManager.FoodSpriteOptions)
+        {
+            if(foodSprite.name.ToString() == FoodIndex[0]){
+                foodManager.Food.sprite = foodManager.FoodSpriteOptions[foodSpriteOptionsIterator];
+                consumeFoodManager.ItemCount.text = Player.BoughtFood[FoodIndex[0]].ToString();
+            }
+            foodSpriteOptionsIterator++;
+        }
+    }
+    private void SubtractRemoveFoodItem(){
+        if(Player.BoughtFood[foodManager.Food.sprite.name] == 1){
+            Debug.Log("triggered");
+            Player.BoughtFood.Remove(foodManager.Food.sprite.name);
+            return;
+        }
+        Player.BoughtFood[foodManager.Food.sprite.name]--;
+        consumeFoodManager.ItemCount.text = (int.Parse(consumeFoodManager.ItemCount.text) - 1).ToString();
+    }
+    private void CheckFoodStashCount(){
+        if(Player.BoughtFood.Count == 0){
+            consumeFoodManager.Meal.SetActive(false);
+            consumeFoodManager.ItemCountUI.SetActive(false);      
+        }          
+        if(Player.BoughtFood.Count <= 1){
+            consumeFoodManager.Left.SetActive(false);
+            consumeFoodManager.Right.SetActive(false);
+        }
     }
 }

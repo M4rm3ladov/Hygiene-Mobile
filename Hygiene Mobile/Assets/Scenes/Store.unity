@@ -244,18 +244,6 @@ MonoBehaviour:
   - 35
   - 30
   - 20
---- !u!114 &167800453 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 828491315001782423, guid: d9c68c0c86d3e13449a957539a3df5ee,
-    type: 3}
-  m_PrefabInstance: {fileID: 7362677456031419839}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &236640138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,20 +436,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 1864447021317443779, guid: 8ac3c27fae19df544b3052fd5dc0e243,
+        type: 3}
+      propertyPath: orthographic size
+      value: 0.28125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac3c27fae19df544b3052fd5dc0e243, type: 3}
---- !u!114 &309013709 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9140377510333334610, guid: d14a40373bbfad244abf7270736ad007,
-    type: 3}
-  m_PrefabInstance: {fileID: 1408286103369104841}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &470752639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1511,12 +1492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodManager: {fileID: 41379676}
   monetaryManager: {fileID: 4909781784137517370}
-  LeftButton: {fileID: 167800453}
-  RightButton: {fileID: 309013709}
   ItemText: {fileID: 7877385451707274100}
   StatsText: {fileID: 1552126009}
   PriceText: {fileID: 7877385451698932762}
-  BuyButton: {fileID: 7877385452965663928}
 --- !u!114 &4909781784137517372
 MonoBehaviour:
   m_ObjectHideFlags: 0

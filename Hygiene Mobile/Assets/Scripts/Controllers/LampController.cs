@@ -9,6 +9,8 @@ public class LampController : MonoBehaviour
     [SerializeField]
     SkinsManager skinsManager;
     [SerializeField]
+    PlayerController playerController;
+    [SerializeField]
     private SpriteRenderer hair;
     //Panel light effect initialization
     [SerializeField]
@@ -55,7 +57,8 @@ public class LampController : MonoBehaviour
     private void OnMouseDown() {
         if(Player.SleepState == 1)
         {
-            TurnOffLight();  
+            if(!CheckHungryOrDirty())
+                TurnOffLight();  
         }
         
         else if(Player.SleepState == 0)
@@ -95,5 +98,11 @@ public class LampController : MonoBehaviour
             for(int i = 0; i < sprites.Length; i++){
                 sprites[i].enabled = false;
             }
+    }
+    private bool CheckHungryOrDirty(){
+        if((int)Player.Hunger == playerController.HungerTrigger)
+            return true;
+        else
+            return false;
     }
 }

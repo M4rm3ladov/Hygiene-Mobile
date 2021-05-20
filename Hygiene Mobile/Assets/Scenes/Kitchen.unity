@@ -1740,7 +1740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodManager: {fileID: 1461306583}
   consumeFoodManager: {fileID: 5264457202846852514}
-  consumeFoodcontroller: {fileID: 5264457202846852512}
+  consumeFoodController: {fileID: 5264457202846852512}
 --- !u!1 &1635697904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,6 +2479,8 @@ MonoBehaviour:
   foodManager: {fileID: 1461306583}
   monetaryManager: {fileID: 5264457202846852513}
   ItemCount: {fileID: 59132484}
+  FoodIndex: []
+  currentOption: 0
 --- !u!114 &5264457202846852513
 MonoBehaviour:
   m_ObjectHideFlags: 0

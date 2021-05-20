@@ -11,8 +11,8 @@ public class ConsumeFoodController : MonoBehaviour
     MonetaryManager monetaryManager;
     [SerializeField]
     private Text ItemCount;
-    private List<string> FoodIndex = new List<string>();
-    private int currentOption = 0;
+    public List<string> FoodIndex = new List<string>();
+    public int currentOption = 0;
     private int foodSpriteOptionsIterator;
     private void Start() {
         //checks if bought food is empty
@@ -37,6 +37,7 @@ public class ConsumeFoodController : MonoBehaviour
         LoadFoodToTable();
     }
     private void LoadFoodToTable(){
+        Debug.Log(currentOption);
         foodSpriteOptionsIterator = 0;
         foreach (Sprite foodSprite in foodManager.FoodSpriteOptions)
         {

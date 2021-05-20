@@ -57,6 +57,8 @@ public class Draggable : MonoBehaviour
     FoodManager foodManager;
     [SerializeField]
     ConsumeFoodManager consumeFoodManager;
+    [SerializeField]
+    ConsumeFoodController consumeFoodController;
     private bool isDragged = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
@@ -79,18 +81,8 @@ public class Draggable : MonoBehaviour
         isDragged = false;
         transform.position = spriteDragStartPosition;
         if(collided){
-            Debug.Log("triggered");
-            
-            SubtractRemoveFoodItem();  
-            CheckFoodStashCount(); 
-
-            if(Player.BoughtFood.Count >= 1)
-            {
-                foreach (KeyValuePair<string, int> _key in Player.BoughtFood)   
-                FoodIndex.Add(_key.Key);
-
-                LoadFoodToTable();
-            }      
+            SubtractOrRemoveFoodItem();  
+            CheckFoodStashCount();      
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
@@ -100,23 +92,19 @@ public class Draggable : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         collided = false;
     }
-    private void LoadFoodToTable(){
-        int foodSpriteOptionsIterator = 0;
-        foreach (Sprite foodSprite in foodManager.FoodSpriteOptions)
-        {
-            if(foodSprite.name.ToString() == FoodIndex[0]){
-                foodManager.Food.sprite = foodManager.FoodSpriteOptions[foodSpriteOptionsIterator];
-                consumeFoodManager.ItemCount.text = Player.BoughtFood[FoodIndex[0]].ToString();
-            }
-            foodSpriteOptionsIterator++;
-        }
-    }
-    private void SubtractRemoveFoodItem(){
-        if(Player.BoughtFood[foodManager.Food.sprite.name] == 1){
+    private void SubtractOrRemoveFoodItem(){
+        Player.BoughtFood[foodManager.Food.sprite.name]--;     
+        Debug.Log("current count: " + Player.BoughtFood[foodManager.Food.sprite.name]);
+        if(Player.BoughtFood[foodManager.Food.sprite.name] < 1){
+            Debug.Log("current opt:"+ consumeFoodController.currentOption);
+            consumeFoodController.FoodIndex.RemoveAt(consumeFoodController.currentOption);
             Player.BoughtFood.Remove(foodManager.Food.sprite.name);
+
+            if(Player.BoughtFood.Count >= 1)    
+                consumeFoodController.NextOption();
+         
             return;
         }
-        Player.BoughtFood[foodManager.Food.sprite.name]--;
         consumeFoodManager.ItemCount.text = (int.Parse(consumeFoodManager.ItemCount.text) - 1).ToString();
     }
     private void CheckFoodStashCount(){

@@ -11,16 +11,24 @@ public class ConsumeFoodController : MonoBehaviour
     MonetaryManager monetaryManager;
     [SerializeField]
     private Text ItemCount;
-    public List<string> FoodIndex = new List<string>();
-    public int currentOption = 0;
     private int foodSpriteOptionsIterator;
+    private List<string> foodIndex = new List<string>();
+    private int currentOption = 0;
+    public int CurrentOption{
+        get{ return currentOption;} 
+        set{ currentOption = value;}
+    }
+    public List<string> FoodIndex{
+        get{ return foodIndex;} 
+        set{ foodIndex = value;}
+    }
     private void Start() {
         //checks if bought food is empty
         if(Player.BoughtFood.Count < 1)
             return;
         //stores bought food dictionary to list for index iteration access
         foreach (KeyValuePair<string, int> _key in Player.BoughtFood)   
-            FoodIndex.Add(_key.Key);
+            foodIndex.Add(_key.Key);
         //set default food on table
         LoadFoodToTable();
     }
@@ -37,13 +45,12 @@ public class ConsumeFoodController : MonoBehaviour
         LoadFoodToTable();
     }
     private void LoadFoodToTable(){
-        Debug.Log(currentOption);
         foodSpriteOptionsIterator = 0;
         foreach (Sprite foodSprite in foodManager.FoodSpriteOptions)
         {
-            if(foodSprite.name.ToString() == FoodIndex[currentOption]){
+            if(foodSprite.name.ToString() == foodIndex[currentOption]){
                 foodManager.Food.sprite = foodManager.FoodSpriteOptions[foodSpriteOptionsIterator];
-                ItemCount.text = Player.BoughtFood[FoodIndex[currentOption]].ToString();
+                ItemCount.text = Player.BoughtFood[foodIndex[currentOption]].ToString();
             }
             foodSpriteOptionsIterator++;
         }

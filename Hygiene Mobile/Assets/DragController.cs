@@ -8,7 +8,7 @@ public class DragController : MonoBehaviour
     private bool _isDragActive = false;
     private Vector2 _screenPosition;
     private Vector3 _worldPosition;
-    private Draggable _lastDragged;
+    private DraggableFoodController _lastDragged;
     
     private void Awake() 
     {
@@ -38,7 +38,7 @@ public class DragController : MonoBehaviour
         else{
             RaycastHit2D hit = Physics2D.Raycast(_worldPosition, Vector2.zero);
             if(hit.collider != null){
-                Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
+                DraggableFoodController draggable = hit.transform.gameObject.GetComponent<DraggableFoodController>();
                 if(draggable != null){
                     _lastDragged = draggable;
                     InitDrag();

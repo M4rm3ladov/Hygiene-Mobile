@@ -3,67 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Draggable : MonoBehaviour
+public class DraggableFoodController : MonoBehaviour
 {
-    /*public Vector3 _startPosition;
-    private void Start() {
-        _startPosition = transform.position;
-    }*/
-    
-    /*public bool IsDragging;
-    public Vector3 LastPosition;
-    private Collider2D _collider;
-    private DragController _dragController;
-    private float _movementTime = 15f;
-    private System.Nullable<Vector3> _movementDestination;
-    private void Start() {
-        _collider = GetComponent<Collider2D>();
-        _dragController = FindObjectOfType<DragController>();
-    }
-    private void FixedUpdate() {
-        if(_movementDestination.HasValue){
-            if(IsDragging){
-                _movementDestination = null;
-                Debug.Log("first");
-                return;
-            }
-            if(transform.position == _movementDestination){
-                gameObject.layer = Layer.Default;
-                _movementDestination = null;
-                Debug.Log("second");
-            }else{
-                Debug.Log("has value");
-                transform.position = Vector3.Lerp(transform.position, _movementDestination.Value, _movementTime * Time.fixedDeltaTime);
-            }
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D other) {
-        Draggable collidedDraggable = other.GetComponent<Draggable>();
-        if(collidedDraggable != null && _dragController.LastDragged.gameObject == gameObject){
-            ColliderDistance2D colliderDistance2D = other.Distance(_collider);
-            Vector3 diff = new Vector3(colliderDistance2D.normal.x, colliderDistance2D.normal.y) * colliderDistance2D.distance;
-            transform.position -= diff;
-        }    
-        if(other.CompareTag("DropInvalid")){
-            Debug.Log("valid");
-            _movementDestination = other.transform.position;
-            Debug.Log(_movementDestination);
-        }else if(other.CompareTag("DropValid")){
-            Debug.Log("invalid");
-            _movementDestination = LastPosition;
-        }
-    }*/
     [SerializeField]
     FoodManager foodManager;
     [SerializeField]
     ConsumeFoodManager consumeFoodManager;
     [SerializeField]
     ConsumeFoodController consumeFoodController;
+    [SerializeField]
+    PlayerController playerController;
+    [SerializeField]
+    HungerManager hungerManager;
     private bool isDragged = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
     private bool collided = false;
-
     private List<string> FoodIndex = new List<string>();
     private void OnMouseDown() 
     {
@@ -81,6 +36,7 @@ public class Draggable : MonoBehaviour
         isDragged = false;
         transform.position = spriteDragStartPosition;
         if(collided){
+            FeedTheChar();
             SubtractOrRemoveFoodItem();  
             CheckFoodStashCount();      
         }
@@ -92,12 +48,25 @@ public class Draggable : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         collided = false;
     }
+    private void FeedTheChar(){
+        int foodSpriteOptionsIterator = 0;
+        foreach (Sprite foodSprite in foodManager.FoodSpriteOptions)
+        {
+            playerController.AnimTransition.SetTrigger("Eat");
+            if(foodSprite.name.ToString() == consumeFoodController.FoodIndex[consumeFoodController.CurrentOption])
+            {
+                Player.Hunger += foodManager.FoodStats[foodSpriteOptionsIterator];
+                hungerManager.UpdateHungerBar();
+            }
+                
+            foodSpriteOptionsIterator++;
+        }
+    }
     private void SubtractOrRemoveFoodItem(){
         Player.BoughtFood[foodManager.Food.sprite.name]--;     
-        Debug.Log("current count: " + Player.BoughtFood[foodManager.Food.sprite.name]);
+
         if(Player.BoughtFood[foodManager.Food.sprite.name] < 1){
-            Debug.Log("current opt:"+ consumeFoodController.currentOption);
-            consumeFoodController.FoodIndex.RemoveAt(consumeFoodController.currentOption);
+            consumeFoodController.FoodIndex.RemoveAt(consumeFoodController.CurrentOption);
             Player.BoughtFood.Remove(foodManager.Food.sprite.name);
 
             if(Player.BoughtFood.Count >= 1)    

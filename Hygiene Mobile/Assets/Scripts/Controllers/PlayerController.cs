@@ -5,11 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    public int tiredTrigger;
+    private int tiredTrigger;
     [SerializeField]
     private int hungerTrigger;
-    public Animator animTransition;
     [SerializeField]
+    private Animator animTransition;
+    public Animator AnimTransition{
+        get{ return animTransition; }
+        set{ animTransition = value; }
+    }
+    
     private void Start() {
         //play sleepy anim if other animation is playing and if energy is below/equal to alloted thereshold
         //else turn it off

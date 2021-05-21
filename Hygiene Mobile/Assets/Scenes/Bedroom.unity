@@ -975,7 +975,7 @@ PrefabInstance:
     - target: {fileID: 6448886126123997180, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6448886127595100788, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
@@ -2360,6 +2360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinsManager: {fileID: 3651137168753673341}
+  playerController: {fileID: 1952794085}
   hair: {fileID: 997139036}
   RoomLight: {fileID: 847774230}
   Body: {fileID: 3651137168753673338}
@@ -3301,6 +3302,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826988716}
   m_CullTransparentMesh: 0
+--- !u!114 &1952794085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1011413980873625395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e5b2fdbe8f970c43ae5a4c626d3b003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2002972742
 MonoBehaviour:
   m_ObjectHideFlags: 0

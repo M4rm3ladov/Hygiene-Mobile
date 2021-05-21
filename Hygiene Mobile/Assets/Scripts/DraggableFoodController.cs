@@ -27,12 +27,17 @@ public class DraggableFoodController : MonoBehaviour
         spriteDragStartPosition = transform.position;
     }
     private void OnMouseDrag() 
-    {
-        if(isDragged)
+    {   
+        if(isDragged){
+            consumeFoodManager.Left.GetComponent<Button>().interactable = false;
+            consumeFoodManager.Right.GetComponent<Button>().interactable = false;
             transform.position = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);       
+        }
     }
     private void OnMouseUp() 
     {
+        consumeFoodManager.Left.GetComponent<Button>().interactable = true;
+        consumeFoodManager.Right.GetComponent<Button>().interactable = true;
         isDragged = false;
         transform.position = spriteDragStartPosition;
         if(collided){

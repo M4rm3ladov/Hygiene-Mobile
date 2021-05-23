@@ -448,6 +448,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7707195086546163616, guid: 4ab0fd5a2b4dcaf45818fe14f034b8f5,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 6448886125797063099}
+    - target: {fileID: 7707195086546163616, guid: 4ab0fd5a2b4dcaf45818fe14f034b8f5,
+        type: 3}
+      propertyPath: tiredBubble
+      value: 
+      objectReference: {fileID: 754734274}
+    - target: {fileID: 7707195086546163616, guid: 4ab0fd5a2b4dcaf45818fe14f034b8f5,
+        type: 3}
+      propertyPath: dirtyBubble
+      value: 
+      objectReference: {fileID: 2019494095}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ab0fd5a2b4dcaf45818fe14f034b8f5, type: 3}
 --- !u!1001 &100743775
@@ -611,10 +626,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5264457202846852498}
     m_Modifications:
+    - target: {fileID: 1833792436504487798, guid: c0e53662c4f221945abc7962b2fd76a9,
+        type: 3}
+      propertyPath: dirtyBubble
+      value: 
+      objectReference: {fileID: 2019494095}
+    - target: {fileID: 1833792436504487798, guid: c0e53662c4f221945abc7962b2fd76a9,
+        type: 3}
+      propertyPath: hungerBubble
+      value: 
+      objectReference: {fileID: 2039873924}
+    - target: {fileID: 1833792436504487798, guid: c0e53662c4f221945abc7962b2fd76a9,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 6448886125797063099}
     - target: {fileID: 3586017066664600786, guid: c0e53662c4f221945abc7962b2fd76a9,
         type: 3}
       propertyPath: m_Name
       value: Bubble Sleep
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586017066664600786, guid: c0e53662c4f221945abc7962b2fd76a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3586017066664600797, guid: c0e53662c4f221945abc7962b2fd76a9,
         type: 3}
@@ -850,6 +885,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &473635571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4369109844249004878, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1310630209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0351eeecaf922f345af7d98b08e1a7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &610818953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,11 +1746,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
         type: 3}
-      propertyPath: hungerTrigger
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
-        type: 3}
       propertyPath: hungryBubble
       value: 
       objectReference: {fileID: 1799710811}
@@ -1722,11 +1764,6 @@ PrefabInstance:
       propertyPath: tiredBubble
       value: 
       objectReference: {fileID: 754734274}
-    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
-        type: 3}
-      propertyPath: tiredTrigger
-      value: -1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce4d5ff0148f5c41a295f6af274a6f7, type: 3}
 --- !u!1001 &1408877370
@@ -1977,6 +2014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4dfb1335b3f7f4c8e1addcf5a58d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinsManager: {fileID: 473635571}
   foodManager: {fileID: 1461306583}
   consumeFoodManager: {fileID: 5264457202846852514}
   consumeFoodController: {fileID: 5264457202846852512}
@@ -2531,6 +2569,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5264457202846852498}
     m_Modifications:
+    - target: {fileID: 149341720296261094, guid: a743b5da423dbd6459260947001593ee,
+        type: 3}
+      propertyPath: hungerBubble
+      value: 
+      objectReference: {fileID: 2039873924}
+    - target: {fileID: 149341720296261094, guid: a743b5da423dbd6459260947001593ee,
+        type: 3}
+      propertyPath: tiredBubble
+      value: 
+      objectReference: {fileID: 754734274}
+    - target: {fileID: 149341720296261094, guid: a743b5da423dbd6459260947001593ee,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 6448886125797063099}
+    - target: {fileID: 149341720296261094, guid: a743b5da423dbd6459260947001593ee,
+        type: 3}
+      propertyPath: _levelName
+      value: Bathroom
+      objectReference: {fileID: 0}
     - target: {fileID: 2012608282272021914, guid: a743b5da423dbd6459260947001593ee,
         type: 3}
       propertyPath: m_LocalPosition.x

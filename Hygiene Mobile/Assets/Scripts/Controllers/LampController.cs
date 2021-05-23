@@ -100,7 +100,7 @@ public class LampController : MonoBehaviour
             }
     }
     private bool CheckHungryOrDirty(){
-        if((int)Player.Hunger == playerController.HungerTrigger)
+        if((int)Player.Hunger <= playerController.HungerTrigger)
             return true;
         else
             return false;

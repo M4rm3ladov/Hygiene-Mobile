@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    SkinsManager skinsManager;
+    [SerializeField]
     private Image cleanBubble;
     [SerializeField]
     private Image hungerBubble;
@@ -55,8 +57,12 @@ public class PlayerController : MonoBehaviour
         }else{
             animTransition.SetBool("isHungry", false);
         }*/
-        PlayStopHungerAnimation();
-        PlayStopSleepyAnimation();
+        if(Player.SleepState == 1)
+        {
+            PlayStopHungerAnimation();
+            PlayStopSleepyAnimation();
+        }
+        
         //sleepy
         /*if((int)Player.Energy <= tiredTrigger &&
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("HungrySleepy") ||
@@ -69,6 +75,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Update() {
         TimeFadeUpdate();
+        if(Player.SleepState == 0)
+            tiredBubble.enabled = false;
         //play sleepy anim if other animation is playing and if energy is below/equal to alloted thereshold
         //else turn it off
         /*if((int)Player.Energy <= tiredTrigger && (int)Player.Hunger <= hungerTrigger &&
@@ -79,9 +87,15 @@ public class PlayerController : MonoBehaviour
             animTransition.SetBool("isHungrySleepy", false);
         }*/
         //hunger
-        PlayStopHungerAnimation();
+        //PlayStopHungerAnimation();
         //sleepy
-        PlayStopSleepyAnimation();    
+        //PlayStopSleepyAnimation();    
+    }
+    private void LateUpdate() {
+        if(Player.SleepState == 1){
+            PlayStopHungerAnimation();
+            PlayStopSleepyAnimation();
+        }     
     }
     private void TimeFadeUpdate(){
         if (currTime <= 0)
@@ -92,27 +106,37 @@ public class PlayerController : MonoBehaviour
         currTime -= Time.deltaTime;
     }
     private void PlayStopHungerAnimation(){
-        if((int)Player.Hunger <= hungerTrigger &&
-        !animTransition.GetCurrentAnimatorStateInfo(0).IsName("Dirty") && 
-        !animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
+        if((int)Player.Hunger <= hungerTrigger)//&& 
+        //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Dirty") && 
+        //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
         {
-            animTransition.SetBool("isHungry", true);  
+            skinsManager.Eyebrows.sprite = skinsManager.EyebrowsSpriteOptions[1];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[1];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[1];
+            //animTransition.SetBool("isHungry", true);
             FadeInOutBubble(hungerBubble);   
             return;    
         }
-        animTransition.SetBool("isHungry", false);
+        //animTransition.SetBool("isHungry", false);
         hungerBubble.CrossFadeAlpha(0, 0.5f, true);
         hungerBubble.enabled = false;
     }
     private void PlayStopSleepyAnimation(){
-        if((int)Player.Energy <= tiredTrigger &&
-        !animTransition.GetCurrentAnimatorStateInfo(0).IsName("Hungry") &&
-        !animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
+        if((int)Player.Energy <= tiredTrigger && !((int)Player.Hunger <= hungerTrigger))
+        //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Hungry") &&
+        //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
         {
-            animTransition.SetBool("isSleepy", true); 
+            skinsManager.Eyebrows.sprite = skinsManager.EyebrowsSpriteOptions[1];
+            skinsManager.Eyes.sprite = skinsManager.EyesSpriteOptions[0];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[2];   
+            //animTransition.SetBool("isSleepy", true); 
+            //if(Player.SleepState == 1)
+                FadeInOutBubble(tiredBubble);
             return;      
         }
-        animTransition.SetBool("isSleepy", false);
+        tiredBubble.CrossFadeAlpha(0, 0.5f, true);
+        tiredBubble.enabled = false;
+        //animTransition.SetBool("isSleepy", false);
     }
     private void FadeInOutBubble(Image bubble)
     {

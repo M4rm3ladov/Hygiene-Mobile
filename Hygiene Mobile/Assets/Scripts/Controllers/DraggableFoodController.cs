@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class DraggableFoodController : MonoBehaviour
 {
     [SerializeField]
+    SkinsManager skinsManager;
+    [SerializeField]
     FoodManager foodManager;
     [SerializeField]
     ConsumeFoodManager consumeFoodManager;
@@ -45,6 +47,10 @@ public class DraggableFoodController : MonoBehaviour
             SubtractOrRemoveFoodItem();  
             CheckFoodStashCount();      
         }
+    }
+    private void LateUpdate() {
+        if(collided == true)
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[4];
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.name == "Head")

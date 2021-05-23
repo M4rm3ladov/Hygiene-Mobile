@@ -432,18 +432,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &144514319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496683712720500311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c71069106899c44a1e5f71bf8c606f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &250048060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1496683712720857719}
   - component: {fileID: 1496683712699665529}
-  - component: {fileID: 144514319}
   m_Layer: 0
   m_Name: Hair
   m_TagString: Untagged
@@ -2245,6 +2232,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0351eeecaf922f345af7d98b08e1a7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Eyebrows: {fileID: 1496683712699665533}
+  EyebrowsSpriteOptions:
+  - {fileID: 21300002, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}
+  - {fileID: 21300000, guid: 157026a54745b3e49a76f7f9d0f1219f, type: 3}
+  - {fileID: 21300000, guid: 27424a81c0e0c0f45a6d5167653b4a4a, type: 3}
+  Eyes: {fileID: 1496683712699665531}
+  EyesSpriteOptions:
+  - {fileID: 21300000, guid: cce994104a2d71843ad076279493eb7e, type: 3}
+  - {fileID: 21300000, guid: a09a211dfb4063b4c89a4a59e013affc, type: 3}
+  - {fileID: 21300000, guid: 103146a5847022f4a9b231e4ea294ee5, type: 3}
+  - {fileID: 21300000, guid: 0cf9b9b26d7efd34e9bf7c0ff3d42d92, type: 3}
+  Mouth: {fileID: 1496683712699665521}
+  MouthSpriteOptions:
+  - {fileID: 21300000, guid: 2b135677d467a9e438aa36c7afc72429, type: 3}
+  - {fileID: 21300000, guid: 0997d90bcff614c48863c1f89e1b1f94, type: 3}
+  - {fileID: 21300000, guid: 6a77cbfeb1fb4a24d9ad1a24a686c6c2, type: 3}
+  - {fileID: 21300000, guid: 6a728bc56765da04a8aed83c342a3d99, type: 3}
+  - {fileID: 21300000, guid: 0b1a8c8831116a34284f5c98fc28a469, type: 3}
   Hair: {fileID: 1496683712699665529}
   HairSpriteOptions:
   - {fileID: 21300000, guid: a1dbad8dfa6f8e343999fb041b740c3b, type: 3}

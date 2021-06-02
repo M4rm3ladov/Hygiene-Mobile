@@ -17,8 +17,13 @@ public class TransitionController : MonoBehaviour
     public void LoadNextLevel()
     {
         //wakes up character when switching scene
-        Player.SleepState = 1;
-        StartCoroutine(LoadLevel(_levelName));
+        Player.SleepState = 1;  
+        if(KitchenStatus.EatStatus != 2){
+            KitchenStatus.EatStatus = 0;
+        }else{
+            return;
+        }
+        StartCoroutine(LoadLevel(_levelName));       
     }
 
     IEnumerator LoadLevel(string levelName){

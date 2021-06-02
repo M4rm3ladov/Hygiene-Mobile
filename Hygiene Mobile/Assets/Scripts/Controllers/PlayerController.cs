@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         }else{
             animTransition.SetBool("isHungrySleepy", false);
         }*/
-        hungerBubble.CrossFadeAlpha(0, 0.001f, true);
+        //hungerBubble.CrossFadeAlpha(0, 0.001f, true);
         //hunger
         /*if((int)Player.Hunger <= hungerTrigger &&
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("HungrySleepy") ||
@@ -75,8 +75,11 @@ public class PlayerController : MonoBehaviour
     }
     private void Update() {
         TimeFadeUpdate();
-        if(Player.SleepState == 0)
+        if(Player.SleepState == 0){
             tiredBubble.enabled = false;
+            hungerBubble.enabled = false;
+        }
+            
         //play sleepy anim if other animation is playing and if energy is below/equal to alloted thereshold
         //else turn it off
         /*if((int)Player.Energy <= tiredTrigger && (int)Player.Hunger <= hungerTrigger &&
@@ -118,7 +121,7 @@ public class PlayerController : MonoBehaviour
             return;    
         }
         //animTransition.SetBool("isHungry", false);
-        hungerBubble.CrossFadeAlpha(0, 0.5f, true);
+        //hungerBubble.CrossFadeAlpha(0, 0.5f, true);
         hungerBubble.enabled = false;
     }
     private void PlayStopSleepyAnimation(){
@@ -127,26 +130,28 @@ public class PlayerController : MonoBehaviour
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
         {
             skinsManager.Eyebrows.sprite = skinsManager.EyebrowsSpriteOptions[1];
-            skinsManager.Eyes.sprite = skinsManager.EyesSpriteOptions[0];
-            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[2];   
+            skinsManager.Eyes.sprite = skinsManager.EyesSpriteOptions[2];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[1];   
             //animTransition.SetBool("isSleepy", true); 
             //if(Player.SleepState == 1)
-                FadeInOutBubble(tiredBubble);
+            FadeInOutBubble(tiredBubble);
             return;      
         }
-        tiredBubble.CrossFadeAlpha(0, 0.5f, true);
+        //tiredBubble.CrossFadeAlpha(0, 0.5f, true);
         tiredBubble.enabled = false;
         //animTransition.SetBool("isSleepy", false);
     }
     private void FadeInOutBubble(Image bubble)
     {
-        bubble.enabled = true;
+        
         if(currTime < 5f){
-            bubble.CrossFadeAlpha(0, 0.5f, true);
+            bubble.enabled = true;
+            //bubble.CrossFadeAlpha(0, 0.5f, true);
             return;
         }          
-        //if(currTime <= 10f && currTime >= 5f){ 
-        bubble.CrossFadeAlpha(1, 0.5f, true);
+        //if(currTime <= 10f && currTime >= 5f){
+        bubble.enabled = false; 
+        //bubble.CrossFadeAlpha(1, 0.5f, true);
     }
     //wave on character click
     private void OnMouseDown() {

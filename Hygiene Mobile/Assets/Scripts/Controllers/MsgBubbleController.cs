@@ -23,6 +23,12 @@ public class MsgBubbleController : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
     }
     public void ClickEvent() {
+        if(KitchenStatus.EatStatus != 2){
+            KitchenStatus.EatStatus = 0;
+        }else{
+            return;
+        }
+        
         if(hungerBubble.enabled == true){
             if(currentScene.name == "Kitchen")
                 return;

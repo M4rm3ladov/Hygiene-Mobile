@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StoveController : MonoBehaviour
 {
+
+    [SerializeField]
+    HandWashManager handWashManager;
     [SerializeField]
     ConsumeFoodManager consumeFoodManager;
     private int _clicked = 0;

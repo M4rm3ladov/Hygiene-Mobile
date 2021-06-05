@@ -10,23 +10,20 @@ public class HandWashController : MonoBehaviour
     private Animator lHand;
     private float timeStep = 1.7f;
     private int counter;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
+        if(SinkManager.HandWashStep < 2 || SinkManager.HandWashStep >= 3)
+            return;
+
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
+            StopAnimation();
+
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             PlayAnimation();
             timeStep -= Time.deltaTime;
         }
             
-        else if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
-            StopAnimation();
-
         if(timeStep <= 0){
             StopAnimation();
             counter++;
@@ -35,7 +32,6 @@ public class HandWashController : MonoBehaviour
     }
 
     void PlayAnimation(){
-        Debug.Log(counter);
         switch (counter)
         {
             case 0:
@@ -87,20 +83,13 @@ public class HandWashController : MonoBehaviour
                 rHand.SetInteger("Between", 1);
                 lHand.SetInteger("Back", 0);
                 break;
+            case 12:
+                SinkManager.HandWashStep = 3;
+                StopAnimation();
+                break;
             
             default:
-                rHand.SetInteger("Palm", 0);
-                lHand.SetInteger("Palm", 0);
-                rHand.SetInteger("Thumb", -1);
-                lHand.SetInteger("Thumb", -1);
-                rHand.SetInteger("Fingernail", 0);
-                lHand.SetInteger("Fingernail", 0);
-                rHand.SetInteger("Back", -1);
-                lHand.SetInteger("Back", -1);
-                rHand.SetInteger("Between", -1);
-                lHand.SetInteger("Between", -1);
-                rHand.SetInteger("Wrist", -1);
-                lHand.SetInteger("Wrist", -1);
+                DefaultAnim();
                 break;
         }
     }
@@ -156,19 +145,22 @@ public class HandWashController : MonoBehaviour
                 lHand.SetInteger("Between", -1);
                 break;
             default:
-                rHand.SetInteger("Palm", 0);
-                lHand.SetInteger("Palm", 0);
-                rHand.SetInteger("Thumb", -1);
-                lHand.SetInteger("Thumb", -1);
-                rHand.SetInteger("Fingernail", 0);
-                lHand.SetInteger("Fingernail", 0);
-                rHand.SetInteger("Back", -1);
-                lHand.SetInteger("Back", -1);
-                rHand.SetInteger("Between", -1);
-                lHand.SetInteger("Between", -1);
-                rHand.SetInteger("Wrist", -1);
-                lHand.SetInteger("Wrist", -1);
+                DefaultAnim();        
                 break;
         }
+    }
+    private void DefaultAnim(){
+        rHand.SetInteger("Palm", 0);
+        lHand.SetInteger("Palm", 0);
+        rHand.SetInteger("Thumb", -1);
+        lHand.SetInteger("Thumb", -1);
+        rHand.SetInteger("Fingernail", 0);
+        lHand.SetInteger("Fingernail", 0);
+        rHand.SetInteger("Back", -1);
+        lHand.SetInteger("Back", -1);
+        rHand.SetInteger("Between", -1);
+        lHand.SetInteger("Between", -1);
+        rHand.SetInteger("Wrist", -1);
+        lHand.SetInteger("Wrist", -1);
     }
 }

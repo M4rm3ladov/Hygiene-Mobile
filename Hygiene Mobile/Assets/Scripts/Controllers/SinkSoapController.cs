@@ -12,20 +12,12 @@ public class SinkSoapController : MonoBehaviour
     private float timeStep = 2f;
     //private int counter;
 
-    private void OnTriggerEnter2D(Collider2D other) {
-                            
-    }
     private void OnTriggerStay2D(Collider2D other) {
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             timeStep -= Time.deltaTime;
         }
-        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended){
-            timeStep = 2f;
-        }
             
         if(timeStep <= 0){
-            //counter++;
-            //timeStep = 1.7f;
             if(other.name == "RHand" || other.name == "LHand"){
                 collided = true;  
             } 

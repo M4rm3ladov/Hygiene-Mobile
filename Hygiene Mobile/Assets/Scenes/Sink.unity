@@ -225,7 +225,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -253,6 +253,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83435332f38dcdc4a988aa1beb67ac09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lHand: {fileID: 2117788559}
+  lHandList:
+  - {fileID: 21300000, guid: be9df2bf4e8f8844c9f2bdf99eaedbfd, type: 3}
+  - {fileID: 21300000, guid: 42364bb02b220bf46a7728b3905f33b3, type: 3}
+  rHand: {fileID: 1749805536}
+  rHandList:
+  - {fileID: 21300000, guid: 216197b0b5f3bb3428ac79afb03fed07, type: 3}
+  - {fileID: 21300000, guid: 8113cbc40cdd59e438d8130afd73cd05, type: 3}
 --- !u!1 &434446826
 GameObject:
   m_ObjectHideFlags: 0

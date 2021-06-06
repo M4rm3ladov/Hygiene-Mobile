@@ -5,6 +5,9 @@ using UnityEngine;
 public class SinkFaucetController : MonoBehaviour
 {
     [SerializeField]
+    private List<GameObject> virus = new List<GameObject>();
+
+    [SerializeField]
     private Animator faucetWater;
     [SerializeField]
     private GameObject water;
@@ -56,6 +59,10 @@ public class SinkFaucetController : MonoBehaviour
                 lHand.SetInteger("Back", 0);
                 break;
             case 4:
+                foreach (GameObject v in virus)
+                {
+                    v.SetActive(false);
+                }
                 StopAnimation();
                 SinkManager.HandWashStep = 5;
                 break;

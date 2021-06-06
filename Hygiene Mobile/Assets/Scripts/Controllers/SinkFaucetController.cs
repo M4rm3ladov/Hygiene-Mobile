@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SinkFaucetController : MonoBehaviour
 {
-    [SerializeField]
-    private List<GameObject> virus = new List<GameObject>();
+    //[SerializeField]
+    //private List<GameObject> virus = new List<GameObject>();
 
     [SerializeField]
     private Animator faucetWater;
@@ -43,26 +43,30 @@ public class SinkFaucetController : MonoBehaviour
         switch (counter)
         {
             case 0:
+                //virus[0].SetActive(false);
+                //virus[4].SetActive(false);
                 rHand.SetInteger("Palm", 0);
                 lHand.SetInteger("Palm", 1);
                 break;
             case 1:
+                //virus[1].SetActive(false);
+                //virus[5].SetActive(false);
                 rHand.SetInteger("Palm", 1);
                 lHand.SetInteger("Palm", 0);
                 break;
             case 2:
+                //virus[2].SetActive(false);
+                //virus[6].SetActive(false);
                 rHand.SetInteger("Back", 0);
                 lHand.SetInteger("Back", 1);
                 break;
             case 3:
+                //virus[3].SetActive(false);
+                //virus[7].SetActive(false);
                 rHand.SetInteger("Back", 1);
                 lHand.SetInteger("Back", 0);
                 break;
             case 4:
-                foreach (GameObject v in virus)
-                {
-                    v.SetActive(false);
-                }
                 StopAnimation();
                 SinkManager.HandWashStep = 5;
                 break;

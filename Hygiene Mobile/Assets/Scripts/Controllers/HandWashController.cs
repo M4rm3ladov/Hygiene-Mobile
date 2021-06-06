@@ -5,6 +5,9 @@ using UnityEngine;
 public class HandWashController : MonoBehaviour
 {
     [SerializeField]
+    private List<GameObject> virus = new List<GameObject>();
+
+    [SerializeField]
     private Animator rHand;
     [SerializeField]
     private Animator lHand;
@@ -51,34 +54,42 @@ public class HandWashController : MonoBehaviour
                 lHand.SetInteger("Thumb", 0);
                 break;
             case 4:
+                virus[2].SetActive(false);
                 rHand.SetInteger("Fingernail", 0);
                 lHand.SetInteger("Fingernail", 1);
                 break;
             case 5:
+                virus[6].SetActive(false);
                 rHand.SetInteger("Fingernail", 1);
                 lHand.SetInteger("Fingernail", 0);
                 break;
             case 6:
+                virus[3].SetActive(false);
                 rHand.SetInteger("Back", 0);
                 lHand.SetInteger("Back", 1);
                 break;
             case 7:
+                virus[7].SetActive(false);
                 rHand.SetInteger("Back", 1);
                 lHand.SetInteger("Back", 0);
                 break;
             case 8:
+                virus[4].SetActive(false);
                 rHand.SetInteger("Wrist", 0);
                 lHand.SetInteger("Wrist", 1);
                 break;
             case 9:
+                virus[0].SetActive(false);
                 rHand.SetInteger("Wrist", 1);
                 lHand.SetInteger("Wrist", 0);
                 break;
             case 10:
+                virus[5].SetActive(false);
                 rHand.SetInteger("Back", 0);
                 lHand.SetInteger("Between", 1);
                 break;
             case 11:
+                virus[1].SetActive(false);
                 rHand.SetInteger("Back", -1);
                 rHand.SetInteger("Between", 1);
                 lHand.SetInteger("Back", 0);

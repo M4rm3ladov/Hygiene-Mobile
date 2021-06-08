@@ -22,7 +22,7 @@ public class SinkFaucetController : MonoBehaviour
 
     void Update()
     {
-        if(SinkManager.HandWashStep != 4)
+        if(SinkManager.HandWashStep < 4 || SinkManager.HandWashStep >= 5)
             return;
 
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -43,24 +43,28 @@ public class SinkFaucetController : MonoBehaviour
         switch (counter)
         {
             case 0:
+                SinkManager.HandWashStep = 4.2f;
                 //virus[0].SetActive(false);
                 //virus[4].SetActive(false);
                 rHand.SetInteger("Palm", 0);
                 lHand.SetInteger("Palm", 1);
                 break;
             case 1:
+                SinkManager.HandWashStep = 4.4f;
                 //virus[1].SetActive(false);
                 //virus[5].SetActive(false);
                 rHand.SetInteger("Palm", 1);
                 lHand.SetInteger("Palm", 0);
                 break;
             case 2:
+                SinkManager.HandWashStep = 4.6f;
                 //virus[2].SetActive(false);
                 //virus[6].SetActive(false);
                 rHand.SetInteger("Back", 0);
                 lHand.SetInteger("Back", 1);
                 break;
             case 3:
+                SinkManager.HandWashStep = 4.8f;
                 //virus[3].SetActive(false);
                 //virus[7].SetActive(false);
                 rHand.SetInteger("Back", 1);
@@ -108,7 +112,7 @@ public class SinkFaucetController : MonoBehaviour
 
     private void OnMouseDown() {
         Debug.Log(SinkManager.HandWashStep);
-        if(SinkManager.HandWashStep > 0 && SinkManager.HandWashStep < 3 || SinkManager.HandWashStep > 5)
+        if(SinkManager.HandWashStep > .5f && SinkManager.HandWashStep < 3 || SinkManager.HandWashStep > 5)
             return;
         
         if(!fSwitch){
@@ -116,7 +120,8 @@ public class SinkFaucetController : MonoBehaviour
             water.SetActive(true);
             if(SinkManager.HandWashStep >= 3)
                 SinkManager.HandWashStep = 4;
-            
+            if(SinkManager.HandWashStep == 0)
+                SinkManager.HandWashStep = .5f;
             return;
         }
         if(SinkManager.HandWashStep == 4)

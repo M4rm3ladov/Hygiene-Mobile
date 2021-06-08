@@ -38,57 +38,69 @@ public class HandWashController : MonoBehaviour
         switch (counter)
         {
             case 0:
+                SinkManager.HandWashStep = 2.083f;
                 rHand.SetInteger("Palm", 0);
                 lHand.SetInteger("Palm", 1);
                 break;
             case 1:
+                SinkManager.HandWashStep = 2.166f;
                 rHand.SetInteger("Palm", 1);
                 lHand.SetInteger("Palm", 0);
                 break;
             case 2:
+                SinkManager.HandWashStep = 2.249f;
                 rHand.SetInteger("Thumb", 0);
                 lHand.SetInteger("Thumb", 1);
                 break;
             case 3:
+                SinkManager.HandWashStep = 2.332f;
                 rHand.SetInteger("Thumb", 1);
                 lHand.SetInteger("Thumb", 0);
                 break;
             case 4:
+                SinkManager.HandWashStep = 2.415f;
                 virus[2].SetActive(false);
                 rHand.SetInteger("Fingernail", 0);
                 lHand.SetInteger("Fingernail", 1);
                 break;
             case 5:
+                SinkManager.HandWashStep = 2.498f;
                 virus[6].SetActive(false);
                 rHand.SetInteger("Fingernail", 1);
                 lHand.SetInteger("Fingernail", 0);
                 break;
             case 6:
+                SinkManager.HandWashStep = 2.581f;
                 virus[3].SetActive(false);
                 rHand.SetInteger("Back", 0);
                 lHand.SetInteger("Back", 1);
                 break;
             case 7:
+                SinkManager.HandWashStep = 2.664f;
                 virus[7].SetActive(false);
                 rHand.SetInteger("Back", 1);
                 lHand.SetInteger("Back", 0);
                 break;
             case 8:
+                SinkManager.HandWashStep = 2.747f;
                 virus[4].SetActive(false);
                 rHand.SetInteger("Wrist", 0);
                 lHand.SetInteger("Wrist", 1);
                 break;
             case 9:
+                SinkManager.HandWashStep = 2.83f;
                 virus[0].SetActive(false);
                 rHand.SetInteger("Wrist", 1);
                 lHand.SetInteger("Wrist", 0);
                 break;
             case 10:
+                SinkManager.HandWashStep = 2.913f;
                 virus[5].SetActive(false);
                 rHand.SetInteger("Back", 0);
                 lHand.SetInteger("Between", 1);
                 break;
             case 11:
+                SinkManager.HandWashStep = 2.996f;
                 virus[1].SetActive(false);
                 rHand.SetInteger("Back", -1);
                 rHand.SetInteger("Between", 1);

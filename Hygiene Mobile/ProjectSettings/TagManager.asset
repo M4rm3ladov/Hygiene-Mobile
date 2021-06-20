@@ -53,6 +53,9 @@ TagManager:
   - name: Button
     uniqueID: 746309977
     locked: 0
+  - name: Virus
+    uniqueID: 3309999259
+    locked: 0
   - name: Misc
     uniqueID: 111324231
     locked: 0

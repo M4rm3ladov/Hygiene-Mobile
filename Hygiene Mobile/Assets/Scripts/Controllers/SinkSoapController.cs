@@ -14,7 +14,8 @@ public class SinkSoapController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other) {
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-            timeStep -= Time.deltaTime;
+            if(other.name == "RHand" || other.name == "LHand")
+                timeStep -= Time.deltaTime;
         }
             
         if(timeStep <= 0){

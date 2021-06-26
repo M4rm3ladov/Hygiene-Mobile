@@ -16,4 +16,5 @@ public class ToothbrushManager : MonoBehaviour
         get{ return toothBSpriteOptions;}
         set{ toothBSpriteOptions = value;}
     }
+    
 }

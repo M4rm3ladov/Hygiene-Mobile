@@ -1,51 +1,87 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BristleController : MonoBehaviour
 {
     [SerializeField]
-    private List<GameObject> mouth = new List<GameObject>();
-    
+    MouthManager mouthManager;
     [SerializeField]
     ToothbrushManager toothbrushManager;
     [SerializeField]
-    FrontTeethManager frontTeethManager;
+    VirusManager virusManager;
+    [SerializeField]
+    VirusManager virusManager2;
     private float timeStep = 1.5f;
     private bool match = false;
-    private string vName;
+    private  string vName;
     private int index;
-    private void Update() {
-        if(frontTeethManager.Virus.Count == 0){
-            mouth[0].SetActive(false);
-            toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[0];
-            mouth[1].SetActive(true);
-            SinkManager.ToothbrushStep = 2;
-        }
-    }
+    private float addend = 0.047f;
     private void OnTriggerEnter2D(Collider2D other) {
         timeStep = 1.5f;
     }
     private void OnTriggerStay2D(Collider2D other) {
+        if(mouthManager.Mouth[0].activeSelf){
+            PlayFrontTeethMecanics(other);
+
+            if(virusManager.Virus.Count == 0){
+                mouthManager.Mouth[0].SetActive(false);
+                toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[0];
+                mouthManager.Mouth[1].SetActive(true); 
+            }
+        }else if(mouthManager.Mouth[1].activeSelf){
+            PlayMouthOpenMechanics(other);
+
+            if(virusManager2.Virus.Count == 0){
+                BrushingManager.ToothbrushStep = 2;
+            }
+        }
+           
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        /*if(SinkManager.ToothbrushStep == 1)
+            return;
+        toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[0];*/
+    }
+
+    private void PlayFrontTeethMecanics(Collider2D other){
         if(other.name == "top" || other.name == "bottom"){
+            //BrushingManager.ToothbrushStep = 2;
             toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[2];
-            SinkManager.ToothbrushStep = 2;
         }
         if(other.name == "topL" || other.name == "bottomL"){
+            //BrushingManager.ToothbrushStep = 2;
             toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[4];
-            SinkManager.ToothbrushStep = 2;
         }
         if(other.name == "topR" || other.name == "bottomR"){
+            //BrushingManager.ToothbrushStep = 2;
             toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[3];
-            SinkManager.ToothbrushStep = 2;
         }
 
-        for (int i = 0; i < frontTeethManager.Virus.Count; i++)
+        RemoveVirus(virusManager, other);
+    }
+    private void PlayMouthOpenMechanics(Collider2D other){
+        if(other.name == "tounge" || other.name == "molarTopL" || other.name == "molarTopR" || 
+            other.name == "molarBotL" || other.name == "molarBotR"){
+            toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[2];
+        }
+        if(other.name == "cheekL"){
+            toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[3];
+        }
+        if(other.name == "cheekR"){
+            toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[4];
+        }
+
+        RemoveVirus(virusManager2, other);
+    }
+    private void RemoveVirus(VirusManager v, Collider2D other){            
+        for (int i = 0; i < v.Virus.Count; i++)
         {
             index = i;
-            if(frontTeethManager.Virus[i].name == other.name){
+            if(v.Virus[i].name == other.name){
                 match = true;
-                vName = frontTeethManager.Virus[i].name;
+                vName = v.Virus[i].name;
                 break;
             }
         }
@@ -58,15 +94,11 @@ public class BristleController : MonoBehaviour
         }
 
         if(timeStep <= 0){
-            frontTeethManager.Virus[index].SetActive(false); 
-            frontTeethManager.Virus.RemoveAt(index); 
+            v.Virus[index].SetActive(false); 
+            v.Virus.RemoveAt(index); 
             timeStep = 1.5f;
-        }   
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        if(SinkManager.ToothbrushStep == 1)
-            return;
-        toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[0];
+            BrushingManager.ToothbrushStep += addend; 
+            Debug.Log(BrushingManager.ToothbrushStep);
+        }
     }
 }

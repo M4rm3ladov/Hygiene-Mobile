@@ -12,6 +12,7 @@ public class SinkTowelController : MonoBehaviour
     private SpriteRenderer rHand;
     [SerializeField]
     private List<Sprite> rHandList = new List<Sprite>();
+    private SpriteRenderer sTowel;
 
     private bool collided = false;
     private Vector3 mouseDragStartPosition;
@@ -20,6 +21,9 @@ public class SinkTowelController : MonoBehaviour
 
     private float timeStepR = 2f;
     private float timeStepL = 2f;
+    private void Start() {
+        sTowel = GetComponent<SpriteRenderer>();
+    }
 
     private void LateUpdate() {
         if(timeStepR <= 1f && timeStepR >= 0f)
@@ -50,6 +54,7 @@ public class SinkTowelController : MonoBehaviour
     }
     
     private void OnMouseUp() {
+        sTowel.sortingOrder = 4;
         isDragged = false;
         transform.position = spriteDragStartPosition;
         if(collided)
@@ -58,6 +63,7 @@ public class SinkTowelController : MonoBehaviour
     }
     private void OnMouseDown() 
     {
+        sTowel.sortingOrder = 5;
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         spriteDragStartPosition = transform.position;

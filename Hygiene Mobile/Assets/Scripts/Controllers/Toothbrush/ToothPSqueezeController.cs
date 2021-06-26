@@ -9,7 +9,7 @@ public class ToothPSqueezeController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.name == "bristle"){
             toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[1];
-            SinkManager.ToothbrushStep = 1;
+            BrushingManager.ToothbrushStep = 1;
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrontTeethManager : MonoBehaviour
+public class VirusManager : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> virus = new List<GameObject>();

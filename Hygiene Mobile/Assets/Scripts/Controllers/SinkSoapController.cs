@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class SinkSoapController : MonoBehaviour
 {
+    private SpriteRenderer sSoap;
     private bool collided = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
-    private bool isDragged = false;
+    private bool isDragged = false;    
 
     private float timeStep = 2f;
     //private int counter;
+    private void Start() {
+        sSoap = GetComponent<SpriteRenderer>();
+    }
 
     private void OnTriggerStay2D(Collider2D other) {
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
@@ -26,6 +30,7 @@ public class SinkSoapController : MonoBehaviour
     }
 
     private void OnMouseUp() {
+        sSoap.sortingOrder = 4;
         isDragged = false;
         transform.position = spriteDragStartPosition;
         if(collided){
@@ -35,6 +40,7 @@ public class SinkSoapController : MonoBehaviour
     }
     private void OnMouseDown() 
     {
+        sSoap.sortingOrder = 5;
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         spriteDragStartPosition = transform.position;

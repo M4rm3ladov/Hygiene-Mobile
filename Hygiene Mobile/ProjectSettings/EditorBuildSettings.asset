@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Toothbrush.unity
+    guid: e732263f2206c60488f6915bb023627c
+  - enabled: 1
     path: Assets/Scenes/Sink.unity
     guid: 12efe1323d3a1d54886571d17ea5fc47
   - enabled: 1

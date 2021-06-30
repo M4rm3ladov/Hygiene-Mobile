@@ -111,7 +111,6 @@ public class SinkFaucetController : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        Debug.Log(SinkManager.HandWashStep);
         if(SinkManager.HandWashStep > .5f && SinkManager.HandWashStep < 3 || SinkManager.HandWashStep > 5)
             return;
         

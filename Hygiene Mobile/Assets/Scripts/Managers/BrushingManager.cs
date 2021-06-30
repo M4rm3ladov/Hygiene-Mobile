@@ -25,6 +25,7 @@ public class BrushingManager : MonoBehaviour
     }
     private void Start() {
         UpdateProgressBar();
+        KitchenStatus.ToothbrushStatus = 1;
     }
     private void Update() {
         if(ToothbrushStep == 5)
@@ -36,5 +37,19 @@ public class BrushingManager : MonoBehaviour
         float ratio = ToothbrushStep / _max;
         currentProgress.rectTransform.localScale = new Vector3(ratio, 1, 1);
         textProgress.text = (ratio * 100).ToString("0") + "%";
+    }
+    public void FinishedClicked(){
+        KitchenStatus.EatStatus = 0;
+        KitchenStatus.ToothbrushStatus = 0;
+        KitchenStatus.Started = false;
+        BrushingManager.ToothbrushStep = 0;
+    }
+    private void OnDestroy() {
+        if(BrushingManager.ToothbrushStep == 5){
+            KitchenStatus.EatStatus = 0;
+            KitchenStatus.ToothbrushStatus = 0;
+            KitchenStatus.Started = false;
+        }
+        BrushingManager.ToothbrushStep = 0;
     }
 }

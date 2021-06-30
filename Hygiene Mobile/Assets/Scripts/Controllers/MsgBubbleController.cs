@@ -23,20 +23,19 @@ public class MsgBubbleController : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
     }
     public void ClickEvent() {
-        if(KitchenStatus.EatStatus != 2){
-            KitchenStatus.EatStatus = 0;
-        }else{
-            return;
-        }
-        
+        if(currentScene.name != "Kitchen")
+            KitchenStatus.EatStatus = 1;
+
         if(hungerBubble.enabled == true){
-            if(currentScene.name == "Kitchen")
+            if(currentScene.name == "Kitchen"){
                 return;
+            }     
             StartCoroutine(LoadLevel(_levelName));    
         }
         if(tiredBubble.enabled == true){
-            if(currentScene.name == "Bedroom")
+            if(currentScene.name == "Bedroom"){
                 return;
+            }
             StartCoroutine(LoadLevel(_levelName));    
         }
     }

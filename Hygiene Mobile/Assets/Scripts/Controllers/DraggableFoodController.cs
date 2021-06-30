@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class DraggableFoodController : MonoBehaviour
 {
     [SerializeField]
-    HandWashManager handWashManager;
-    [SerializeField]
     SkinsManager skinsManager;
     [SerializeField]
     FoodManager foodManager;
@@ -31,12 +29,11 @@ public class DraggableFoodController : MonoBehaviour
         spriteDragStartPosition = transform.position;
     }
     private void OnMouseDrag() 
-    {   
+    {  
+        if(KitchenStatus.EatStatus == 1)
+            return;
+
         if(isDragged){
-            if(KitchenStatus.EatStatus == 0){  
-                handWashManager.ShowHandWashBubble();
-                return;
-            }
             consumeFoodManager.Left.GetComponent<Button>().interactable = false;
             consumeFoodManager.Right.GetComponent<Button>().interactable = false;
             transform.position = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
@@ -68,12 +65,11 @@ public class DraggableFoodController : MonoBehaviour
     }
     private void FeedTheChar(){
         int foodSpriteOptionsIterator = 0;
+        KitchenStatus.EatStatus = 2;  
+        KitchenStatus.ToothbrushStatus = 0;
+        KitchenStatus.Started = true;
         foreach (Sprite foodSprite in foodManager.FoodSpriteOptions)
         {
-            KitchenStatus.EatStatus = 2;
-            handWashManager.ShowHandWashBubble();
-            handWashManager.ShowBrushBubble();
-
             playerController.AnimTransition.SetTrigger("Eat");
             if(foodSprite.name.ToString() == consumeFoodController.FoodIndex[consumeFoodController.CurrentOption])
             {

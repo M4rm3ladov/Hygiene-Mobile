@@ -10,19 +10,29 @@ public class TransitionController : MonoBehaviour
     private float _transitionTime = 1f;
     [SerializeField]
     private string _levelName;
-    // Update is called once per frame
+    private Scene currentScene;
     private void OnMouseDown() {
         LoadNextLevel();
     }
     public void LoadNextLevel()
     {
+        currentScene = SceneManager.GetActiveScene();
+        if(currentScene.name == "Bedroom" || currentScene.name == "Livingroom")
+            KitchenStatus.EatStatus = 1;
+
+        if(currentScene.name == "Kitchen"){
+            if(KitchenStatus.ToothbrushStatus == 1)
+                _levelName = "Toothbrush";
+        }
+
+        if(currentScene.name == "Kitchen"){
+            if(_levelName == "Bedroom" || _levelName == "Livingroom" || _levelName == "Bathroom"){
+                if(KitchenStatus.EatStatus != 0 && KitchenStatus.Started == true)
+                    return;
+            }
+        }
         //wakes up character when switching scene
         Player.SleepState = 1;  
-        if(KitchenStatus.EatStatus != 2){
-            KitchenStatus.EatStatus = 0;
-        }else{
-            return;
-        }
         StartCoroutine(LoadLevel(_levelName));       
     }
 

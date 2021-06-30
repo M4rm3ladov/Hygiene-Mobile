@@ -17,6 +17,7 @@ public class FoodController : MonoBehaviour
     private Text PriceText;
     private int currentOption = 0;
     private void Start() {
+        Debug.Log(KitchenStatus.EatStatus);
         LoadFoodInfo();
     }
     public void PreviousOption(){

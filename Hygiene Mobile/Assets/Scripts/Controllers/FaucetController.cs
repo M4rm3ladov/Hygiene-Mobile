@@ -6,15 +6,7 @@ using UnityEngine.UI;
 public class FaucetController : MonoBehaviour
 {
     [SerializeField]
-    Button bedButton;
-    [SerializeField]
-    Button kitchenButton;
-    [SerializeField]
-    Button gameButton;
-    [SerializeField]
-    Button bathButton;
-    [SerializeField]
-    HandWashManager handWashManager;
+    TransitionController transitionController;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +18,6 @@ public class FaucetController : MonoBehaviour
     {
     }
     private void OnMouseDown() {
-        if(KitchenStatus.EatStatus == 0){
-            KitchenStatus.EatStatus = 1;
-            handWashManager.HandWashBubble.SetActive(false);
-        }else if(KitchenStatus.EatStatus == 2){
-            handWashManager.HandWashBubble.SetActive(false);
-            handWashManager.BrushBubble.SetActive(false);
-            KitchenStatus.EatStatus = 1;
-        }
+        
     }
 }

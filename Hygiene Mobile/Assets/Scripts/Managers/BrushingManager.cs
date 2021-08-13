@@ -25,7 +25,6 @@ public class BrushingManager : MonoBehaviour
     }
     private void Start() {
         UpdateProgressBar();
-        KitchenStatus.ToothbrushStatus = 1;
     }
     private void Update() {
         if(ToothbrushStep == 5)

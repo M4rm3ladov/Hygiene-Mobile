@@ -33,6 +33,8 @@ public class MsgBubbleController : MonoBehaviour
             StartCoroutine(LoadLevel(_levelName));    
         }
         if(tiredBubble.enabled == true){
+            if(KitchenStatus.EatStatus == 1 || KitchenStatus.EatStatus == 2)
+                return;
             if(currentScene.name == "Bedroom"){
                 return;
             }

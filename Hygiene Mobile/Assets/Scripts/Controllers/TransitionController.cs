@@ -20,9 +20,11 @@ public class TransitionController : MonoBehaviour
         if(currentScene.name == "Bedroom" || currentScene.name == "Livingroom")
             KitchenStatus.EatStatus = 1;
 
-        if(currentScene.name == "Kitchen"){
+        if(currentScene.name == "Kitchen" && _levelName == "Sink"){
             if(KitchenStatus.ToothbrushStatus == 1)
                 _levelName = "Toothbrush";
+            if(KitchenStatus.EatStatus == 0)
+                return;
         }
 
         if(currentScene.name == "Kitchen"){

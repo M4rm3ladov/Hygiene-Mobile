@@ -2217,6 +2217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 252662038}
   - component: {fileID: 252662039}
+  - component: {fileID: 252662040}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -2251,6 +2252,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouthManager: {fileID: 1918152519}
+--- !u!114 &252662040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252662037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c157c90efc5f5e4792ebd8c5599e1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &460716551
 GameObject:
   m_ObjectHideFlags: 0

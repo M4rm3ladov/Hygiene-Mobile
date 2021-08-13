@@ -60,6 +60,10 @@ public class Player : MonoBehaviour
         Input.backButtonLeavesApp = true;
     }
     private void OnDestroy() {
+        if(KitchenStatus.EatStatus != 0 || KitchenStatus.ToothbrushStatus != 0){
+            Debug.Log("Mabuling");
+            Hygiene = Hygiene - 70f;
+        }
         SavePlayer();
     }
     

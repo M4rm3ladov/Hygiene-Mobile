@@ -51,12 +51,16 @@ public class SinkManager: MonoBehaviour
     public void FinishClicked(){
         if(KitchenStatus.EatStatus == 1)
             KitchenStatus.EatStatus = 0;
+        else if(KitchenStatus.EatStatus == 2)
+            KitchenStatus.ToothbrushStatus = 1; 
         SinkManager.HandWashStep = 0;
     }
     private void OnDestroy() {
         if(SinkManager.HandWashStep == 7){
             if(KitchenStatus.EatStatus == 1)
                 KitchenStatus.EatStatus = 0;
+            else if(KitchenStatus.EatStatus == 2)
+                KitchenStatus.ToothbrushStatus = 1;
         }
         SinkManager.HandWashStep = 0;
     }
@@ -64,9 +68,9 @@ public class SinkManager: MonoBehaviour
     public void LoadNextLevel()
     {
         if(KitchenStatus.EatStatus == 2)
-                _levelName = "Toothbrush";
+            _levelName = "Toothbrush";
         else if(KitchenStatus.EatStatus == 0)
-                _levelName = "Kitchen";
+            _levelName = "Kitchen";
     
         StartCoroutine(LoadLevel(_levelName));       
     }

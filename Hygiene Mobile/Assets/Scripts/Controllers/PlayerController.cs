@@ -8,15 +8,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     SkinsManager skinsManager;
     [SerializeField]
-    private Image cleanBubble;
+    private Image hygieneBubble;
     [SerializeField]
     private Image hungerBubble;
     [SerializeField]
     private Image tiredBubble;
     [SerializeField]
+    private int hygieneTrigger;
+    [SerializeField]
     private int tiredTrigger;
     [SerializeField]
     private int hungerTrigger;
+    public int HygieneTrigger{
+        get{ return hygieneTrigger; }
+        set{ hygieneTrigger = value;}
+    }
     public int TiredTrigger{
         get{ return tiredTrigger; }
         set{ tiredTrigger = value;}
@@ -59,6 +65,7 @@ public class PlayerController : MonoBehaviour
         }*/
         if(Player.SleepState == 1)
         {
+            PlayStopHygieneAnimation();
             PlayStopHungerAnimation();
             PlayStopSleepyAnimation();
         }
@@ -76,6 +83,7 @@ public class PlayerController : MonoBehaviour
     private void Update() {
         TimeFadeUpdate();
         if(Player.SleepState == 0){
+            hygieneBubble.enabled = false;
             tiredBubble.enabled = false;
             hungerBubble.enabled = false;
         }
@@ -96,8 +104,9 @@ public class PlayerController : MonoBehaviour
     }
     private void LateUpdate() {
         if(Player.SleepState == 1){
+            PlayStopHygieneAnimation();
             PlayStopHungerAnimation();
-            PlayStopSleepyAnimation();
+            PlayStopSleepyAnimation();    
         }     
     }
     private void TimeFadeUpdate(){
@@ -107,9 +116,26 @@ public class PlayerController : MonoBehaviour
             return;
         }
         currTime -= Time.deltaTime;
+    
+    }
+    private void PlayStopHygieneAnimation(){
+        if((int)Player.Hygiene <= hygieneTrigger)//&& 
+        //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Dirty") && 
+        //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
+        {
+            skinsManager.Eyebrows.sprite = skinsManager.EyebrowsSpriteOptions[1];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[1];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[1];
+            //animTransition.SetBool("isHungry", true);
+            FadeInOutBubble(hygieneBubble);   
+            return;    
+        }
+        //animTransition.SetBool("isHungry", false);
+        //hungerBubble.CrossFadeAlpha(0, 0.5f, true);
+        hygieneBubble.enabled = false;
     }
     private void PlayStopHungerAnimation(){
-        if((int)Player.Hunger <= hungerTrigger)//&& 
+        if((int)Player.Hunger <= hungerTrigger && !((int)Player.Hygiene <= hygieneTrigger)) 
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Dirty") && 
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
         {

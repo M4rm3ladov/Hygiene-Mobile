@@ -1722,6 +1722,11 @@ PrefabInstance:
       propertyPath: tiredBubble
       value: 
       objectReference: {fileID: 754734274}
+    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+        type: 3}
+      propertyPath: hygieneBubble
+      value: 
+      objectReference: {fileID: 2019494095}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce4d5ff0148f5c41a295f6af274a6f7, type: 3}
 --- !u!1001 &1408877370
@@ -2385,7 +2390,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2133573772}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2133573773}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -2638,8 +2643,82 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bubble Clean
       objectReference: {fileID: 0}
+    - target: {fileID: 2012608282272021915, guid: a743b5da423dbd6459260947001593ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a743b5da423dbd6459260947001593ee, type: 3}
+--- !u!1 &2133573773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2012608282272021915, guid: a743b5da423dbd6459260947001593ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133573772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2133573774 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 149341720296261094, guid: a743b5da423dbd6459260947001593ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133573772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133573773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73e6cd556bbe4a488cc5f45072df4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2133573775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133573773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2019494095}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2133573774}
+        m_MethodName: ClickEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5264457202803808968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2807,7 +2886,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5264457202803961928}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5264457202803961944}
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5264457202803961942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +2910,7 @@ GameObject:
   - component: {fileID: 5264457202803961930}
   - component: {fileID: 5264457202803961929}
   - component: {fileID: 5264457202803961928}
+  - component: {fileID: 5264457202803961944}
   m_Layer: 5
   m_Name: Button_bathroom
   m_TagString: Untagged
@@ -2847,6 +2938,21 @@ RectTransform:
   m_AnchoredPosition: {x: 80, y: 75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5264457202803961944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264457202803961942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f505e68bdf08ccc4bbd427f739eb1002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 6448886125797063099}
+  _transitionTime: 1
+  _levelName: Bathroom
 --- !u!114 &5264457202846852496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3386,6 +3492,7 @@ GameObject:
   - component: {fileID: 5264457203228191654}
   - component: {fileID: 5264457203228191653}
   - component: {fileID: 5264457203228191652}
+  - component: {fileID: 5264457203228191655}
   m_Layer: 5
   m_Name: Cleanliness_bar
   m_TagString: Untagged
@@ -3465,6 +3572,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5264457203228191650}
   m_CullTransparentMesh: 0
+--- !u!114 &5264457203228191655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264457203228191650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2374a36bfcde1084aa17741b2ac0c50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _max: 100
+  CurrentHygiene: {fileID: 5264457204869734604}
+  HygieneText: {fileID: 5264457204098188259}
+  _hygieneTickRate: 14
+  _hygieneIncrease: 2
 --- !u!1 &5264457203272704720
 GameObject:
   m_ObjectHideFlags: 0

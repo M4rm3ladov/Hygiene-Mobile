@@ -1443,6 +1443,7 @@ GameObject:
   - component: {fileID: 675532850}
   - component: {fileID: 675532849}
   - component: {fileID: 675532848}
+  - component: {fileID: 675532851}
   m_Layer: 5
   m_Name: Button_bathroom
   m_TagString: Untagged
@@ -1545,7 +1546,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 675532848}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 675532851}
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &675532851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675532846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f505e68bdf08ccc4bbd427f739eb1002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 304140814}
+  _transitionTime: 1
+  _levelName: Bathroom
 --- !u!1 &679328429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1881,7 @@ GameObject:
   - component: {fileID: 831130590}
   - component: {fileID: 831130589}
   - component: {fileID: 831130588}
+  - component: {fileID: 831130591}
   m_Layer: 5
   m_Name: Cleanliness_bar
   m_TagString: Untagged
@@ -1933,6 +1961,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831130586}
   m_CullTransparentMesh: 0
+--- !u!114 &831130591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831130586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2374a36bfcde1084aa17741b2ac0c50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _max: 100
+  CurrentHygiene: {fileID: 1403125940}
+  HygieneText: {fileID: 2108122011}
+  _hygieneTickRate: 14
+  _hygieneIncrease: 5
 --- !u!1 &847774230 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2006912810199189904, guid: 837f1262b6da4574186fe33f0e50cab4,
@@ -2592,7 +2637,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2012608281110439379}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2012608281110439380}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -3714,6 +3759,11 @@ PrefabInstance:
       propertyPath: tiredBubble
       value: 
       objectReference: {fileID: 54631705}
+    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+        type: 3}
+      propertyPath: hygieneBubble
+      value: 
+      objectReference: {fileID: 1263392842}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce4d5ff0148f5c41a295f6af274a6f7, type: 3}
 --- !u!1001 &1356565178869015922
@@ -4190,8 +4240,82 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bubble Clean
       objectReference: {fileID: 0}
+    - target: {fileID: 2012608282272021915, guid: a743b5da423dbd6459260947001593ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a743b5da423dbd6459260947001593ee, type: 3}
+--- !u!1 &2012608281110439380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2012608282272021915, guid: a743b5da423dbd6459260947001593ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2012608281110439379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2012608281110439381 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 149341720296261094, guid: a743b5da423dbd6459260947001593ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2012608281110439379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012608281110439380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73e6cd556bbe4a488cc5f45072df4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2012608281110439382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012608281110439380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1263392842}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2012608281110439381}
+        m_MethodName: ClickEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2541101176080340615 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8152902919167408453, guid: 5bb49d0f88f4f5d449c9caa8242aeabb,

@@ -8,7 +8,7 @@ public class MsgBubbleController : MonoBehaviour
 {
     private Scene currentScene;
     [SerializeField]
-    private Image dirtyBubble;
+    private Image hygieneBubble;
     [SerializeField]
     private Image hungerBubble;
     [SerializeField]
@@ -25,6 +25,13 @@ public class MsgBubbleController : MonoBehaviour
     public void ClickEvent() {
         if(currentScene.name != "Kitchen")
             KitchenStatus.EatStatus = 1;
+
+        if(hygieneBubble.enabled == true){
+            if(currentScene.name == "Bathroom"){
+                return;
+            }     
+            StartCoroutine(LoadLevel(_levelName));    
+        }    
 
         if(hungerBubble.enabled == true){
             if(currentScene.name == "Kitchen"){

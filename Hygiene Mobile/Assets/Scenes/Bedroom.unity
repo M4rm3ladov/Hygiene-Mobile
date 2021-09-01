@@ -4130,6 +4130,11 @@ PrefabInstance:
       propertyPath: _levelName
       value: Bathroom
       objectReference: {fileID: 0}
+    - target: {fileID: 149341720296261094, guid: a743b5da423dbd6459260947001593ee,
+        type: 3}
+      propertyPath: hygieneBubble
+      value: 
+      objectReference: {fileID: 1263392842}
     - target: {fileID: 2012608282272021914, guid: a743b5da423dbd6459260947001593ee,
         type: 3}
       propertyPath: m_LocalPosition.x

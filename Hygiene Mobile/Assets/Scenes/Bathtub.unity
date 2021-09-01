@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 152951060}
   - component: {fileID: 152951063}
   - component: {fileID: 152951062}
+  - component: {fileID: 152951064}
   m_Layer: 0
   m_Name: soap
   m_TagString: Untagged
@@ -343,8 +344,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 305477451
-  m_SortingLayer: 2
+  m_SortingLayerID: 111324231
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: babe6b7fc7df90d4c9f5ab21240d784d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -438,6 +439,18 @@ PolygonCollider2D:
       - {x: 0.68, y: -1.4599999}
       - {x: 0.87, y: -1.36}
       - {x: 1.03, y: -1.16}
+--- !u!114 &152951064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152951059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3a2f6c9f9841441bd0e901dd8f3513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &288013516
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +542,7 @@ GameObject:
   - component: {fileID: 338722154}
   - component: {fileID: 338722157}
   - component: {fileID: 338722156}
+  - component: {fileID: 338722158}
   m_Layer: 0
   m_Name: towel
   m_TagString: Untagged
@@ -570,8 +584,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 305477451
-  m_SortingLayer: 2
+  m_SortingLayerID: 111324231
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 96ec3bb498afecc4d8ce669d9a34f277, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -645,6 +659,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.99, y: 7.28}
   m_EdgeRadius: 0
+--- !u!114 &338722158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338722153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d9e513f5e81c74caca78eb259a9107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &478995248
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +683,7 @@ GameObject:
   - component: {fileID: 478995249}
   - component: {fileID: 478995252}
   - component: {fileID: 478995251}
+  - component: {fileID: 478995253}
   m_Layer: 0
   m_Name: scrub
   m_TagString: Untagged
@@ -698,8 +725,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 305477451
-  m_SortingLayer: 2
+  m_SortingLayerID: 111324231
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 108e9ba5c64c2f34988d2df6758f4bf2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -789,6 +816,18 @@ PolygonCollider2D:
       - {x: 0.995, y: -0.515}
       - {x: 1.1949999, y: -0.265}
       - {x: 1.2049999, y: -0.21499999}
+--- !u!114 &478995253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478995248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38deb0820d204d46b296f7009780b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &843521959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1270,6 +1309,7 @@ GameObject:
   - component: {fileID: 1419533992}
   - component: {fileID: 1419533995}
   - component: {fileID: 1419533994}
+  - component: {fileID: 1419533996}
   m_Layer: 0
   m_Name: showerBath
   m_TagString: Untagged
@@ -1311,8 +1351,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 305477451
-  m_SortingLayer: 2
+  m_SortingLayerID: 111324231
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: df342b06633b7f249bda923346076d80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1404,6 +1444,18 @@ PolygonCollider2D:
       - {x: 1.25, y: -1.415}
       - {x: 1.25, y: -1.2049999}
       - {x: 1.15, y: -0.995}
+--- !u!114 &1419533996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419533991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ced5c47edebbac45a30f0b42dd1fc88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1491503840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1505,6 +1557,7 @@ GameObject:
   - component: {fileID: 1555208010}
   - component: {fileID: 1555208013}
   - component: {fileID: 1555208012}
+  - component: {fileID: 1555208014}
   m_Layer: 0
   m_Name: shampoo
   m_TagString: Untagged
@@ -1546,8 +1599,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 305477451
-  m_SortingLayer: 2
+  m_SortingLayerID: 111324231
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7927501add19b504588a6530d1abdfc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1636,6 +1689,18 @@ PolygonCollider2D:
       - {x: 0.405, y: -0.625}
       - {x: 0.415, y: -0.615}
       - {x: 0.445, y: -0.355}
+--- !u!114 &1555208014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555208009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588e960877a43c749801d53b8dc7d263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1931091882
 PrefabInstance:
   m_ObjectHideFlags: 0

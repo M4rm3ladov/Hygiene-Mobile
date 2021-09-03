@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BathSoapController : MonoBehaviour
 {
+    private ParticleSystem bubblePs;
     private SpriteRenderer sSoap;
     private bool collided = false;
     private Vector3 mouseDragStartPosition;
@@ -14,20 +15,21 @@ public class BathSoapController : MonoBehaviour
     //private int counter;
     private void Start() {
         sSoap = GetComponent<SpriteRenderer>();
+        bubblePs = GetComponentInChildren<ParticleSystem>();
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.name != "Body")
+            bubblePs.Stop();
     }
 
-    /*private void OnTriggerStay2D(Collider2D other) {
+    private void OnTriggerStay2D(Collider2D other) {
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-            if(other.name == "RHand" || other.name == "LHand")
-                timeStep -= Time.deltaTime;
-        }
-            
-        if(timeStep <= 0){
-            if(other.name == "RHand" || other.name == "LHand"){
-                collided = true;  
-            } 
-        }
-    }*/
+            if(other.name == "Body")// || other.name == "LHand")
+                bubblePs.Play();
+        }else
+           bubblePs.Stop();
+        
+    }
 
     private void OnMouseUp() {
         sSoap.sortingOrder = 0;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BathShowerController : MonoBehaviour
 {
+    private ParticleSystem showerPs;
     private SpriteRenderer sShower;
     private bool collided = false;
     private Vector3 mouseDragStartPosition;
@@ -15,22 +16,23 @@ public class BathShowerController : MonoBehaviour
     //private int counter;
     private void Start() {
         sShower = GetComponent<SpriteRenderer>();
+        showerPs = GetComponentInChildren<ParticleSystem>();
+        showerPs.Stop();
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.name != "Hair")
+            showerPs.Stop();
+    }
+    private void OnTriggerStay2D(Collider2D other) {
+        //if(Input.touchCount == 1){// && Input.GetTouch(0).phase == TouchPhase.Moved){
+            if(other.name == "Hair")
+                showerPs.Play();
+            //else
+            //    showerPs.Stop();
     }
 
-    /*private void OnTriggerStay2D(Collider2D other) {
-        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-            if(other.name == "RHand" || other.name == "LHand")
-                timeStep -= Time.deltaTime;
-        }
-            
-        if(timeStep <= 0){
-            if(other.name == "RHand" || other.name == "LHand"){
-                collided = true;  
-            } 
-        }
-    }*/
-
     private void OnMouseUp() {
+        //showerPs.Stop();
         sShower.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;

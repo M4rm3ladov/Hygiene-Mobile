@@ -8,18 +8,28 @@ public class SinkSoapController : MonoBehaviour
     private bool collided = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
-    private bool isDragged = false;    
+    private bool isDragged = false;   
+    private ParticleSystem bubblePs; 
 
     private float timeStep = 2f;
     //private int counter;
     private void Start() {
         sSoap = GetComponent<SpriteRenderer>();
+        bubblePs = GetComponentInChildren<ParticleSystem>();
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.name != "RHand" || other.name != "LHand")
+            bubblePs.Stop();
     }
 
     private void OnTriggerStay2D(Collider2D other) {
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-            if(other.name == "RHand" || other.name == "LHand")
+            if(other.name == "RHand" || other.name == "LHand"){
+                bubblePs.Play();
                 timeStep -= Time.deltaTime;
+            }
+            else
+                bubblePs.Stop();
         }
             
         if(timeStep <= 0){

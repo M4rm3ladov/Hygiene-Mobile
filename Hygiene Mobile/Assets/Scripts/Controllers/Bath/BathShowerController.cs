@@ -24,13 +24,14 @@ public class BathShowerController : MonoBehaviour
             showerPs.Stop();
     }
     private void OnTriggerStay2D(Collider2D other) {
-        //if(Input.touchCount == 1){// && Input.GetTouch(0).phase == TouchPhase.Moved){
+        if(Input.touchCount == 1 ) {
+        //Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Hair")
                 showerPs.Play();
-            //else
-            //    showerPs.Stop();
+        }
+        else
+            showerPs.Stop();
     }
-
     private void OnMouseUp() {
         //showerPs.Stop();
         sShower.sortingOrder = 0;

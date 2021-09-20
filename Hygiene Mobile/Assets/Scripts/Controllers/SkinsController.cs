@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SkinsController : MonoBehaviour
 {
     #region declarations
-    [SerializeField]
+    //[SerializeField]
     SkinsManager skinsManager;
     [SerializeField]
     MonetaryManager monetaryManager;
@@ -49,6 +49,8 @@ public class SkinsController : MonoBehaviour
     #region start
     void Start()
     {
+        skinsManager = GameObject.Find("Body").GetComponent<SkinsManager>();
+
         Button btnLeft = LeftButton.GetComponent<Button>();
         btnLeft.onClick.AddListener(PreviousOption);
 
@@ -66,20 +68,39 @@ public class SkinsController : MonoBehaviour
 
         Button btnEquip = EquipButton.GetComponent<Button>();
         btnEquip.onClick.AddListener(EquipItem);
-        //item names to dictionary
-        hairNames.Add(0,"Bald");
-        hairNames.Add(1,"Emo");
-        hairNames.Add(2,"Head Band");
-        hairNames.Add(3,"Hat");
-        hairNames.Add(4,"Rock");
-        hairNames.Add(5,"Oppa");
 
-        clothesNames.Add(0,"Sando");
-        clothesNames.Add(1,"Casual");
-        clothesNames.Add(2,"Sporty");
-        clothesNames.Add(3,"Jumper");
-        clothesNames.Add(4,"Super Hero");
-        clothesNames.Add(5,"Tuxedo");
+        int gender = PlayerPrefs.GetInt("gender");
+        if(gender == 0){
+            //item names to dictionary
+            hairNames.Add(0,"Bald");
+            hairNames.Add(1,"Emo");
+            hairNames.Add(2,"Head Band");
+            hairNames.Add(3,"Hat");
+            hairNames.Add(4,"Rock");
+            hairNames.Add(5,"Oppa");
+
+            clothesNames.Add(0,"Sando");
+            clothesNames.Add(1,"Casual");
+            clothesNames.Add(2,"Sporty");
+            clothesNames.Add(3,"Jumper");
+            clothesNames.Add(4,"Super Hero");
+            clothesNames.Add(5,"Tuxedo");
+        }else if(gender == 1){
+            hairNames.Add(0,"Ponytail");
+            hairNames.Add(1,"Ox horns");
+            hairNames.Add(2,"Short");
+            hairNames.Add(3,"Hat");
+            hairNames.Add(4,"Amazon");
+            hairNames.Add(5,"Braided");
+
+            clothesNames.Add(0,"Sando");
+            clothesNames.Add(1,"Qipao");
+            clothesNames.Add(2,"Sporty");
+            clothesNames.Add(3,"Casual");
+            clothesNames.Add(4,"Super Woman");
+            clothesNames.Add(5,"Gown");
+
+        }
         //items bought to dictionary
         for (int i = 0; i < Player.BoughtSkins.Length; i++)
         {

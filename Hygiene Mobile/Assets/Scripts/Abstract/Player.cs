@@ -26,8 +26,8 @@ public class Player : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer(); 
-        Hygiene = data.hygiene;
-        Hunger = data.hunger;
+        Hygiene = 100;//data.hygiene;
+        Hunger = 100;//data.hunger;
         Energy = data.energy;
         SleepState = data.sleepState;
         LastIn = DateTime.Parse(data.lastIn);

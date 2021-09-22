@@ -6,9 +6,7 @@ using System;
 
 public class LampController : MonoBehaviour
 {
-    [SerializeField]
     SkinsManager skinsManager;
-    [SerializeField]
     PlayerController playerController;
     [SerializeField]
     private SpriteRenderer hair;
@@ -16,7 +14,7 @@ public class LampController : MonoBehaviour
     [SerializeField]
     private GameObject RoomLight;
     //Player Body for enabling and disabling initialization
-    [SerializeField]
+   // [SerializeField]
     private GameObject Body;
     //Head for sleeping initialization
     [SerializeField]
@@ -28,6 +26,16 @@ public class LampController : MonoBehaviour
     //loads sleep state of player
     private void Start() 
     {
+        if(PlayerPrefs.GetInt("gender") == 0){
+            Body = GameObject.Find("Player").transform.GetChild(0).gameObject;
+            skinsManager = GameObject.Find("Player").GetComponentInChildren<SkinsManager>();
+            playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        }
+        else if(PlayerPrefs.GetInt("gender") == 1){
+            Body = GameObject.Find("Girl").transform.GetChild(0).gameObject;
+            skinsManager = GameObject.Find("Girl").GetComponentInChildren<SkinsManager>();
+            playerController = GameObject.Find("Girl").GetComponent<PlayerController>();
+        }
         hair.sprite = skinsManager.HairSpriteOptions[Player.EquippedSkins[0]];
         //calculates the time last in and out then added the product to the energy
         _timeDifference = DateTime.Now - Player.LastIn;

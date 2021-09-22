@@ -14,12 +14,22 @@ public class EnergyManager : MonoBehaviour
     private TimeSpan _timeDifference;
     private void Start() 
     {
+        if(PlayerPrefs.GetInt("first") == 0)
+            SubtractEnergyPerDateTime();
+        UpdateEnergyBar();
+    }
+    private void OnApplicationPause(bool pauseStatus) {
+        if(pauseStatus == false){
+            SubtractEnergyPerDateTime();
+            UpdateEnergyBar();
+        }
+    }
+    private void SubtractEnergyPerDateTime(){
         _timeDifference = DateTime.Now - Player.LastIn;
         if(Player.SleepState == 1)
             Player.Energy -= (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
         if(Player.Energy < 0)
             Player.Energy = 0;
-        UpdateEnergyBar();
     }
 
     // Update is called once per frame

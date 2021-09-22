@@ -38,6 +38,7 @@ public class BrushingManager : MonoBehaviour
         textProgress.text = (ratio * 100).ToString("0") + "%";
     }
     public void FinishedClicked(){
+        Player.EatingStatus = 0;
         KitchenStatus.EatStatus = 0;
         KitchenStatus.ToothbrushStatus = 0;
         KitchenStatus.Started = false;
@@ -45,6 +46,7 @@ public class BrushingManager : MonoBehaviour
     }
     private void OnDestroy() {
         if(BrushingManager.ToothbrushStep == 5){
+            Player.EatingStatus = 0;
             KitchenStatus.EatStatus = 0;
             KitchenStatus.ToothbrushStatus = 0;
             KitchenStatus.Started = false;

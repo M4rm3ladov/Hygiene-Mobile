@@ -20,6 +20,11 @@ public class FileCheck : MonoBehaviour
         else
             _levelName = "Selection";
 
+        if(_levelName == "Bedroom")
+            PlayerPrefs.SetInt("first", 0);
+        else
+            PlayerPrefs.SetInt("first", 1);
+                 
         StartCoroutine(LoadLevel(_levelName));      
     }
     IEnumerator LoadLevel(string levelName){

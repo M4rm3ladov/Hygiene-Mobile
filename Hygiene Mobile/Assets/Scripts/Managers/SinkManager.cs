@@ -49,18 +49,26 @@ public class SinkManager: MonoBehaviour
         textProgress.text = (ratio * 100).ToString("0") + "%";
     }
     public void FinishClicked(){
-        if(KitchenStatus.EatStatus == 1)
+        if(KitchenStatus.EatStatus == 1){
+            Player.EatingStatus = 0;
             KitchenStatus.EatStatus = 0;
-        else if(KitchenStatus.EatStatus == 2)
-            KitchenStatus.ToothbrushStatus = 1; 
+        }
+        else if(KitchenStatus.EatStatus == 2){
+            Player.EatingStatus = 1;
+            KitchenStatus.ToothbrushStatus = 1;
+        } 
         SinkManager.HandWashStep = 0;
     }
     private void OnDestroy() {
         if(SinkManager.HandWashStep == 7){
-            if(KitchenStatus.EatStatus == 1)
+            if(KitchenStatus.EatStatus == 1){
+                Player.EatingStatus = 0;
                 KitchenStatus.EatStatus = 0;
-            else if(KitchenStatus.EatStatus == 2)
+            }
+            else if(KitchenStatus.EatStatus == 2){
+                Player.EatingStatus = 1;
                 KitchenStatus.ToothbrushStatus = 1;
+            }
         }
         SinkManager.HandWashStep = 0;
     }

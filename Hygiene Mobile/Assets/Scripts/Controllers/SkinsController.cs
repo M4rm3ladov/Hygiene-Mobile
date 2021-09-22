@@ -198,6 +198,7 @@ public class SkinsController : MonoBehaviour
     private void HairClick(){
         buttonOption = 0;
         currentOption = 0;
+        CheckHairBought();
         LoadDefaultClothes();
         ItemText.text = hairNames[defaultHair];
         HairButton.interactable = false;
@@ -206,6 +207,7 @@ public class SkinsController : MonoBehaviour
     private void ClothesClick(){        
         buttonOption = 1;
         currentOption = 0;
+        CheckClothesBought();
         LoadDefaultHair();
         ItemText.text = clothesNames[defaultClothes];
         ClothesButton.interactable = false;

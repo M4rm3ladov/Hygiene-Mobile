@@ -14,13 +14,22 @@ public class HungerManager : MonoBehaviour
     private TimeSpan _timeDifference;
     private void Start() 
     {
+        if(PlayerPrefs.GetInt("first") == 0)
+            SubtractHungerPerDateTime();
+        UpdateHungerBar();
+    }
+    private void OnApplicationPause(bool pauseStatus) {
+        if(pauseStatus == false){
+            SubtractHungerPerDateTime();
+            UpdateHungerBar();
+        }
+    }
+    private void SubtractHungerPerDateTime(){
         _timeDifference = DateTime.Now - Player.LastIn;
         Player.Hunger -= (float)(_hungerIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
         if(Player.Hunger < 0)
             Player.Hunger = 0;
-        UpdateHungerBar();
     }
-
     // Update is called once per frame
     void Update()
     {   

@@ -14,14 +14,22 @@ public class HygieneManager : MonoBehaviour
     private TimeSpan _timeDifference;
     private void Start() 
     {
+        if(PlayerPrefs.GetInt("first") == 0)
+            SubtractHygienePerDateTime();
+        UpdateHygieneBar();
+    }
+    private void OnApplicationPause(bool pauseStatus) {
+        if(pauseStatus == false){
+            SubtractHygienePerDateTime();
+            UpdateHygieneBar();
+        }
+    }
+    private void SubtractHygienePerDateTime(){
         _timeDifference = DateTime.Now - Player.LastIn;
         Player.Hygiene -= (float)(_hygieneIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
         if(Player.Hygiene < 0)
             Player.Hygiene = 0;
-        UpdateHygieneBar();
-    }
-
-    // Update is called once per frame
+    }    // Update is called once per frame
     void Update()
     {   
         //Reduce needs values per time passing of gameHour

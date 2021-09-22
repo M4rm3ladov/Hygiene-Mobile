@@ -17,6 +17,7 @@ public class PlayerData
     new int[6],
     new int[6]};
     public Dictionary<string, int> boughtFood = new Dictionary<string, int>();
+    public int eatingStatus;
     public PlayerData(Player player)
     {
         hygiene = Player.Hygiene;
@@ -39,5 +40,6 @@ public class PlayerData
             }      
         }
         boughtFood = Player.BoughtFood;
+        eatingStatus = Player.EatingStatus;
     }
 }

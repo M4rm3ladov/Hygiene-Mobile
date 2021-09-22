@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class Player : MonoBehaviour
     public static float Energy = 100;
     public static int SleepState = 1;
     public static DateTime LastIn;
-    public static float GoldCoins = 5000;
+    public static float GoldCoins = 1000;
     public static int[] EquippedSkins = new int[2]{0,0};
     public static int[][] BoughtSkins = new int[2][]{
         new int[6]{1,0,0,0,0,0},
         new int[6]{1,0,0,0,0,0}
     };
     public static Dictionary<string, int> BoughtFood = new Dictionary<string, int>();
+    public static int EatingStatus = 0;
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -24,8 +26,8 @@ public class Player : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer(); 
-        Hygiene = 100;//data.hygiene;
-        Hunger = 100;//data.hunger;
+        Hygiene = data.hygiene;
+        Hunger = data.hunger;
         Energy = data.energy;
         SleepState = data.sleepState;
         LastIn = DateTime.Parse(data.lastIn);
@@ -42,10 +44,18 @@ public class Player : MonoBehaviour
             }      
         }
         BoughtFood = data.boughtFood;
+        EatingStatus = data.eatingStatus;
     }
-    private void OnApplicationQuit() {
-        SavePlayer();
-    }
+    /*private void OnApplicationQuit() {
+        //SavePlayer();
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        if(currentScene.name == "Kitchen"){
+            if(KitchenStatus.EatStatus != 0 || KitchenStatus.ToothbrushStatus != 0){
+                Hygiene = Hygiene - 70f;
+            }
+        }
+    }*/
     private void OnApplicationPause(bool pauseStatus) {
         if(pauseStatus)
         {
@@ -56,15 +66,15 @@ public class Player : MonoBehaviour
         }
     }
     private void Awake() {
-        LoadPlayer();       
+        LoadPlayer();
+        if(EatingStatus == 1)
+            Hygiene = Hygiene - 70f;       
         Input.backButtonLeavesApp = true;
     }
-    private void OnDestroy() {
-        if(KitchenStatus.EatStatus != 0 || KitchenStatus.ToothbrushStatus != 0){
-            Debug.Log("Mabuling");
-            Hygiene = Hygiene - 70f;
-        }
+    /*private void OnDestroy() {
         SavePlayer();
+    }*/
+    private void Update() {
+         SavePlayer();
     }
-    
 }

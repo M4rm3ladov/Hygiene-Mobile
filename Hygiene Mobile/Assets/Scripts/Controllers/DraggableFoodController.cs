@@ -47,6 +47,8 @@ public class DraggableFoodController : MonoBehaviour
         isDragged = false;
         transform.position = spriteDragStartPosition;
         if(collided){
+            if(Player.Hunger >= hungerManager._max)
+                return;
             FeedTheChar();
             SubtractOrRemoveFoodItem();  
             CheckFoodStashCount();      
@@ -65,6 +67,7 @@ public class DraggableFoodController : MonoBehaviour
     }
     private void FeedTheChar(){
         int foodSpriteOptionsIterator = 0;
+        Player.EatingStatus = 1;
         KitchenStatus.EatStatus = 2;  
         KitchenStatus.ToothbrushStatus = 0;
         KitchenStatus.Started = true;
@@ -74,6 +77,8 @@ public class DraggableFoodController : MonoBehaviour
             if(foodSprite.name.ToString() == consumeFoodController.FoodIndex[consumeFoodController.CurrentOption])
             {
                 Player.Hunger += foodManager.FoodStats[foodSpriteOptionsIterator];
+                if(Player.Hunger > hungerManager._max)
+                    Player.Hunger = hungerManager._max;
                 hungerManager.UpdateHungerBar();
             }
                 

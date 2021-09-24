@@ -16,38 +16,39 @@ public class BathTowelController : MonoBehaviour
         sTowel = GetComponent<SpriteRenderer>();
     }
 
-    /*private void OnTriggerStay2D(Collider2D other) {
-        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-            if(other.name == "RHand" || other.name == "LHand")
+    private void OnTriggerStay2D(Collider2D other) {
+        //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            if(other.name == "Body")
                 timeStep -= Time.deltaTime;
-        }
+        //}
             
         if(timeStep <= 0){
-            if(other.name == "RHand" || other.name == "LHand"){
-                collided = true;  
+            if(other.name == "Body"){
+                BathroomManager.BathStep = 6; 
             } 
         }
-    }*/
+    }
 
     private void OnMouseUp() {
+        if(BathroomManager.BathStep < 5){
+            return;
+        }
         sTowel.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;
-        /*if(collided){
-            SinkManager.HandWashStep = 2;
-            collided = false;
-        }*/
     }
     private void OnMouseDown() 
     {
+        if(BathroomManager.BathStep < 5){
+            isDragged = false;
+            return;
+        }
         sTowel.sortingOrder = 1;
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         spriteDragStartPosition = transform.position;
     }
     private void OnMouseDrag() {
-        //if(SinkManager.HandWashStep != 1)
-        //    return;
         if(isDragged){
             transform.position = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
         }

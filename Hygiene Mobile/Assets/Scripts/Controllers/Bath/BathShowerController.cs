@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BathShowerController : MonoBehaviour
 {
+    [SerializeField]
+    BathShampooDispense bathShampooDispense;
     private ParticleSystem showerPs;
     private SpriteRenderer sShower;
-    private bool collided = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false;    
     float yAxis;
-
-    private float timeStep = 2f;
+    private float timeStep = 3f;
     //private int counter;
     private void Start() {
         sShower = GetComponent<SpriteRenderer>();
@@ -24,26 +24,44 @@ public class BathShowerController : MonoBehaviour
             showerPs.Stop();
     }
     private void OnTriggerStay2D(Collider2D other) {
-        if(Input.touchCount == 1 ) {
+        //if(Input.touchCount == 1 ) {
         //Input.GetTouch(0).phase == TouchPhase.Moved){
-            if(other.name == "Hair")
+            if(other.name == "Hair"){
                 showerPs.Play();
+                timeStep -= Time.deltaTime;
+            }
+        //}
+        //else
+          //  showerPs.Stop();
+
+        if(timeStep <= 0){
+            if(other.name == "Hair"){
+                if(BathroomManager.BathStep == 4){
+                    bathShampooDispense.FadeOutBubbles();
+                    BathroomManager.BathStep = 5;
+                }else if(BathroomManager.BathStep == 0)
+                    BathroomManager.BathStep = 1;
+            }
         }
-        else
-            showerPs.Stop();
     }
     private void OnMouseUp() {
+        //if(BathroomManager.BathStep < 4 && BathroomManager.BathStep != 0){
+         //   return;
+        //}
         //showerPs.Stop();
+        if(BathroomManager.BathStep == 1){
+            timeStep = 3f;
+        }
         sShower.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;
-        /*if(collided){
-            SinkManager.HandWashStep = 2;
-            collided = false;
-        }*/
     }
     private void OnMouseDown() 
     {
+        if(BathroomManager.BathStep > 0 && BathroomManager.BathStep < 4 || BathroomManager.BathStep >= 5){
+            return;
+            isDragged = false;
+        }
         sShower.sortingOrder = 1;
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -51,10 +69,7 @@ public class BathShowerController : MonoBehaviour
         yAxis = Input.mousePosition.y;
     }
     private void OnMouseDrag() {
-        //if(SinkManager.HandWashStep != 1)
-        //    return;
         if(isDragged){
-            //transform.position = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
             Vector3 mousePos = new Vector3(Input.mousePosition.x, yAxis, 0f);
             transform.position = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(mousePos) - mouseDragStartPosition);
         }

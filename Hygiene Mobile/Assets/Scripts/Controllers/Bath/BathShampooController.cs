@@ -30,6 +30,9 @@ public class BathShampooController : MonoBehaviour
     }*/
 
     private void OnMouseUp() {
+        if(BathroomManager.BathStep < 1){
+            return;
+        }
         sShampoo.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;
@@ -40,14 +43,16 @@ public class BathShampooController : MonoBehaviour
     }
     private void OnMouseDown() 
     {
+        if(BathroomManager.BathStep < 1 || BathroomManager.BathStep >= 2){
+            isDragged = false;
+            return;
+        }
         sShampoo.sortingOrder = 1;
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         spriteDragStartPosition = transform.position;
     }
     private void OnMouseDrag() {
-        //if(SinkManager.HandWashStep != 1)
-        //    return;
         if(isDragged){
             transform.position = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
         }

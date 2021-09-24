@@ -11,7 +11,7 @@ public class BathSoapController : MonoBehaviour
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false;    
 
-    private float timeStep = 2f;
+    private float timeStep = 10f;
     //private int counter;
     private void Start() {
         sSoap = GetComponent<SpriteRenderer>();
@@ -23,15 +23,27 @@ public class BathSoapController : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-            if(other.name == "Body")// || other.name == "LHand")
+        //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            if(other.name == "Body"){
+                timeStep -= Time.deltaTime;
                 bubblePs.Play();
-        }else
-           bubblePs.Stop();
-        
+            }
+                
+        //}else
+          // bubblePs.Stop();
+
+        if(timeStep <= 0){
+            if(other.name == "Body"){
+                BathroomManager.BathStep = 3f;
+            } 
+        }
     }
 
     private void OnMouseUp() {
+        if(BathroomManager.BathStep < 2){
+            //isDragged = false;
+            return;
+        }
         sSoap.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;
@@ -42,6 +54,10 @@ public class BathSoapController : MonoBehaviour
     }
     private void OnMouseDown() 
     {
+        if(BathroomManager.BathStep < 2 || BathroomManager.BathStep >= 3){
+            isDragged = false;
+            return;
+        }
         sSoap.sortingOrder = 1;
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

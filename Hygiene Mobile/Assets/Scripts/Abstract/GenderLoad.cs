@@ -5,19 +5,27 @@ using UnityEngine;
 public class GenderLoad : MonoBehaviour
 {
     [SerializeField]
-    GameObject Boy;
+    GameObject boy;
     [SerializeField]
-    GameObject Girl;
+    GameObject girl;
+    public GameObject Boy{
+        get{return boy;}
+        set{boy = value;}
+    }
+    public GameObject Girl{
+        get{return girl;}
+        set{girl = value;}
+    }
     private int gender;
     // Start is called before the first frame update
     void Awake() {
         gender = PlayerPrefs.GetInt("gender");
 
         if(gender == 0){
-            Boy.active = true;
+            boy.SetActive(true);
             Debug.Log("invoked");
         } 
         else if(gender == 1)
-            Girl.active  = true;
+            girl.SetActive(true);
     }
 }

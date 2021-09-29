@@ -12,7 +12,7 @@ public class BathShowerController : MonoBehaviour
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false;    
     float yAxis;
-    private float timeStep = 3f;
+    private float timeStep = 1f;
     //private int counter;
     private void Start() {
         sShower = GetComponent<SpriteRenderer>();
@@ -24,6 +24,9 @@ public class BathShowerController : MonoBehaviour
             showerPs.Stop();
     }
     private void OnTriggerStay2D(Collider2D other) {
+        if(BathroomManager.BathStep == 1 || BathroomManager.BathStep == 5)
+            return;
+  
         //if(Input.touchCount == 1 ) {
         //Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Hair"){
@@ -35,20 +38,19 @@ public class BathShowerController : MonoBehaviour
           //  showerPs.Stop();
 
         if(timeStep <= 0){
-            if(other.name == "Hair"){
-                if(BathroomManager.BathStep == 4){
+            timeStep = 1f;
+                if(BathroomManager.BathStep < 1){
+                    BathroomManager.BathStep += .25f;
+                    return;
+                }
+                if(BathroomManager.BathStep == 4)
                     bathShampooDispense.FadeOutBubbles();
-                    BathroomManager.BathStep = 5;
-                }else if(BathroomManager.BathStep == 0)
-                    BathroomManager.BathStep = 1;
-            }
+                if(BathroomManager.BathStep < 5){
+                    BathroomManager.BathStep += .25f;
+                }
         }
     }
     private void OnMouseUp() {
-        //if(BathroomManager.BathStep < 4 && BathroomManager.BathStep != 0){
-         //   return;
-        //}
-        //showerPs.Stop();
         if(BathroomManager.BathStep == 1){
             timeStep = 3f;
         }
@@ -58,9 +60,8 @@ public class BathShowerController : MonoBehaviour
     }
     private void OnMouseDown() 
     {
-        if(BathroomManager.BathStep > 0 && BathroomManager.BathStep < 4 || BathroomManager.BathStep >= 5){
+        if(BathroomManager.BathStep == 1 && BathroomManager.BathStep < 4 || BathroomManager.BathStep >= 5){
             return;
-            isDragged = false;
         }
         sShower.sortingOrder = 1;
         isDragged = true;

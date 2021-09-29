@@ -1206,7 +1206,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.24324325
+  orthographic size: 0.3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1369,8 +1369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a9174a7c03f054a97af9af5d26ca0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boy: {fileID: 1496683712720500319}
-  Girl: {fileID: 5518195857783368052}
+  boy: {fileID: 1496683712720500319}
+  girl: {fileID: 5518195857783368052}
 --- !u!4 &1732457469
 Transform:
   m_ObjectHideFlags: 0

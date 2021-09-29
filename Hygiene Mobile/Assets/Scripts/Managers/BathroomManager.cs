@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class BathroomManager: MonoBehaviour
 {
+    public Animator transition;
+    [SerializeField]
+    private float _transitionTime = 1f;
+    [SerializeField]
     public static float BathStep = 0;
     [SerializeField]
     private Image currentProgress;
@@ -17,7 +21,7 @@ public class BathroomManager: MonoBehaviour
     private GameObject finishButton;
     SkinsManager skinsManager;
 
-    private float _max = 6;
+    private float _max = 10;
     
     public Image CurrentProgress{
         get{ return currentProgress; }
@@ -36,7 +40,7 @@ public class BathroomManager: MonoBehaviour
         UpdateProgressBar();
     }
     private void Update() {
-        if(BathStep == 6){
+        if(BathStep == 10){
             finishButton.SetActive(true);
             Player.Hygiene += 50f;
         }
@@ -50,7 +54,15 @@ public class BathroomManager: MonoBehaviour
     }
     public void FinishClicked(){
         BathStep = 0;
+        StartCoroutine(LoadLevel("Closet"));
     }
+
+     IEnumerator LoadLevel(string levelName){
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(_transitionTime);
+        SceneManager.LoadScene(levelName);
+    }
+
     private void OnDestroy() {
         BathStep = 0;
     }

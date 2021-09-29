@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BathScrubController : MonoBehaviour
 {
-     private List<GameObject> virus = new List<GameObject>();    private SpriteRenderer sScrub;
+    private List<GameObject> virus = new List<GameObject>();    
+    private SpriteRenderer sScrub;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false; 
-    private bool match = false;   
     private string vName;
     private int index;
     private float addend = .125f;
@@ -28,18 +28,15 @@ public class BathScrubController : MonoBehaviour
         {
             index = i;
             if(virus[i].name == other.name){
-                match = true;
                 vName = virus[i].name;
                 break;
             }
         }
 
-        if(match){
             //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
                 if(vName == other.name)
                     timeStep -= Time.deltaTime;  
             //}
-        }
 
         if(timeStep <= 0){
             virus[index].SetActive(false); 
@@ -60,7 +57,6 @@ public class BathScrubController : MonoBehaviour
     private void OnMouseDown() 
     {
         if(BathroomManager.BathStep < 3 || BathroomManager.BathStep >= 4){
-            isDragged = false;
             return;
         }
         sScrub.sortingOrder = 1;

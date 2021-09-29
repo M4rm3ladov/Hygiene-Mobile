@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DraggableFoodController : MonoBehaviour
 {
-    [SerializeField]
     SkinsManager skinsManager;
     [SerializeField]
     FoodManager foodManager;
@@ -22,6 +21,9 @@ public class DraggableFoodController : MonoBehaviour
     private Vector3 spriteDragStartPosition;
     private bool collided = false;
     private List<string> FoodIndex = new List<string>();
+    private void Start() {
+        skinsManager = GameObject.Find("Body").GetComponent<SkinsManager>();
+    }
     private void OnMouseDown() 
     {
         isDragged = true;
@@ -73,7 +75,10 @@ public class DraggableFoodController : MonoBehaviour
         KitchenStatus.Started = true;
         foreach (Sprite foodSprite in foodManager.FoodSpriteOptions)
         {
-            playerController.AnimTransition.SetTrigger("Eat");
+            if(PlayerPrefs.GetInt("gender") == 0)
+                playerController.AnimTransition.SetTrigger("Eat");
+            else if(PlayerPrefs.GetInt("gender") == 1)
+                GameObject.Find("Girl").GetComponent<Animator>().SetTrigger("Eat");
             if(foodSprite.name.ToString() == consumeFoodController.FoodIndex[consumeFoodController.CurrentOption])
             {
                 Player.Hunger += foodManager.FoodStats[foodSpriteOptionsIterator];

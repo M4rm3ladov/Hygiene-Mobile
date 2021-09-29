@@ -6,12 +6,11 @@ public class BathSoapController : MonoBehaviour
 {
     private ParticleSystem bubblePs;
     private SpriteRenderer sSoap;
-    private bool collided = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false;    
 
-    private float timeStep = 10f;
+    private float timeStep = 1.5f;
     //private int counter;
     private void Start() {
         sSoap = GetComponent<SpriteRenderer>();
@@ -23,6 +22,8 @@ public class BathSoapController : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other) {
+        if(BathroomManager.BathStep == 3)
+            return;
         //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Body"){
                 timeStep -= Time.deltaTime;
@@ -33,29 +34,22 @@ public class BathSoapController : MonoBehaviour
           // bubblePs.Stop();
 
         if(timeStep <= 0){
-            if(other.name == "Body"){
-                BathroomManager.BathStep = 3f;
-            } 
+            timeStep = 1.5f;
+            BathroomManager.BathStep += .25f;
         }
     }
 
     private void OnMouseUp() {
         if(BathroomManager.BathStep < 2){
-            //isDragged = false;
             return;
         }
         sSoap.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;
-        /*if(collided){
-            SinkManager.HandWashStep = 2;
-            collided = false;
-        }*/
     }
     private void OnMouseDown() 
     {
         if(BathroomManager.BathStep < 2 || BathroomManager.BathStep >= 3){
-            isDragged = false;
             return;
         }
         sSoap.sortingOrder = 1;
@@ -64,8 +58,6 @@ public class BathSoapController : MonoBehaviour
         spriteDragStartPosition = transform.position;
     }
     private void OnMouseDrag() {
-        //if(SinkManager.HandWashStep != 1)
-        //    return;
         if(isDragged){
             transform.position = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
         }

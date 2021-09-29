@@ -5,12 +5,10 @@ using UnityEngine;
 public class BathShampooController : MonoBehaviour
 {
     private SpriteRenderer sShampoo;
-    private bool collided = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false;    
 
-    private float timeStep = 2f;
     //private int counter;
     private void Start() {
         sShampoo = GetComponent<SpriteRenderer>();
@@ -44,7 +42,6 @@ public class BathShampooController : MonoBehaviour
     private void OnMouseDown() 
     {
         if(BathroomManager.BathStep < 1 || BathroomManager.BathStep >= 2){
-            isDragged = false;
             return;
         }
         sShampoo.sortingOrder = 1;

@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,14 +12,13 @@ public class BristleController : MonoBehaviour
     VirusManager virusManager;
     [SerializeField]
     VirusManager virusManager2;
-    private float timeStep = 1.5f;
-    private bool match = false;
+    private float timeStep = .5f;
     private  string vName;
     private int index;
     private float addend = 0.047f;
-    private void OnTriggerEnter2D(Collider2D other) {
-        timeStep = 1.5f;
-    }
+    /*private void OnTriggerEnter2D(Collider2D other) {
+        timeStep = 1f;
+    }*/
     private void OnTriggerStay2D(Collider2D other) {
         if(mouthManager.Mouth[0].activeSelf){
             PlayFrontTeethMecanics(other);
@@ -67,10 +66,10 @@ public class BristleController : MonoBehaviour
             toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[2];
         }
         if(other.name == "cheekL"){
-            toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[3];
+            toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[2];
         }
         if(other.name == "cheekR"){
-            toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[4];
+            toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[2];
         }
 
         RemoveVirus(virusManager2, other);
@@ -80,25 +79,23 @@ public class BristleController : MonoBehaviour
         {
             index = i;
             if(v.Virus[i].name == other.name){
-                match = true;
                 vName = v.Virus[i].name;
                 break;
             }
         }
 
-        if(match){
-            if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+
+    //    if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
                 if(vName == other.name)
                     timeStep -= Time.deltaTime;  
-            }
-        }
+      //      }
+        
 
         if(timeStep <= 0){
             v.Virus[index].SetActive(false); 
             v.Virus.RemoveAt(index); 
-            timeStep = 1.5f;
+            timeStep = .5f;
             BrushingManager.ToothbrushStep += addend; 
-            Debug.Log(BrushingManager.ToothbrushStep);
         }
     }
 }

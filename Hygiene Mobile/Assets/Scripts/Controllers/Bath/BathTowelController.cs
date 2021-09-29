@@ -4,34 +4,48 @@ using UnityEngine;
 
 public class BathTowelController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject Bg1;
+    [SerializeField]
+    private GameObject Bg2;
+    [SerializeField]
+    private GameObject Boy;
+    [SerializeField]
+    private GameObject Girl;
     private SpriteRenderer sTowel;
-    private bool collided = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false;    
-
-    private float timeStep = 2f;
-    //private int counter;
+    private float timeStep = .75f;
     private void Start() {
         sTowel = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerStay2D(Collider2D other) {
+        if(BathroomManager.BathStep == 6)
+            return;
         //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Body")
                 timeStep -= Time.deltaTime;
         //}
             
-        if(timeStep <= 0){
-            if(other.name == "Body"){
-                BathroomManager.BathStep = 6; 
-            } 
+        if(timeStep <= 0){  
+            timeStep = .75f;
+            BathroomManager.BathStep += .25f; 
         }
     }
 
     private void OnMouseUp() {
         if(BathroomManager.BathStep < 5){
             return;
+        }
+        if(BathroomManager.BathStep == 6){
+            if(PlayerPrefs.GetInt("gender") == 0)
+                Boy.SetActive(false);
+            else if(PlayerPrefs.GetInt("gender") == 1)
+                Girl.SetActive(false);
+            Bg2.SetActive(true);
+            Bg1.SetActive(false);
         }
         sTowel.sortingOrder = 0;
         isDragged = false;
@@ -40,7 +54,6 @@ public class BathTowelController : MonoBehaviour
     private void OnMouseDown() 
     {
         if(BathroomManager.BathStep < 5){
-            isDragged = false;
             return;
         }
         sTowel.sortingOrder = 1;

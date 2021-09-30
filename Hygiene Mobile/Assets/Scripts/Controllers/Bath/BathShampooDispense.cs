@@ -34,8 +34,8 @@ public class BathShampooDispense : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-            if(other.name == "leftH"){// || other.name == "LHand")
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            if(other.name == "leftH"){
                 if(!LTrigger){
                     StartCoroutine(FadeIn(leftSbubble));
                     LTrigger = true;
@@ -48,8 +48,7 @@ public class BathShampooDispense : MonoBehaviour
                     BathroomManager.BathStep += .5f;
                 }
             }
-        //}
-           
+        }         
     }
     public void FadeOutBubbles(){
         StartCoroutine(FadeOut(rightSbubble));

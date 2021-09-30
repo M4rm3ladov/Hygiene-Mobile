@@ -9,23 +9,9 @@ public class BathShampooController : MonoBehaviour
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false;    
 
-    //private int counter;
     private void Start() {
         sShampoo = GetComponent<SpriteRenderer>();
     }
-
-    /*private void OnTriggerStay2D(Collider2D other) {
-        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-            if(other.name == "RHand" || other.name == "LHand")
-                timeStep -= Time.deltaTime;
-        }
-            
-        if(timeStep <= 0){
-            if(other.name == "RHand" || other.name == "LHand"){
-                collided = true;  
-            } 
-        }
-    }*/
 
     private void OnMouseUp() {
         if(BathroomManager.BathStep < 1){
@@ -34,10 +20,6 @@ public class BathShampooController : MonoBehaviour
         sShampoo.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;
-        /*if(collided){
-            SinkManager.HandWashStep = 2;
-            collided = false;
-        }*/
     }
     private void OnMouseDown() 
     {

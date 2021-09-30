@@ -27,15 +27,14 @@ public class BathShowerController : MonoBehaviour
         if(BathroomManager.BathStep == 1 || BathroomManager.BathStep == 5)
             return;
   
-        //if(Input.touchCount == 1 ) {
-        //Input.GetTouch(0).phase == TouchPhase.Moved){
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Hair"){
                 showerPs.Play();
                 timeStep -= Time.deltaTime;
             }
-        //}
-        //else
-          //  showerPs.Stop();
+        }
+        else
+          showerPs.Stop();
 
         if(timeStep <= 0){
             timeStep = 1f;
@@ -43,7 +42,7 @@ public class BathShowerController : MonoBehaviour
                     BathroomManager.BathStep += .25f;
                     return;
                 }
-                if(BathroomManager.BathStep == 4)
+                if(BathroomManager.BathStep == 4.75f)
                     bathShampooDispense.FadeOutBubbles();
                 if(BathroomManager.BathStep < 5){
                     BathroomManager.BathStep += .25f;
@@ -60,7 +59,7 @@ public class BathShowerController : MonoBehaviour
     }
     private void OnMouseDown() 
     {
-        if(BathroomManager.BathStep == 1 && BathroomManager.BathStep < 4 || BathroomManager.BathStep >= 5){
+        if(BathroomManager.BathStep > 0 && BathroomManager.BathStep < 4 || BathroomManager.BathStep >= 5){
             return;
         }
         sShower.sortingOrder = 1;

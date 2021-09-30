@@ -27,11 +27,10 @@ public class QTipCottonController : MonoBehaviour
             }
         }
 
-            //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-                if(vName == other.name)
-                    timeStep -= Time.deltaTime;  
-            //}
-        
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            if(vName == other.name)
+                timeStep -= Time.deltaTime;  
+        } 
 
         if(timeStep <= 0){
             virus[index].SetActive(false); 

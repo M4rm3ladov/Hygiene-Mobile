@@ -40,9 +40,12 @@ public class BathroomManager: MonoBehaviour
         UpdateProgressBar();
     }
     private void Update() {
+        if(BathStep > 10)
+            return;
         if(BathStep == 10){
-            finishButton.SetActive(true);
-            Player.Hygiene += 50f;
+            Player.Hygiene += 100;
+            BathStep += .01f;
+            finishButton.SetActive(true); 
         }
         UpdateProgressBar();
     }

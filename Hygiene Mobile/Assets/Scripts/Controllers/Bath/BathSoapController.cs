@@ -9,9 +9,7 @@ public class BathSoapController : MonoBehaviour
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false;    
-
     private float timeStep = 1.5f;
-    //private int counter;
     private void Start() {
         sSoap = GetComponent<SpriteRenderer>();
         bubblePs = GetComponentInChildren<ParticleSystem>();
@@ -24,14 +22,14 @@ public class BathSoapController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if(BathroomManager.BathStep == 3)
             return;
-        //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Body"){
                 timeStep -= Time.deltaTime;
                 bubblePs.Play();
             }
                 
-        //}else
-          // bubblePs.Stop();
+        }else
+          bubblePs.Stop();
 
         if(timeStep <= 0){
             timeStep = 1.5f;

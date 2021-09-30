@@ -15,16 +15,12 @@ public class QTipController : MonoBehaviour
         qTip = GetComponent<SpriteRenderer>();
     }
     private void OnMouseUp() {
-        Debug.Log(BathroomManager.BathStep);
         if(BathroomManager.BathStep < 6)
             return;
         if(BathroomManager.BathStep == 7){
             GameObject.Find("faceSprite").SetActive(false);
             Hands.SetActive(true);
         }
-        /*if(BathroomManager.BathStep < 5){
-            return;
-        }*/
         qTip.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;

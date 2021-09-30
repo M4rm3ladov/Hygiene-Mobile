@@ -27,8 +27,13 @@ public class BrushingManager : MonoBehaviour
         UpdateProgressBar();
     }
     private void Update() {
-        if(ToothbrushStep == 5)
+        if(ToothbrushStep > 5)
+            return;
+        if(ToothbrushStep == 5){
+            Player.Hygiene += 5;
+            ToothbrushStep += .01f;
             finishButton.SetActive(true);
+        }
         UpdateProgressBar();
     }
     public void UpdateProgressBar()

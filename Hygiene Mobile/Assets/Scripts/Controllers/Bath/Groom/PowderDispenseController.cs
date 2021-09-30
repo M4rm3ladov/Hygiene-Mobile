@@ -17,14 +17,12 @@ public class PowderDispenseController : MonoBehaviour
         if(BathroomManager.BathStep == 10){
             return;
         }
-            //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-                if(other.name == "Body"){
-                    powderPs.Play();
-                    timeStep -= Time.deltaTime;  
-                }
-            //}
-        
-
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            if(other.name == "Body"){
+                powderPs.Play();
+                timeStep -= Time.deltaTime;  
+            }
+        }
         if(timeStep <= 0){ 
             timeStep = .75f;
             BathroomManager.BathStep += .125f;

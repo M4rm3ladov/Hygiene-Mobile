@@ -24,10 +24,10 @@ public class BathTowelController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if(BathroomManager.BathStep == 6)
             return;
-        //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Body")
                 timeStep -= Time.deltaTime;
-        //}
+        }
             
         if(timeStep <= 0){  
             timeStep = .75f;

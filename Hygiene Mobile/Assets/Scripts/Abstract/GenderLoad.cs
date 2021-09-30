@@ -23,7 +23,6 @@ public class GenderLoad : MonoBehaviour
 
         if(gender == 0){
             boy.SetActive(true);
-            Debug.Log("invoked");
         } 
         else if(gender == 1)
             girl.SetActive(true);

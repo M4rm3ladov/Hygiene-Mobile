@@ -36,10 +36,13 @@ public class SinkManager: MonoBehaviour
         UpdateProgressBar();
     }
     private void Update() {
-        //if(HandWashStep > 0)
-         //   progressBar.SetActive(true);
-        if(HandWashStep == 7)
+        if(HandWashStep > 7)
+            return;
+        if(HandWashStep == 7){
+            Player.Hygiene += 5;
+            HandWashStep += .01f;
             finishButton.SetActive(true);
+        }
         UpdateProgressBar();
     }
     public void UpdateProgressBar()

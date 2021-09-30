@@ -34,18 +34,18 @@ public class ClipperBladeController : MonoBehaviour
                 break;
             }
         }
-            //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-        if(nName == other.name){
-            //nName = "";
-            clipperA.enabled = true;
-            nailsManager.Nails[index].SetActive(false); 
-            nailsManager.Nails.RemoveAt(index);
-            if(nailsManager.Nails.Count == 0){
-                BathroomManager.BathStep = 8; 
-                return;
-            }
-            BathroomManager.BathStep += addend;
-        }        
-            //}
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            if(nName == other.name){
+                //nName = "";
+                clipperA.enabled = true;
+                nailsManager.Nails[index].SetActive(false); 
+                nailsManager.Nails.RemoveAt(index);
+                if(nailsManager.Nails.Count == 0){
+                    BathroomManager.BathStep = 8; 
+                    return;
+                }
+                BathroomManager.BathStep += addend;
+            }        
+        }
     }
 }

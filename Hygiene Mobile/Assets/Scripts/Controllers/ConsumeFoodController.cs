@@ -58,7 +58,6 @@ public class ConsumeFoodController : MonoBehaviour
     public void BuyFood(){
         if(CheckFoodExistsInDictionary())
             Player.BoughtFood.Add(foodManager.Food.sprite.name, 1);
-        Debug.Log(Player.BoughtFood[foodManager.Food.sprite.name]);
         monetaryManager.ComputeBoughtItem(foodManager.FoodPrices[currentOption]);
     }
     private bool CheckFoodExistsInDictionary(){

@@ -2,54 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class NeedsController : MonoBehaviour
 {
-    //Bar Image initialization
-    [SerializeField] 
-    private Image CurrentHygiene;
-    [SerializeField]
-    private Image CurrentHunger;
-    //[SerializeField]
-    //private Image CurrentEnergy;
-    //Bar Text initialization
-    [SerializeField]
+    Player player;
+    public float _max = 100;
+    //Hygiene
+    public Image CurrentHygiene;
     public Text HygieneText;
-    [SerializeField]
+    public float _hygieneTickRate;
+    public float _hygieneIncrease;
+    //Hunger
+    public Image CurrentHunger;
     public Text HungerText;
-    [SerializeField]
-    //public Text EnergyText;
-    //Maximum amount of a need
-    private float _max = 100;
-    //Satifiers Button initialization
-    [SerializeField]
-    private Button Feed;
-    [SerializeField]
-    private Button Hygiene;
-    //[SerializeField]
-    //private Button Play;
-    //Bar tick rate initialization
-    [SerializeField]
-    private float _hygieneTickRate;
-    [SerializeField]
-    private float _hungerTickRate;
-    //[SerializeField]
-    //private float _energyTickRate;
-    //[SerializeField]
-    //private float _energyIncrease;
-    // Start is called before the first frame update
+    public float _hungerTickRate;
+    public float _hungerIncrease;
+    //Energy
+    public Image CurrentEnergy;
+    public Text EnergyText;
+    public float _energyTickRate;
+    public float _energyIncrease;
+    private TimeSpan _timeDifference;
     void Start()
     {
-        Button btnHygiene = Hygiene.GetComponent<Button>();
-        btnHygiene.onClick.AddListener(CleanTheChar);
+        if(PlayerPrefs.GetInt("gender") == 0)
+            player = GameObject.Find("Player").GetComponent<Player>();
+        if(PlayerPrefs.GetInt("gender") == 1)
+            player = GameObject.Find("Girl").GetComponent<Player>();
 
-        Button btnFeed = Feed.GetComponent<Button>();
-        btnFeed.onClick.AddListener(FeedTheChar);
-
-        //Button btnPlay = Play.GetComponent<Button>();
-        //btnPlay.onClick.AddListener(RestTheChar);
+        if(PlayerPrefs.GetInt("first") == 0){
+            SubtractHygienePerDateTime();
+            SubtractHungerPerDateTime();
+            SubtractEnergyPerDateTime();
+        }
+        UpdateHygieneBar();
+        UpdateHungerBar();
+        UpdateEnergyBar();
     }
-
+    private void OnApplicationFocus(bool focusStatus) {
+        if(focusStatus){
+            player.LoadPlayer();
+            if(PlayerPrefs.GetInt("first") == 0){
+                SubtractHygienePerDateTime();
+                SubtractHungerPerDateTime();
+                SubtractEnergyPerDateTime();
+            }
+            UpdateHygieneBar();
+            UpdateHungerBar();
+            UpdateEnergyBar();
+            //Debug.Log("negus" + Player.Hygiene);
+        }//else
+            
+    }
+    private void OnDestroy() {
+        //Player.LastIn = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
+    }
     // Update is called once per frame
     void Update()
     {   
@@ -58,12 +66,32 @@ public class NeedsController : MonoBehaviour
         {
             ChangeHygiene();
             ChangeHunger();
-            //ChangeEnergy();
+            if(Player.SleepState == 1)
+                ChangeEnergy();
         }  
         //Update UI
-        UpdateCleanBar();
+        UpdateHygieneBar();
         UpdateHungerBar();
-        //UpdateEnergyBar();
+        UpdateEnergyBar();
+    }
+    private void SubtractHygienePerDateTime(){
+        _timeDifference = DateTime.Now - DateTime.Parse(Player.LastIn);
+        Player.Hygiene -= (float)(_hygieneIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
+        if(Player.Hygiene < 0)
+            Player.Hygiene = 0;
+    }
+    private void SubtractHungerPerDateTime(){
+        _timeDifference = DateTime.Now - DateTime.Parse(Player.LastIn);
+        Player.Hunger -= (float)(_hungerIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
+        if(Player.Hunger < 0)
+            Player.Hunger = 0;
+    }
+    private void SubtractEnergyPerDateTime(){
+        _timeDifference = DateTime.Now - DateTime.Parse(Player.LastIn);
+        if(Player.SleepState == 1)
+            Player.Energy -= (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
+        if(Player.Energy < 0)
+            Player.Energy = 0;
     }
     #region Reduce Needs
     private void ChangeHygiene()
@@ -82,37 +110,37 @@ public class NeedsController : MonoBehaviour
             Player.Hunger = 0;
         }
     }
-    /*private void ChangeEnergy()
+    private void ChangeEnergy()
     {
         Player.Energy -= _energyTickRate * Time.deltaTime;
         if(Player.Energy < 0 )
         {
             Player.Energy = 0;
         }
-    }*/
+    }
     #endregion
     #region Reduce Needs Bar
-    private void UpdateCleanBar()
+    public void UpdateHygieneBar()
     {
         float ratio = Player.Hygiene / _max;
         CurrentHygiene.rectTransform.localScale = new Vector3(ratio, 1, 1);
         HygieneText.text = (ratio * 100).ToString("0") + "%";
     }
-    private void UpdateHungerBar()
+    public void UpdateHungerBar()
     {
         float ratio = Player.Hunger / _max;
         CurrentHunger.rectTransform.localScale = new Vector3(ratio, 1, 1);
         HungerText.text = (ratio * 100).ToString("0") + "%";
     }
-    /*private void UpdateEnergyBar()
+    public void UpdateEnergyBar()
     {
         float ratio = Player.Energy / _max;
         CurrentEnergy.rectTransform.localScale = new Vector3(ratio, 1, 1);
         EnergyText.text = (ratio * 100).ToString("0") + "%";
-    }*/
+    }
     #endregion
     #region Satisfying Needs
-    private void CleanTheChar()
+    /*private void CleanTheChar()
     {
         Debug.Log("Clean clicked");
         Player.Hygiene += 10;

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class FoodController : MonoBehaviour
 {
+    Player player;
     [SerializeField]
     FoodManager foodManager;
     [SerializeField]
@@ -17,6 +18,7 @@ public class FoodController : MonoBehaviour
     private Text PriceText;
     private int currentOption = 0;
     private void Start() {
+        player = GetComponent<Player>();
         LoadFoodInfo();
     }
     public void PreviousOption(){
@@ -41,6 +43,7 @@ public class FoodController : MonoBehaviour
         if(CheckFoodExistsInDictionary())
             Player.BoughtFood.Add(foodManager.Food.sprite.name, 1);
         monetaryManager.ComputeBoughtItem(foodManager.FoodPrices[currentOption]);
+        player.SavePlayer();
     }
     private bool CheckFoodExistsInDictionary(){
         if(Player.BoughtFood.ContainsKey(foodManager.Food.sprite.name)){

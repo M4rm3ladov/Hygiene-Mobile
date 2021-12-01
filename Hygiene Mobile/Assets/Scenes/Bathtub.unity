@@ -40101,8 +40101,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6448886126530881258}
-        m_MethodName: LoadNextLevel
+      - m_Target: {fileID: 1375014714}
+        m_MethodName: BackClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

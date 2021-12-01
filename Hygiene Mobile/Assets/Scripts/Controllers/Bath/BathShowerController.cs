@@ -50,8 +50,8 @@ public class BathShowerController : MonoBehaviour
         }
     }
     private void OnMouseUp() {
-        if(BathroomManager.BathStep == 1){
-            timeStep = 3f;
+        if(BathroomManager.BathStep > 1 && BathroomManager.BathStep < 5){
+            return;
         }
         sShower.sortingOrder = 0;
         isDragged = false;

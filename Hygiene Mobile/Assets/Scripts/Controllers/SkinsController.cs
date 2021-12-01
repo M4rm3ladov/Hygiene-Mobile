@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SkinsController : MonoBehaviour
 {
     #region declarations
+    Player player;
     //[SerializeField]
     SkinsManager skinsManager;
     [SerializeField]
@@ -71,6 +72,7 @@ public class SkinsController : MonoBehaviour
 
         int gender = PlayerPrefs.GetInt("gender");
         if(gender == 0){
+            player = GameObject.Find("Player").GetComponent<Player>();
             //item names to dictionary
             hairNames.Add(0,"Bald");
             hairNames.Add(1,"Emo");
@@ -86,6 +88,8 @@ public class SkinsController : MonoBehaviour
             clothesNames.Add(4,"Super Hero");
             clothesNames.Add(5,"Tuxedo");
         }else if(gender == 1){
+            player = GameObject.Find("Girl").GetComponent<Player>();
+
             hairNames.Add(0,"Ponytail");
             hairNames.Add(1,"Ox horns");
             hairNames.Add(2,"Short");
@@ -254,6 +258,7 @@ public class SkinsController : MonoBehaviour
         else
             Player.BoughtSkins[1][currentOption] = 1;
         UpdateItemsDictionary();
+        player.SavePlayer();
     }
     public void EquipItem(){
         if(buttonOption == 0){
@@ -263,5 +268,6 @@ public class SkinsController : MonoBehaviour
             Player.EquippedSkins[1] = currentOption;
             defaultClothes = currentOption;
         }
+        player.SavePlayer();
     }
 }

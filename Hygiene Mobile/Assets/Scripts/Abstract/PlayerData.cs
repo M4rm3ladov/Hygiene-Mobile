@@ -17,14 +17,15 @@ public class PlayerData
     new int[6],
     new int[6]};
     public Dictionary<string, int> boughtFood = new Dictionary<string, int>();
-    public int eatingStatus;
+    //public int toiletStatus;
+    public string lastAte;
     public PlayerData(Player player)
     {
         hygiene = Player.Hygiene;
         hunger = Player.Hunger;
         energy = Player.Energy;
         sleepState = Player.SleepState;
-        lastIn = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
+        lastIn = Player.LastIn;//DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
         goldCoins = Player.GoldCoins;
 
         for (int item = 0; item < Player.EquippedSkins.Length; item++)
@@ -40,6 +41,7 @@ public class PlayerData
             }      
         }
         boughtFood = Player.BoughtFood;
-        eatingStatus = Player.EatingStatus;
+        //toiletStatus = Player.ToiletStatus;
+        lastAte = Player.LastAte;
     }
 }

@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class BathroomManager: MonoBehaviour
 {
+    Player player;
     public Animator transition;
     [SerializeField]
     private float _transitionTime = 1f;
     [SerializeField]
-    public static float BathStep = 0;
+    public static float BathStep = 10;
     [SerializeField]
     private Image currentProgress;
     [SerializeField]
@@ -33,6 +34,11 @@ public class BathroomManager: MonoBehaviour
     }
 
     private void Start() {
+        BathStep = 10;
+        if(PlayerPrefs.GetInt("gender") == 0)
+            player = GameObject.Find("Player").GetComponent<Player>();
+        else if(PlayerPrefs.GetInt("gender") == 1)
+            player = GameObject.Find("Girl").GetComponent<Player>();
         skinsManager = GameObject.Find("Body").GetComponent<SkinsManager>();
 
         if(Player.EquippedSkins[0] == 3)
@@ -43,9 +49,10 @@ public class BathroomManager: MonoBehaviour
         if(BathStep > 10)
             return;
         if(BathStep == 10){
-            Player.Hygiene += 100;
+            Player.Hygiene = 100;
             BathStep += .01f;
             finishButton.SetActive(true); 
+            player.SavePlayer();
         }
         UpdateProgressBar();
     }
@@ -54,6 +61,12 @@ public class BathroomManager: MonoBehaviour
         float ratio = BathStep / _max;
         currentProgress.rectTransform.localScale = new Vector3(ratio, 1, 1);
         textProgress.text = (ratio * 100).ToString("0") + "%";
+    }
+    public void BackClicked(){
+        if(BathStep > 10){
+            StartCoroutine(LoadLevel("Closet"));
+        }else
+            StartCoroutine(LoadLevel("Bathroom"));
     }
     public void FinishClicked(){
         BathStep = 0;

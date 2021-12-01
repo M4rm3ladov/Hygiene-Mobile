@@ -6,6 +6,7 @@ using System;
 
 public class HygieneManager : MonoBehaviour
 {
+    Player player;
     public float _max = 100;
     public Image CurrentHygiene;
     public Text HygieneText;
@@ -14,18 +15,27 @@ public class HygieneManager : MonoBehaviour
     private TimeSpan _timeDifference;
     private void Start() 
     {
+        if(PlayerPrefs.GetInt("gender") == 0)
+            player = GameObject.Find("Player").GetComponent<Player>();
+        if(PlayerPrefs.GetInt("gender") == 1)
+            player = GameObject.Find("Girl").GetComponent<Player>();
+        
         if(PlayerPrefs.GetInt("first") == 0)
             SubtractHygienePerDateTime();
         UpdateHygieneBar();
+        Debug.Log("gege" + Player.Hygiene);
     }
-    private void OnApplicationPause(bool pauseStatus) {
-        if(pauseStatus == false){
-            SubtractHygienePerDateTime();
+    private void OnApplicationFocus(bool focusStatus) {
+        if(focusStatus){
+            player.LoadPlayer();
+            if(PlayerPrefs.GetInt("first") == 0)
+                SubtractHygienePerDateTime();
             UpdateHygieneBar();
+            Debug.Log("negus" + Player.Hygiene);
         }
     }
     private void SubtractHygienePerDateTime(){
-        _timeDifference = DateTime.Now - Player.LastIn;
+        _timeDifference = DateTime.Now - DateTime.Parse(Player.LastIn);
         Player.Hygiene -= (float)(_hygieneIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
         if(Player.Hygiene < 0)
             Player.Hygiene = 0;
@@ -37,7 +47,11 @@ public class HygieneManager : MonoBehaviour
         {        
             ChangeHygiene(); 
             UpdateHygieneBar();     
-        }     
+        }
+        //if(counter == 0 ){
+          //  counter ++; 
+            Debug.Log("feg" + Player.Hygiene); 
+        //} 
     } 
     //update the energybar UI
     public void UpdateHygieneBar()

@@ -2,23 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     SkinsManager skinsManager;
     [SerializeField]
+    private Image handWashBubble;
+    [SerializeField]
+    private Image toiletBubble;
+    [SerializeField]
     private Image hygieneBubble;
     [SerializeField]
     private Image hungerBubble;
     [SerializeField]
     private Image tiredBubble;
+
+    [SerializeField]
+    private double toiletTrigger;
     [SerializeField]
     private int hygieneTrigger;
     [SerializeField]
     private int tiredTrigger;
     [SerializeField]
     private int hungerTrigger;
+    public double ToiletTrigger{
+        get{ return toiletTrigger; }
+        set{ toiletTrigger = value;}
+    }
     public int HygieneTrigger{
         get{ return hygieneTrigger; }
         set{ hygieneTrigger = value;}
@@ -39,6 +51,7 @@ public class PlayerController : MonoBehaviour
     }
     private float fadingLength = 10f;
     private float currTime;
+    private TimeSpan _timeDifference;
     
     private void Start() {
         //play sleepy anim if other animation is playing and if energy is below/equal to alloted thereshold
@@ -63,10 +76,14 @@ public class PlayerController : MonoBehaviour
         }else{
             animTransition.SetBool("isHungry", false);
         }*/
+        _timeDifference = DateTime.Now - DateTime.Parse(Player.LastAte); //- Player.LastAte;
+        //Debug.Log(_timeDifference.TotalMinutes);
         if(Player.SleepState == 1)
         {
+            PlayStopToiletAnimation();
             PlayStopHygieneAnimation();
             PlayStopHungerAnimation();
+            PlayStopHandWashAnimation();
             PlayStopSleepyAnimation();
         }
         
@@ -81,8 +98,12 @@ public class PlayerController : MonoBehaviour
         } */     
     }
     private void Update() {
+        _timeDifference = DateTime.Now - DateTime.Parse(Player.LastAte);
+        //Debug.Log(_timeDifference.TotalMinutes);
         TimeFadeUpdate();
         if(Player.SleepState == 0){
+            handWashBubble.enabled = false;
+            toiletBubble.enabled = false;
             hygieneBubble.enabled = false;
             tiredBubble.enabled = false;
             hungerBubble.enabled = false;
@@ -104,8 +125,11 @@ public class PlayerController : MonoBehaviour
     }
     private void LateUpdate() {
         if(Player.SleepState == 1){
+            //Debug.Log(_timeDifference);
+            PlayStopToiletAnimation();
             PlayStopHygieneAnimation();
             PlayStopHungerAnimation();
+            PlayStopHandWashAnimation();
             PlayStopSleepyAnimation();    
         }     
     }
@@ -118,8 +142,25 @@ public class PlayerController : MonoBehaviour
         currTime -= Time.deltaTime;
     
     }
+     private void PlayStopToiletAnimation(){
+        if(_timeDifference.TotalMinutes >= toiletTrigger && BathroomStatus.ToiletStatus == 1 && KitchenStatus.Started == false)//&& 
+        //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Dirty") && 
+        //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
+        {
+            skinsManager.Eyebrows.sprite = skinsManager.EyebrowsSpriteOptions[1];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[1];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[1];
+            //animTransition.SetBool("isHungry", true);
+            FadeInOutBubble(toiletBubble);   
+            return;    
+
+        }
+        //animTransition.SetBool("isHungry", false);
+        //hungerBubble.CrossFadeAlpha(0, 0.5f, true);
+        toiletBubble.enabled = false;
+    }
     private void PlayStopHygieneAnimation(){
-        if((int)Player.Hygiene <= hygieneTrigger)//&& 
+        if((int)Player.Hygiene <= hygieneTrigger && !(_timeDifference.TotalMinutes >= toiletTrigger && BathroomStatus.ToiletStatus == 1))
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Dirty") && 
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
         {
@@ -135,7 +176,7 @@ public class PlayerController : MonoBehaviour
         hygieneBubble.enabled = false;
     }
     private void PlayStopHungerAnimation(){
-        if((int)Player.Hunger <= hungerTrigger && !((int)Player.Hygiene <= hygieneTrigger)) 
+        if((int)Player.Hunger <= hungerTrigger && !((int)Player.Hygiene <= hygieneTrigger) && !(_timeDifference.TotalMinutes >= toiletTrigger && BathroomStatus.ToiletStatus == 1)) 
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Dirty") && 
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
         {
@@ -150,8 +191,19 @@ public class PlayerController : MonoBehaviour
         //hungerBubble.CrossFadeAlpha(0, 0.5f, true);
         hungerBubble.enabled = false;
     }
+    private void PlayStopHandWashAnimation(){
+        if(KitchenStatus.HandWash == false || BathroomStatus.ToiletStatus == 2)
+        {
+            skinsManager.Eyebrows.sprite = skinsManager.EyebrowsSpriteOptions[1];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[1];
+            skinsManager.Mouth.sprite = skinsManager.MouthSpriteOptions[1];
+            FadeInOutBubble(handWashBubble);   
+            return;
+        }
+        handWashBubble.enabled = false;    
+    }
     private void PlayStopSleepyAnimation(){
-        if((int)Player.Energy <= tiredTrigger && !((int)Player.Hunger <= hungerTrigger))
+        if((int)Player.Energy <= tiredTrigger && !((int)Player.Hunger <= hungerTrigger) && KitchenStatus.Started == false && !(_timeDifference.TotalMinutes >= toiletTrigger && BathroomStatus.ToiletStatus == 1))
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Hungry") &&
         //!animTransition.GetCurrentAnimatorStateInfo(0).IsName("Wave"))
         {

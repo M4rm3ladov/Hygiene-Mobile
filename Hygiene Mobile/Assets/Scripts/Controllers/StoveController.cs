@@ -12,6 +12,8 @@ public class StoveController : MonoBehaviour
         StoveClicked();           
     }
     private void StoveClicked(){
+        if(KitchenStatus.HandWash == true && KitchenStatus.EatStatus != 0)
+            KitchenStatus.HandWash = false;
         if(_clicked == 0){
             CheckFoodCount();    
             return;

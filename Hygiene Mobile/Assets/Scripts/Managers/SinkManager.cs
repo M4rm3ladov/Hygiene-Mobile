@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class SinkManager: MonoBehaviour
 {
+    Player player;
     public Animator transition;
     [SerializeField]
     private float _transitionTime = 1f;
     private string _levelName;
     /////
-    public static float HandWashStep = 0;
+    public static float HandWashStep = 7;
     [SerializeField]
     private Image currentProgress;
     [SerializeField]
@@ -20,7 +21,10 @@ public class SinkManager: MonoBehaviour
     private GameObject progressBar;
     [SerializeField]
     private GameObject finishButton;
-
+    [SerializeField]
+    private List<Sprite> imgBack = new List<Sprite>();
+    [SerializeField]
+    private Image back;
     private float _max = 7;
     
     public Image CurrentProgress{
@@ -33,6 +37,12 @@ public class SinkManager: MonoBehaviour
     }
 
     private void Start() {
+        HandWashStep = 7;
+        player = GetComponent<Player>();
+        if(BathroomStatus.ToiletStatus == 2)
+            back.sprite = imgBack[1];
+        else
+            back.sprite =imgBack[0];
         UpdateProgressBar();
     }
     private void Update() {
@@ -40,6 +50,8 @@ public class SinkManager: MonoBehaviour
             return;
         if(HandWashStep == 7){
             Player.Hygiene += 5;
+            if(Player.Hygiene >= 100)
+                Player.Hygiene = 100;
             HandWashStep += .01f;
             finishButton.SetActive(true);
         }
@@ -52,37 +64,62 @@ public class SinkManager: MonoBehaviour
         textProgress.text = (ratio * 100).ToString("0") + "%";
     }
     public void FinishClicked(){
-        if(KitchenStatus.EatStatus == 1){
-            Player.EatingStatus = 0;
-            KitchenStatus.EatStatus = 0;
-        }
-        else if(KitchenStatus.EatStatus == 2){
-            Player.EatingStatus = 1;
-            KitchenStatus.ToothbrushStatus = 1;
-        } 
-        SinkManager.HandWashStep = 0;
-    }
-    private void OnDestroy() {
-        if(SinkManager.HandWashStep == 7){
+        if(BathroomStatus.ToiletStatus != 2){
             if(KitchenStatus.EatStatus == 1){
-                Player.EatingStatus = 0;
                 KitchenStatus.EatStatus = 0;
+                KitchenStatus.HandWash = true;
             }
             else if(KitchenStatus.EatStatus == 2){
-                Player.EatingStatus = 1;
                 KitchenStatus.ToothbrushStatus = 1;
             }
+            player.SavePlayer(); 
         }
-        SinkManager.HandWashStep = 0;
-    }
-
-    public void LoadNextLevel()
-    {
+   
         if(KitchenStatus.EatStatus == 2)
             _levelName = "Toothbrush";
         else if(KitchenStatus.EatStatus == 0)
             _levelName = "Kitchen";
-    
+
+        if(BathroomStatus.ToiletStatus == 2){
+            _levelName = "Bathroom";
+            if(HandWashStep >= 7)
+                BathroomStatus.ToiletStatus = 0;
+            player.SavePlayer();
+        }
+        HandWashStep = 0;
+        StartCoroutine(LoadLevel(_levelName));    
+    }
+    /*private void OnDestroy() {
+        SinkManager.HandWashStep = 0;
+        if(Player.ToiletStatus == 3){
+            Player.ToiletStatus = 0;
+            return;
+        }else if(Player.ToiletStatus == 2)
+            return;
+        
+    }*/
+
+    public void BackClick()
+    {
+        _levelName = "Kitchen";
+
+        if(BathroomStatus.ToiletStatus != 2 && HandWashStep >= 7){
+            if(KitchenStatus.EatStatus == 1){
+                KitchenStatus.EatStatus = 0;
+            }
+            else if(KitchenStatus.EatStatus == 2){
+                KitchenStatus.ToothbrushStatus = 1;
+            }
+            player.SavePlayer(); 
+        }
+
+        if(BathroomStatus.ToiletStatus == 2){
+            _levelName = "Bathroom";
+            if(HandWashStep >= 7)
+                BathroomStatus.ToiletStatus = 0;
+            player.SavePlayer();
+        }
+        SinkManager.HandWashStep = 0;
         StartCoroutine(LoadLevel(_levelName));       
     }
 

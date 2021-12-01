@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class DraggableFoodController : MonoBehaviour
 {
+    Player player;
     SkinsManager skinsManager;
     [SerializeField]
     FoodManager foodManager;
@@ -15,13 +17,17 @@ public class DraggableFoodController : MonoBehaviour
     [SerializeField]
     PlayerController playerController;
     [SerializeField]
-    HungerManager hungerManager;
+    NeedsController needsController;
     private bool isDragged = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
     private bool collided = false;
     private List<string> FoodIndex = new List<string>();
     private void Start() {
+        if(PlayerPrefs.GetInt("gender") == 0)
+            player = GameObject.Find("Player").GetComponent<Player>();
+        else if(PlayerPrefs.GetInt("gender") == 1)
+            player = GameObject.Find("Girl").GetComponent<Player>();
         skinsManager = GameObject.Find("Body").GetComponent<SkinsManager>();
     }
     private void OnMouseDown() 
@@ -49,11 +55,17 @@ public class DraggableFoodController : MonoBehaviour
         isDragged = false;
         transform.position = spriteDragStartPosition;
         if(collided){
-            if(Player.Hunger >= hungerManager._max)
+            Player.LastAte = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
+            BathroomStatus.ToiletStatus = 1;
+            KitchenStatus.EatStatus = 2;  
+            KitchenStatus.ToothbrushStatus = 0;
+            KitchenStatus.Started = true;
+            player.SavePlayer(); 
+            if(Player.Hunger >= needsController._max)
                 return;
             FeedTheChar();
             SubtractOrRemoveFoodItem();  
-            CheckFoodStashCount();      
+            CheckFoodStashCount();     
         }
     }
     private void LateUpdate() {
@@ -69,10 +81,6 @@ public class DraggableFoodController : MonoBehaviour
     }
     private void FeedTheChar(){
         int foodSpriteOptionsIterator = 0;
-        Player.EatingStatus = 1;
-        KitchenStatus.EatStatus = 2;  
-        KitchenStatus.ToothbrushStatus = 0;
-        KitchenStatus.Started = true;
         foreach (Sprite foodSprite in foodManager.FoodSpriteOptions)
         {
             if(PlayerPrefs.GetInt("gender") == 0)
@@ -82,9 +90,9 @@ public class DraggableFoodController : MonoBehaviour
             if(foodSprite.name.ToString() == consumeFoodController.FoodIndex[consumeFoodController.CurrentOption])
             {
                 Player.Hunger += foodManager.FoodStats[foodSpriteOptionsIterator];
-                if(Player.Hunger > hungerManager._max)
-                    Player.Hunger = hungerManager._max;
-                hungerManager.UpdateHungerBar();
+                if(Player.Hunger > needsController._max)
+                    Player.Hunger = needsController._max;
+                needsController.UpdateHungerBar();
             }
                 
             foodSpriteOptionsIterator++;

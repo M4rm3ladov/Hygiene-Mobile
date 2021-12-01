@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class BrushingManager : MonoBehaviour
 {
-    public static float ToothbrushStep = 0;
+    Player player;
+    public static float ToothbrushStep = 5;
     [SerializeField]
     private Image currentProgress;
     [SerializeField]
@@ -24,6 +25,8 @@ public class BrushingManager : MonoBehaviour
         set{ textProgress = value; }
     }
     private void Start() {
+        ToothbrushStep = 5;
+        player = GetComponent<Player>();
         UpdateProgressBar();
     }
     private void Update() {
@@ -31,8 +34,11 @@ public class BrushingManager : MonoBehaviour
             return;
         if(ToothbrushStep == 5){
             Player.Hygiene += 5;
+            if(Player.Hygiene >= 100)
+                Player.Hygiene = 100;
             ToothbrushStep += .01f;
             finishButton.SetActive(true);
+            player.SavePlayer();
         }
         UpdateProgressBar();
     }
@@ -43,18 +49,18 @@ public class BrushingManager : MonoBehaviour
         textProgress.text = (ratio * 100).ToString("0") + "%";
     }
     public void FinishedClicked(){
-        Player.EatingStatus = 0;
         KitchenStatus.EatStatus = 0;
         KitchenStatus.ToothbrushStatus = 0;
         KitchenStatus.Started = false;
+        KitchenStatus.HandWash = true;
         BrushingManager.ToothbrushStep = 0;
     }
     private void OnDestroy() {
-        if(BrushingManager.ToothbrushStep == 5){
-            Player.EatingStatus = 0;
+        if(BrushingManager.ToothbrushStep >= 5){
             KitchenStatus.EatStatus = 0;
             KitchenStatus.ToothbrushStatus = 0;
             KitchenStatus.Started = false;
+            KitchenStatus.HandWash = true;
         }
         BrushingManager.ToothbrushStep = 0;
     }

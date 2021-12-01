@@ -6,6 +6,7 @@ using System;
 
 public class EnergyManager : MonoBehaviour
 {
+    Player player;
     public float _max = 100;
     public Image CurrentEnergy;
     public Text EnergyText;
@@ -15,17 +16,18 @@ public class EnergyManager : MonoBehaviour
     private void Start() 
     {
         if(PlayerPrefs.GetInt("first") == 0)
-            SubtractEnergyPerDateTime();
+           SubtractEnergyPerDateTime();
         UpdateEnergyBar();
     }
-    private void OnApplicationPause(bool pauseStatus) {
-        if(pauseStatus == false){
-            SubtractEnergyPerDateTime();
+    private void OnApplicationFocus(bool focusStatus) {
+        if(focusStatus){
+            if(PlayerPrefs.GetInt("first") == 0)
+                SubtractEnergyPerDateTime();
             UpdateEnergyBar();
         }
     }
     private void SubtractEnergyPerDateTime(){
-        _timeDifference = DateTime.Now - Player.LastIn;
+        _timeDifference = DateTime.Now - DateTime.Parse(Player.LastIn);
         if(Player.SleepState == 1)
             Player.Energy -= (float)(_energyIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
         if(Player.Energy < 0)

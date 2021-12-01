@@ -6,6 +6,7 @@ using System;
 
 public class HungerManager : MonoBehaviour
 {
+    Player player;
     public float _max = 100;
     public Image CurrentHunger;
     public Text HungerText;
@@ -14,18 +15,24 @@ public class HungerManager : MonoBehaviour
     private TimeSpan _timeDifference;
     private void Start() 
     {
+        if(PlayerPrefs.GetInt("gender") == 0)
+            player = GameObject.Find("Player").GetComponent<Player>();
+        if(PlayerPrefs.GetInt("gender") == 1)
+            player = GameObject.Find("Girl").GetComponent<Player>();
+        
         if(PlayerPrefs.GetInt("first") == 0)
             SubtractHungerPerDateTime();
         UpdateHungerBar();
     }
-    private void OnApplicationPause(bool pauseStatus) {
-        if(pauseStatus == false){
-            SubtractHungerPerDateTime();
+    private void OnApplicationFocus(bool focusStatus) {
+        if(focusStatus){
+            if(PlayerPrefs.GetInt("first") == 0)
+                SubtractHungerPerDateTime();
             UpdateHungerBar();
         }
     }
     private void SubtractHungerPerDateTime(){
-        _timeDifference = DateTime.Now - Player.LastIn;
+        _timeDifference = DateTime.Now - DateTime.Parse(Player.LastIn);
         Player.Hunger -= (float)(_hungerIncrease * _timeDifference.TotalSeconds * Time.deltaTime);
         if(Player.Hunger < 0)
             Player.Hunger = 0;

@@ -8,6 +8,8 @@ public class MsgBubbleController : MonoBehaviour
 {
     private Scene currentScene;
     [SerializeField]
+    private Image toiletBubble;
+    [SerializeField]
     private Image hygieneBubble;
     [SerializeField]
     private Image hungerBubble;
@@ -23,10 +25,19 @@ public class MsgBubbleController : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
     }
     public void ClickEvent() {
-        if(currentScene.name != "Kitchen")
-            KitchenStatus.EatStatus = 1;
+        if(_levelName == "Bathroom" || _levelName == "Bedroom" && currentScene.name == "Kitchen")
+        {
+            if(KitchenStatus.EatStatus != 0 && KitchenStatus.Started == true)
+                return;
+        }
 
-        if(hygieneBubble.enabled == true){
+        if(_levelName == "Kitchen" && currentScene.name != "Kitchen")
+            KitchenStatus.EatStatus = 1;
+        else
+            KitchenStatus.HandWash = true;
+
+        if(hygieneBubble.enabled == true || toiletBubble.enabled == true){
+           
             if(currentScene.name == "Bathroom"){
                 return;
             }     
@@ -40,8 +51,6 @@ public class MsgBubbleController : MonoBehaviour
             StartCoroutine(LoadLevel(_levelName));    
         }
         if(tiredBubble.enabled == true){
-            if(KitchenStatus.EatStatus == 1 || KitchenStatus.EatStatus == 2)
-                return;
             if(currentScene.name == "Bedroom"){
                 return;
             }

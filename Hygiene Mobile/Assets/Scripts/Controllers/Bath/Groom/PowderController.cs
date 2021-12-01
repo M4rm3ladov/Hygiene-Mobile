@@ -14,7 +14,6 @@ public class PowderController : MonoBehaviour
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
     private bool isDragged = false;    
-    private float timeStep = 2f;
     private void Start() {
         powder = GetComponent<SpriteRenderer>();
     }

@@ -206,6 +206,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorType: 7
   anchorOffset: {x: 0.12, y: -0.05, z: 0}
+--- !u!1 &259217058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259217059}
+  - component: {fileID: 259217060}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &259217059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259217058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.622, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &259217060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259217058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4ef2fad5c4e164784fed67cbdb0be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xLimit: 0.199
+  xPositions:
+  - -0.199
+  - 0
+  - 0.199
+  enemyPrefabs:
+  - {fileID: 4706753380797033672, guid: b46322fc9f0db9c4aa887aa26042a38f, type: 3}
+  - {fileID: 1512579652257079058, guid: 303ec8a1b815ad540b2aa3f1e9dab3ab, type: 3}
+  - {fileID: 5545938901276637954, guid: 9897d3811f971344387fdf3d4d11384a, type: 3}
+  wave:
+  - delayTime: 3.5
+    spawnAmount: 1
+  - delayTime: 3.5
+    spawnAmount: 2
 --- !u!1 &281114396
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,36 +357,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorType: 1
   anchorOffset: {x: 0, y: 0.34, z: 0}
---- !u!1 &313077575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 313077577}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &313077577
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313077575}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.037239715, y: -0.050491385, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517503094
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +1002,7 @@ GameObject:
   - component: {fileID: 1866148306}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1810,7 +1837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4683903078881923158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.44, z: 0}
+  m_LocalPosition: {x: -0.01, y: -0.45, z: 0}
   m_LocalScale: {x: 0.045, y: 0.045, z: 1}
   m_Children:
   - {fileID: 4683903078881692788}
@@ -2099,7 +2126,7 @@ GameObject:
   - component: {fileID: 4683903078881923161}
   m_Layer: 0
   m_Name: Girl
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2155,7 +2182,7 @@ MonoBehaviour:
   skinsManager: {fileID: 4683903078881923155}
   animTransition: {fileID: 4683903078881923159}
   xLimit: 0.215
-  moveSpeed: 3.3
+  moveSpeed: 3.25
 --- !u!1 &4683903078881923162
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,7 +2707,7 @@ GameObject:
   - component: {fileID: 4848109634940323808}
   m_Layer: 0
   m_Name: Boy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
+    public static PlayerAnimationController instance;
+
     [SerializeField]
     SkinsManager skinsManager;
     [SerializeField]
@@ -15,6 +17,12 @@ public class PlayerAnimationController : MonoBehaviour
     private bool movingRight = true;
     private float direction = 0.045f;
     private bool startMoving = false;
+    public bool StartMoving{ get{ return startMoving;} }
+    private void Awake() {
+        if(instance == null){
+            instance = this;
+        }
+    }
     private void Update() {
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && startMoving == false){
             startMoving = true;

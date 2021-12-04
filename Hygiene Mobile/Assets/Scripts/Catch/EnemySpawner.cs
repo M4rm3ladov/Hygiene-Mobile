@@ -9,8 +9,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float[] xPositions;
     [SerializeField]
-    private GameObject[] enemyPrefabs;
-    [SerializeField]
     private Wave[] wave;
 
     private float currentTime;
@@ -25,7 +23,15 @@ public class EnemySpawner : MonoBehaviour
     }
     void SpawnEnemy(float xPos){
         int r = Random.Range(0, 3);
-        GameObject enemyObj = Instantiate(enemyPrefabs[r], new Vector3(xPos, transform.position.y, 0), Quaternion.identity);
+        
+        string enemyName = "";
+        if(r == 0) enemyName = "candy";
+        else if(r == 1) enemyName = "chocolate";
+        else if(r == 2) enemyName = "lollipop";
+
+        GameObject enemy = ObjectPooling.instance.GetPooledObject(enemyName);
+        enemy.transform.position = new Vector3(xPos, transform.position.y, 0);
+        enemy.SetActive(true);
     }
     void SelectWave(){
         remainingPositions = new List<float>();

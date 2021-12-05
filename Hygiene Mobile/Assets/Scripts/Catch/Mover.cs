@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
+    public static Mover instance;
+    private float speed  = .1f;
+    public float Speed{ get{ return speed; } }
+    private void Awake() {
+        if(instance == null) 
+            instance = this;
+    }
     void Update()
     {
         transform.position += Vector3.down * speed * Time.deltaTime;

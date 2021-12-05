@@ -13,7 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField]
     private float xLimit = .215f;
     [SerializeField]
-    private float moveSpeed;
+    public float moveSpeed;
     private bool movingRight = true;
     private float direction = 0.045f;
     private bool startMoving = false;
@@ -26,6 +26,12 @@ public class PlayerAnimationController : MonoBehaviour
     private void Update() {
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && startMoving == false){
             startMoving = true;
+        }
+
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began){
+            movingRight = !movingRight;
+            direction = -direction;
+            transform.localScale = new Vector3(direction, 0.045f, 0.045f);
         }
 
         if(startMoving == false) return;

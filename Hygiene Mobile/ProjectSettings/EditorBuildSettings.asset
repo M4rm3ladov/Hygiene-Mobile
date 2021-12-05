@@ -30,11 +30,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Kitchen.unity
     guid: 3a5096fdf1576414280bda29d7f92976
   - enabled: 1
+    path: Assets/Scenes/Games.unity
+    guid: be17e7a5ac383f6449a5e938d7246ab8
+  - enabled: 1
     path: Assets/Scenes/Bathroom.unity
     guid: fab248a5375daba44ae17dc6cf120c05
   - enabled: 1
     path: Assets/Scenes/CR.unity
     guid: 5250f111c31e3e749878d8f0b0a5210d
+  - enabled: 1
+    path: Assets/Scenes/Catch.unity
+    guid: d3decc3c432139f4bbd286730ab7bf4c
   - enabled: 1
     path: Assets/Scenes/Bathtub.unity
     guid: 374b74e489fef3c439951fd1f8ba3b44

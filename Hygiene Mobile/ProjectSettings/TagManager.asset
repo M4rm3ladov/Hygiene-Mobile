@@ -55,6 +55,9 @@ TagManager:
   - name: Character
     uniqueID: 894108053
     locked: 0
+  - name: Fall Obj
+    uniqueID: 4029799455
+    locked: 0
   - name: Button
     uniqueID: 746309977
     locked: 0
@@ -63,4 +66,7 @@ TagManager:
     locked: 0
   - name: Misc
     uniqueID: 111324231
+    locked: 0
+  - name: GUI
+    uniqueID: 3101300827
     locked: 0

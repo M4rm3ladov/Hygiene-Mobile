@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 1864447021317443779, guid: 8ac3c27fae19df544b3052fd5dc0e243,
         type: 3}
       propertyPath: orthographic size
-      value: 0.24324325
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac3c27fae19df544b3052fd5dc0e243, type: 3}
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 2088720342}
   _transitionTime: 1
-  _levelName: Bedroom
+  _levelName: Catch
 --- !u!1 &6933407324513549745
 GameObject:
   m_ObjectHideFlags: 0

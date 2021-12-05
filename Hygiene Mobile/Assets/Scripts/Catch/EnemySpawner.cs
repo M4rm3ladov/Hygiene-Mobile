@@ -22,12 +22,16 @@ public class EnemySpawner : MonoBehaviour
         remainingPositions.AddRange(xPositions);
     }
     void SpawnEnemy(float xPos){
-        int r = Random.Range(0, 3);
+        int r = Random.Range(0, 7);
         
         string enemyName = "";
         if(r == 0) enemyName = "candy";
         else if(r == 1) enemyName = "chocolate";
         else if(r == 2) enemyName = "lollipop";
+        else if(r == 3) enemyName = "apple";
+        else if(r == 4) enemyName = "fish";
+        else if(r == 5) enemyName = "milk";
+        else if(r == 6) enemyName = "pechay";
 
         GameObject enemy = ObjectPooling.instance.GetPooledObject(enemyName);
         enemy.transform.position = new Vector3(xPos, transform.position.y, 0);

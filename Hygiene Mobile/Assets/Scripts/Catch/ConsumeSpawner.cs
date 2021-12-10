@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class ConsumeSpawner : MonoBehaviour
 {
+    public static ConsumeSpawner instance;
+    private float speed = .1f;
+    private float delayTime = 7f;
+    public float DelayTime{ set { delayTime = value; } get { return delayTime; } }
+    public float Speed{ set { speed = value; } get { return speed; } }
     [SerializeField]
     private float xLimit;
     [SerializeField]
@@ -16,6 +21,10 @@ public class EnemySpawner : MonoBehaviour
     private int waveIndex;
     private float xPos = 0f;
     private int rand;
+    private void Awake() {
+        if(instance == null)
+            instance = this;
+    }
     void Start()
     {
         currentTime = 0;
@@ -25,13 +34,15 @@ public class EnemySpawner : MonoBehaviour
         int r = Random.Range(0, 7);
         
         string enemyName = "";
-        if(r == 0) enemyName = "candy";
-        else if(r == 1) enemyName = "chocolate";
-        else if(r == 2) enemyName = "lollipop";
-        else if(r == 3) enemyName = "apple";
-        else if(r == 4) enemyName = "fish";
-        else if(r == 5) enemyName = "milk";
-        else if(r == 6) enemyName = "pechay";
+        if(r == 0) enemyName = "Candy";
+        else if(r == 1) enemyName = "Chocolate";
+        else if(r == 2) enemyName = "Lollipop";
+        else if(r == 3) enemyName = "Apple";
+        else if(r == 4) enemyName = "Fish";
+        else if(r == 5) enemyName = "Milk";
+        else if(r == 6) enemyName = "Pechay";
+
+         Debug.Log(xPos + " " + r + " " + enemyName);
 
         GameObject enemy = ObjectPooling.instance.GetPooledObject(enemyName);
         enemy.transform.position = new Vector3(xPos, transform.position.y, 0);
@@ -42,7 +53,8 @@ public class EnemySpawner : MonoBehaviour
         remainingPositions.AddRange(xPositions);
 
         waveIndex = Random.Range(0, wave.Length);
-        currentTime = wave[waveIndex].delayTime;
+        currentTime = delayTime;
+        //currentTime = wave[waveIndex].delayTime;
 
         if(wave[waveIndex].spawnAmount == 1){
             xPos = Random.Range(-xLimit, xLimit);
@@ -73,6 +85,6 @@ public class EnemySpawner : MonoBehaviour
 }
 [System.Serializable]
 public class Wave{
-    public float delayTime;
+    //public float delayTime;
     public float spawnAmount;
 }

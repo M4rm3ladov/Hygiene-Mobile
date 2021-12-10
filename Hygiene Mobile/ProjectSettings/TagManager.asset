@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - Life
+  - Point
+  - Effect
   layers:
   - Default
   - TransparentFX
@@ -57,6 +60,9 @@ TagManager:
     locked: 0
   - name: Fall Obj
     uniqueID: 4029799455
+    locked: 0
+  - name: PickUp
+    uniqueID: 3537069767
     locked: 0
   - name: Button
     uniqueID: 746309977

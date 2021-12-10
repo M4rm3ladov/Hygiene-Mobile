@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public static Dictionary<string, int> BoughtFood = new Dictionary<string, int>();
     //public static int ToiletStatus = 0;
     public static string LastAte;
+    public static int HighScore = 0;
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
         BoughtFood = data.boughtFood;
         //ToiletStatus = data.toiletStatus;
         LastAte = data.lastAte;
+        HighScore = data.highScore;
     }
     private void OnApplicationQuit() {
         LastIn = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");

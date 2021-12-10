@@ -60,7 +60,7 @@ public class TransitionController : MonoBehaviour
 
     IEnumerator LoadLevel(string levelName){
         transition.SetTrigger("Start");
-        yield return new WaitForSeconds(_transitionTime);
+        yield return new WaitForSecondsRealtime(_transitionTime);
         SceneManager.LoadScene(levelName);
     }
 }

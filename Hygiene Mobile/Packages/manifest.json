@@ -3,7 +3,6 @@
     "com.unity.2d.animation": "2.0.0-preview.3",
     "com.unity.2d.ik": "1.0.8-preview.1",
     "com.unity.2d.psdimporter": "1.0.0-preview.4",
-    "com.unity.ads": "4.0.0",
     "com.unity.analytics": "3.2.3",
     "com.unity.collab-proxy": "1.2.15",
     "com.unity.package-manager-ui": "2.0.13",
@@ -39,5 +38,14 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "Game Package Registry by Google",
+      "url": "https://unityregistry-pa.googleapis.com",
+      "scopes": [
+        "com.google"
+      ]
+    }
+  ]
 }

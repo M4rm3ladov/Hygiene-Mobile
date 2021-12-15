@@ -122,8 +122,9 @@ GameObject:
   m_Component:
   - component: {fileID: 77220568}
   - component: {fileID: 77220567}
+  - component: {fileID: 77220569}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,6 +158,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77220569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77220566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab490cdef978b3844aac67c0fb657629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &597945934 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6448886127595100784, guid: 13539c3c6c8b517479c29212210cb24b,
@@ -233,7 +246,7 @@ PrefabInstance:
     - target: {fileID: 1864447021317443779, guid: 8ac3c27fae19df544b3052fd5dc0e243,
         type: 3}
       propertyPath: orthographic size
-      value: 0.24324325
+      value: 1.0277778
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac3c27fae19df544b3052fd5dc0e243, type: 3}

@@ -1,27 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ScnOrientation : MonoBehaviour
+public class SafeArea : MonoBehaviour
 {
-    /*private void Awake() {
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-        Screen.autorotateToPortrait = false;
-    }*/
-    private void Start() {
-        Scene currentScene = SceneManager.GetActiveScene();
-        if(currentScene.name == "Catch"){
-            Screen.autorotateToLandscapeLeft = false;
-            Screen.autorotateToLandscapeRight = false;
-            Screen.orientation = ScreenOrientation.Portrait;     
-        }else{
-            Screen.autorotateToPortrait = false;
-            Screen.autorotateToLandscapeRight = true;
-            Screen.autorotateToLandscapeLeft = true;
-            //Screen.orientation = ScreenOrientation.AutoRotation; 
-        }
-            
-    }
-
     /*RectTransform Panel;
     Rect LastSafeArea = new Rect(0, 0, 0, 0);
     private void Awake() {

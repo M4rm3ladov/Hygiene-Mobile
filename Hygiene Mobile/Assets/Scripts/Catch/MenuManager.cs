@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager instance;
+    [SerializeField]
     AdsManager adsManager;
     public static int gameIsPaused = 0;
     [SerializeField]
@@ -15,6 +16,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private GameObject panelAlpha, continueMenu, gameOverMenu, pauseMenu;
     private int coinRandomCounter = 1;
+    private bool extraLifeReward = true;
     private int currentScore, currentCoin, currentLife;
     // Start is called before the first frame update
     private void Awake() {
@@ -77,8 +79,12 @@ public class MenuManager : MonoBehaviour
                 Life[0].CrossFadeAlpha(0.5f, 0, true);
                 break;
         }
-        if(currentLife == 0)
+        if(currentLife == 0 && !extraLifeReward)
+            GameOver();
+        else if(currentLife == 0 && extraLifeReward){
             ContinueWithAd();
+            extraLifeReward = false;
+        }
     }
     public void IncreaseLife(){
         currentLife++;
@@ -121,9 +127,11 @@ public class MenuManager : MonoBehaviour
         gameIsPaused = -1;
     }
     public void GameOver(){
+        FindObjectOfType<AudioManager>().Play("Applause");
         continueMenu.SetActive(false);
         coinEarned.text = "" + currentCoin;
         gameOverScore.text = "" + currentScore;
+        Player.GoldCoins += currentCoin;
         gameOverMenu.SetActive(true);
         panelAlpha.SetActive(true);
         Time.timeScale = 0f;
@@ -140,9 +148,26 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0f;
         gameIsPaused = -1;
     }
+    public void ExtraLifeClicked(){
+        adsManager.ButtonType = "CatchExtra";
+    }
+    public void DoubleCoinsClicked(){
+        adsManager.ButtonType = "CatchDouble";
+    }
 
     public void DoubleCoins(){
-
+        FindObjectOfType<AudioManager>().Play("Coin");
+        GameObject.Find("Button_Ad").GetComponent<Button>().interactable = false;
+        currentCoin = currentCoin * 2;
+        coinEarned.text = "" + currentCoin;
+        Player.GoldCoins += currentCoin;
+        Time.timeScale = 0f;
+    }   
+    public void ContinueWithOneLife(){
+        IncreaseLife();
+        continueMenu.SetActive(false);
+        panelAlpha.SetActive(false);   
+        gameIsPaused = 1;
     }
     private void OnDestroy() {
         if(currentScore > Player.HighScore)
@@ -151,11 +176,7 @@ public class MenuManager : MonoBehaviour
         gameIsPaused = 0;
     }  
     private void OnApplicationPause(bool pauseStatus) {
-       if(pauseStatus)
-            PauseGame(); 
-    }
-    private void OnApplicationFocus(bool focusStatus) {
-        if(focusStatus)
-            ResumeGame();
+       if(pauseStatus && !continueMenu.activeSelf && !gameOverMenu.activeSelf)
+            PauseGame();
     }
 }

@@ -20,7 +20,7 @@ public class Consumable : MonoBehaviour
 
             FindObjectOfType<AudioManager>().Play("Poof");
 
-            int r = Random.Range(0, 1);
+            int r = Random.Range(0, 9);
             if(r == 0){
                 GameObject life = ObjectPooling.instance.GetPooledObject("Life");
                 life.transform.position = transform.position;

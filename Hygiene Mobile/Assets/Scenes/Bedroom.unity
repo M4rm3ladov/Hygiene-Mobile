@@ -1791,15 +1791,15 @@ MonoBehaviour:
   _max: 100
   CurrentHygiene: {fileID: 1403125940}
   HygieneText: {fileID: 2108122011}
-  _hygieneTickRate: 9
+  _hygieneTickRate: 8
   _hygieneIncrease: 5
   CurrentHunger: {fileID: 1204226653}
   HungerText: {fileID: 919021058}
-  _hungerTickRate: 9
+  _hungerTickRate: 11
   _hungerIncrease: 5
   CurrentEnergy: {fileID: 1034785725}
   EnergyText: {fileID: 1228172674}
-  _energyTickRate: 9
+  _energyTickRate: 14
   _energyIncrease: 10
 --- !u!1 &761368188
 GameObject:
@@ -4341,7 +4341,7 @@ PrefabInstance:
     - target: {fileID: 1864447021317443779, guid: 8ac3c27fae19df544b3052fd5dc0e243,
         type: 3}
       propertyPath: orthographic size
-      value: 1.0277778
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac3c27fae19df544b3052fd5dc0e243, type: 3}

@@ -25,7 +25,7 @@ public class BrushingManager : MonoBehaviour
         set{ textProgress = value; }
     }
     private void Start() {
-        ToothbrushStep = 5;
+        ToothbrushStep = 0;
         player = GetComponent<Player>();
         UpdateProgressBar();
     }

@@ -37,7 +37,7 @@ public class SinkManager: MonoBehaviour
     }
 
     private void Start() {
-        HandWashStep = 7;
+        HandWashStep = 0;
         player = GetComponent<Player>();
         if(BathroomStatus.ToiletStatus == 2)
             back.sprite = imgBack[1];

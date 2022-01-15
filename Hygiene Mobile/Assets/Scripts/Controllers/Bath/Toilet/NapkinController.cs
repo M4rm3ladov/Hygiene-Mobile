@@ -36,7 +36,7 @@ public class NapkinController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(ToiletManager.ToiletStep >= 3)
             return;
-        //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if("Body" == other.name){
                 ToiletManager.ToiletStep += .5f; 
                 transform.position = spriteDragStartPosition;
@@ -48,7 +48,7 @@ public class NapkinController : MonoBehaviour
                 c.a = 0f;
                 sNapkin.material.color = c;
             }
-        //}
+        }
     }
 
     private void OnMouseUp() {

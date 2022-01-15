@@ -9,6 +9,7 @@ TagManager:
   - Life
   - Point
   - Effect
+  - Cut
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Cuttable
   - 
   - 
   - 

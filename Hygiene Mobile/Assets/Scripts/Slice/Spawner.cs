@@ -10,23 +10,28 @@ public class Spawner : MonoBehaviour
     private GameObject heartPref;
     [SerializeField]
     private float interval;
-    public float Interval{get; set;}
-    /*[SerializeField]
-    private float minimumX;
-    [SerializeField]
-    private float maximumX;
-    [SerializeField]
-    private float y;*/
+    public float Interval{ get{ return interval;} set{ interval = value;} }
+    private float currentTime;
  
     [SerializeField]
     private Sprite[] sprites;
     private void Start() {
-        InvokeRepeating("Spawn", interval, interval);
+        currentTime = interval;
+        Spawn();
+        //InvokeRepeating("Spawn", interval, interval);
+    }
+    private void Update() {
+        currentTime -= Time.deltaTime;
+        if(currentTime <= 0){
+            currentTime = interval;
+            Spawn();
+        }
+       
     }
 
     private void Spawn(){
         GameObject instance = Instantiate(prefab);
-        //instance.transform.position = new Vector2(Random.Range(minimumX, maximumX), y);
+        
         instance.transform.SetParent(transform);
         int heartRand = Random.Range(0, 20);
         if(heartRand == 0){

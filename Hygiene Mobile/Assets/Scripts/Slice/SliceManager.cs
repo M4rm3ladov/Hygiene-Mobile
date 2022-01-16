@@ -58,7 +58,8 @@ public class SliceManager : MonoBehaviour
             spawner.Interval = .10f;
     }
     private void IncreasePacing(){
-        spawner.Interval -= .10f;
+        spawner.Interval -= .20f;
+        Debug.Log("interval: " + spawner.Interval);
         Player.GoldCoins += currentCoin;
         player.SavePlayer();
     }

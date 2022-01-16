@@ -2717,6 +2717,7 @@ MonoBehaviour:
   heartPref: {fileID: 1854629225727103024, guid: 3f79dc4a05e515b4aa6fef2fb53455cb,
     type: 3}
   interval: 2
+  currentTime: 0
   sprites:
   - {fileID: 21300000, guid: 6dd26aff0e3ce574b85b55360dca300a, type: 3}
   - {fileID: 21300000, guid: ab3edd0d97ca7ee4993435f325487041, type: 3}

@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public static Dictionary<string, int> BoughtFood = new Dictionary<string, int>();
     //public static int ToiletStatus = 0;
     public static string LastAte;
-    public static int HighScore = 0;
+    public static int[] HighScore = new int[2]{0,0};
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -48,7 +48,10 @@ public class Player : MonoBehaviour
         BoughtFood = data.boughtFood;
         //ToiletStatus = data.toiletStatus;
         LastAte = data.lastAte;
-        HighScore = data.highScore;
+        for (int item = 0; item < data.highScore.Length; item++)
+        {
+            HighScore[item] = data.highScore[item];
+        }
     }
     private void OnApplicationQuit() {
         LastIn = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");
@@ -80,7 +83,7 @@ public class Player : MonoBehaviour
             LoadPlayer();
     }*/
     private void Awake() {
-        Debug.Log(BathroomStatus.ToiletStatus);
+        //Debug.Log(BathroomStatus.ToiletStatus);
         LoadPlayer();
         //if(EatingStatus == 1)
         //    Hygiene = Hygiene - 70f;       

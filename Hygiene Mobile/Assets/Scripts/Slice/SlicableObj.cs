@@ -19,13 +19,16 @@ public class SlicableObj : MonoBehaviour
                 sparkleEffect.transform.position = transform.position;
                 sparkleEffect.SetActive(true);
                 sparkleEffect.GetComponent<Animator>().Play("sparkle", -1, 0);  
-                 
+
+                FindObjectOfType<AudioManager>().Play("Life"); 
                 return;
             }else if(gameObject.tag == "Enemy"){
                 GameObject smokeEffect = Instantiate(smokePrefab);
                 smokeEffect.transform.position = transform.position;
                 smokeEffect.SetActive(true);
-                smokeEffect.GetComponent<Animator>().Play("smoke", -1, 0);   
+                smokeEffect.GetComponent<Animator>().Play("smoke", -1, 0);
+
+                FindObjectOfType<AudioManager>().Play("Poof");    
             }
             SliceManager.instance.IncreaseScore();
             SliceManager.instance.IncreaseCoin();

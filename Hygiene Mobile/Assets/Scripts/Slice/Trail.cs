@@ -12,6 +12,8 @@ public class Trail : MonoBehaviour
         particle.SetActive(false);
     }
     private void Update() {
+        if(Time.timeScale == 0)
+            return;
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             particle.SetActive(true);
         }else{

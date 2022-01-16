@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Catch_Theme
+  - name: Theme
     clip: {fileID: 8300000, guid: 03bed952ed590ec41bc04f8a3de9c823, type: 3}
     volume: 0.15
     pitch: 1

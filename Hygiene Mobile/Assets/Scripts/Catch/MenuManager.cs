@@ -34,8 +34,8 @@ public class MenuManager : MonoBehaviour
         currentLife = 3;
         scoreText.text = "" + 0;
         coinText.text = "" + 0;
-        pausehighScore.text = "" + Player.HighScore;
-        gamehighScore.text = "" + Player.HighScore; 
+        pausehighScore.text = "" + Player.HighScore[0];
+        gamehighScore.text = "" + Player.HighScore[0]; 
     }
     public void IncreaseCoin(){
         if(currentScore % 10 > 0 && currentScore % 10 < 5 && currentScore >= 10){   
@@ -72,8 +72,8 @@ public class MenuManager : MonoBehaviour
     public void IncreaseScore(){
         currentScore++;
         scoreText.text = "" + currentScore;
-        if(currentScore > Player.HighScore){
-            Player.HighScore = currentScore;
+        if(currentScore > Player.HighScore[0]){
+            Player.HighScore[0] = currentScore;
             player.SavePlayer();
         } 
     }
@@ -129,10 +129,10 @@ public class MenuManager : MonoBehaviour
         gameIsPaused = 1;
     }
     public void PauseGame(){
-        if(currentScore > Player.HighScore){
+        if(currentScore > Player.HighScore[0]){
             pausehighScore.text = "" + currentScore;
         }else
-            pausehighScore.text = "" + Player.HighScore;
+            pausehighScore.text = "" + Player.HighScore[0];
         pauseScore.text = "" + currentScore;
         pauseMenu.SetActive(true);
         panelAlpha.SetActive(true);
@@ -152,10 +152,10 @@ public class MenuManager : MonoBehaviour
         gameIsPaused = -1;
     }
     public void ContinueWithAd(){
-        if(currentScore > Player.HighScore){
+        if(currentScore > Player.HighScore[0]){
             gamehighScore.text = "" + currentScore;
         }else
-            gamehighScore.text = "" + Player.HighScore;
+            gamehighScore.text = "" + Player.HighScore[0];
         continueMenu.SetActive(true);
         panelAlpha.SetActive(true);
         Time.timeScale = 0f;
@@ -184,8 +184,8 @@ public class MenuManager : MonoBehaviour
         gameIsPaused = 1;
     }
     private void OnDestroy() {
-        if(currentScore > Player.HighScore){
-            Player.HighScore = currentScore;
+        if(currentScore > Player.HighScore[0]){
+            Player.HighScore[0] = currentScore;
             player.SavePlayer();
         }
         Time.timeScale = 1f;

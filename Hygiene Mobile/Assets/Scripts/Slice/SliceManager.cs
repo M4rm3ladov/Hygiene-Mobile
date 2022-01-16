@@ -7,8 +7,10 @@ public class SliceManager : MonoBehaviour
 {
     public static SliceManager instance;
     Player player;
-    //[SerializeField]
-    //AdsManager adsManager;
+    [SerializeField]
+    Spawner spawner;
+    [SerializeField]
+    AdsManager adsManager;
     public static int gameIsPaused = 0;
     [SerializeField]
     private Text scoreText, coinText, pausehighScore, pauseScore, gameOverScore, gamehighScore, coinEarned;
@@ -23,14 +25,15 @@ public class SliceManager : MonoBehaviour
     private void Awake() {
         if(instance == null)
             instance = this;
+        player = gameObject.GetComponent<Player>();
     }
     void Start()
     {
         currentLife = 3;
         scoreText.text = "" + 0;
         coinText.text = "" + 0;
-        pausehighScore.text = "" + Player.HighScore;
-        gamehighScore.text = "" + Player.HighScore; 
+        pausehighScore.text = "" + Player.HighScore[1];
+        gamehighScore.text = "" + Player.HighScore[1]; 
     }
     public void IncreaseCoin(){
         if(currentScore % 10 > 0 && currentScore % 10 < 5 && currentScore >= 10){   
@@ -41,35 +44,30 @@ public class SliceManager : MonoBehaviour
                 coinRandomCounter = 0;
                 currentCoin++;
                 coinText.text = "" + currentCoin;
-                //ConsumeSpawner.instance.Speed += .025f;
-                //ConsumeSpawner.instance.DelayTime -= .25f;
-                //PlayerAnimationController.instance.moveSpeed += .01f;
-                //Player.GoldCoins += currentCoin;
-                //player.SavePlayer();
+                IncreasePacing();
             }else
                 coinRandomCounter++;
         }else if(currentScore % 10 == 5 && coinRandomCounter > 0 && currentScore >= 10){
             currentCoin++;
             coinText.text = "" + currentCoin;
-            //ConsumeSpawner.instance.Speed += .025f;
-            //ConsumeSpawner.instance.DelayTime -= .25f;
-            //PlayerAnimationController.instance.moveSpeed += .01f;
-            //Player.GoldCoins += currentCoin;
-            //player.SavePlayer();
+            IncreasePacing();
         }else if(currentScore % 10 >= 6)
             coinRandomCounter = 1;
 
-        /*if(ConsumeSpawner.instance.DelayTime < 2)
-            ConsumeSpawner.instance.DelayTime =.9, 1;
-        if(ConsumeSpawner.instance.Speed > 5)
-            ConsumeSpawner.instance.Speed = 5;*/
+        if(spawner.Interval < .10f)
+            spawner.Interval = .10f;
+    }
+    private void IncreasePacing(){
+        spawner.Interval -= .10f;
+        Player.GoldCoins += currentCoin;
+        player.SavePlayer();
     }
     public void IncreaseScore(){
         currentScore++;
         scoreText.text = "" + currentScore;
-        if(currentScore > Player.HighScore){
-            //Player.HighScore = currentScore;
-            //player.SavePlayer();
+        if(currentScore > Player.HighScore[1]){
+            Player.HighScore[1] = currentScore;
+            player.SavePlayer();
         } 
     }
     public void DecreaseLife(){
@@ -91,8 +89,8 @@ public class SliceManager : MonoBehaviour
         if(currentLife == 0 && !extraLifeReward)
             GameOver();
         else if(currentLife == 0 && extraLifeReward){
-            //ContinueWithAd();
-            //extraLifeReward = false;
+            ContinueWithAd();
+            extraLifeReward = false;
         }
     }
     public void IncreaseLife(){
@@ -124,10 +122,10 @@ public class SliceManager : MonoBehaviour
         gameIsPaused = 1;
     }
     public void PauseGame(){
-        if(currentScore > Player.HighScore){
+        if(currentScore > Player.HighScore[1]){
             pausehighScore.text = "" + currentScore;
         }else
-            pausehighScore.text = "" + Player.HighScore;
+            pausehighScore.text = "" + Player.HighScore[1];
         pauseScore.text = "" + currentScore;
         pauseMenu.SetActive(true);
         panelAlpha.SetActive(true);
@@ -135,37 +133,37 @@ public class SliceManager : MonoBehaviour
         gameIsPaused = -1;
     }
     public void GameOver(){
-        //FindObjectOfType<AudioManager>().Play("Applause");  
+        FindObjectOfType<AudioManager>().Play("Applause");  
         continueMenu.SetActive(false);
         coinEarned.text = "" + currentCoin;
         gameOverScore.text = "" + currentScore;
-        //Player.GoldCoins += currentCoin;
-        //player.SavePlayer();
+        Player.GoldCoins += currentCoin;
+        player.SavePlayer();
         gameOverMenu.SetActive(true);
         panelAlpha.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = -1;
     }
     public void ContinueWithAd(){
-        if(currentScore > Player.HighScore){
+        if(currentScore > Player.HighScore[1]){
             gamehighScore.text = "" + currentScore;
         }else
-            gamehighScore.text = "" + Player.HighScore;
+            gamehighScore.text = "" + Player.HighScore[1];
         continueMenu.SetActive(true);
         panelAlpha.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = -1;
     }
     public void ExtraLifeClicked(){
-        //adsManager.ButtonType = "CatchExtra";
+        adsManager.ButtonType = "CatchExtra";
     }
     public void DoubleCoinsClicked(){
-        //adsManager.ButtonType = "CatchDouble";
+        adsManager.ButtonType = "CatchDouble";
     }
 
     public void DoubleCoins(){
-        //FindObjectOfType<AudioManager>().Play("Coin");
-        //GameObject.Find("Button_Ad").GetComponent<Button>().interactable = false;
+        FindObjectOfType<AudioManager>().Play("Coin");
+        GameObject.Find("Button_Ad").GetComponent<Button>().interactable = false;
         currentCoin = currentCoin * 2;
         coinEarned.text = "" + currentCoin;
         Player.GoldCoins += currentCoin;
@@ -179,10 +177,10 @@ public class SliceManager : MonoBehaviour
         gameIsPaused = 1;
     }
     private void OnDestroy() {
-        //if(currentScore > Player.HighScore){
-            //Player.HighScore = currentScore;
-            //player.SavePlayer();
-        //}
+        if(currentScore > Player.HighScore[1]){
+            Player.HighScore[1] = currentScore;
+            player.SavePlayer();
+        }
         Time.timeScale = 1f;
         gameIsPaused = 0;
     }  

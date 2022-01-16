@@ -31,7 +31,10 @@ public class Spawn : MonoBehaviour
         transform.position += new Vector3(speed, verticalVelocity, 0) * Time.deltaTime;
 
         if(transform.position.y < -.5f){
-            SliceManager.instance.DecreaseLife();
+            if(gameObject.tag == "Enemy"){
+                SliceManager.instance.DecreaseLife();
+                FindObjectOfType<AudioManager>().Play("Laugh");
+            }
             IsActive = false;
             Destroy(gameObject);
         }

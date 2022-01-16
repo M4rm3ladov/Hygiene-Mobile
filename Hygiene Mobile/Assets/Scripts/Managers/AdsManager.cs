@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GoogleMobileAds.Api;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AdsManager : MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class AdsManager : MonoBehaviour
     public string ButtonType{ get{ return buttonType; } set { buttonType = value; } }
     private RewardedAd rewardedAd;
     private string rewardedAd_Id;
+    private Scene currentScene;
     void Start(){
+        currentScene = SceneManager.GetActiveScene();
+
         rewardedAd_Id = "ca-app-pub-3940256099942544/5224354917";
 
         MobileAds.Initialize(initStatus => {});
@@ -40,9 +44,17 @@ public class AdsManager : MonoBehaviour
         RequestRewardedAd();
     }
     public void HandleUserEarnedReward(object sender, Reward args){
-        if(buttonType == "CatchExtra")
-            MenuManager.instance.ContinueWithOneLife();
-        else if(buttonType == "CatchDouble")
-            MenuManager.instance.DoubleCoins();
+        if(currentScene.name == "Catch"){
+            if(buttonType == "CatchExtra")
+                MenuManager.instance.ContinueWithOneLife();
+            else if(buttonType == "CatchDouble")
+                MenuManager.instance.DoubleCoins();
+        }else if(currentScene.name == "Slice"){
+            if(buttonType == "CatchExtra")
+                SliceManager.instance.ContinueWithOneLife();
+            else if(buttonType == "CatchDouble")
+                SliceManager.instance.DoubleCoins();
+        }
+        
     }
 }

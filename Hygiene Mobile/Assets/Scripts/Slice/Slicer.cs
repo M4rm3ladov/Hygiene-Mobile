@@ -20,6 +20,8 @@ public class Slicer : MonoBehaviour
         }
     }
     private void SpawnCut(){
+        if(Time.timeScale == 0)
+            return;
         swipeEnd = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         GameObject cutInstance = Instantiate(cutPrefab, swipeStart, Quaternion.identity);

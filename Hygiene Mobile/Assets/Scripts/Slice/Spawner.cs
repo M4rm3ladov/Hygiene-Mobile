@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     private GameObject heartPref;
     [SerializeField]
     private float interval;
+    public float Interval{get; set;}
     /*[SerializeField]
     private float minimumX;
     [SerializeField]

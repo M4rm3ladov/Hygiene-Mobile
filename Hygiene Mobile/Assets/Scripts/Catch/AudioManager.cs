@@ -20,14 +20,9 @@ public class AudioManager : MonoBehaviour
     }
     private void Start() {
         Scene currentScene = SceneManager.GetActiveScene();
-        if(currentScene.name == "Catch"){
-            Debug.Log("triggered sound");
-            Play("Catch_Theme");
-        }
-            
+        Play("Theme");        
     }
     public void Play(string name){
-        Debug.Log("played");
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if(s == null)
             return;

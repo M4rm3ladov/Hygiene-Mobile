@@ -6,11 +6,15 @@ using UnityEngine.Video;
 public class QuizManager : MonoBehaviour
 {
     [SerializeField]
+    private QuizUI quizUI;
+    [SerializeField]
+    private QuizScriptable quizScriptable;
     private List<Question> questions;
     private Question selectedQuestion;
     // Start is called before the first frame update
     void Start()
     {
+        questions = quizScriptable.questions;
         SelectQuestion();
     }
 
@@ -22,9 +26,18 @@ public class QuizManager : MonoBehaviour
     void SelectQuestion(){
         int val = Random.Range(0, questions.Count);
         selectedQuestion = questions[val];
-    }
-    void Answer(){
 
+        quizUI.SetQuestion(selectedQuestion);
+    }
+    public bool Answer(string answered){
+        bool correctAnswer = false;
+        if(answered == selectedQuestion.correctAns){
+            correctAnswer = true;
+        }else{
+
+        }
+        Invoke("SelectQuestion", .4f);
+        return correctAnswer;
     }
 }
 [System.Serializable]

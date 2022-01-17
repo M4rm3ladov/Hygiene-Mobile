@@ -16,7 +16,7 @@ public class SceneOrientation : MonoBehaviour
             StartCoroutine(CheckOrientation(currentScene));
     }
     IEnumerator CheckOrientation(Scene currentScene){
-        if(currentScene.name == "Catch"){
+        if(currentScene.name == "Catch" || currentScene.name == "Quiz"){
             Screen.autorotateToLandscapeLeft = false;
             Screen.autorotateToLandscapeRight = false;
             Screen.orientation = ScreenOrientation.Portrait;

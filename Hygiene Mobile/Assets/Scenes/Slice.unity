@@ -725,6 +725,7 @@ GameObject:
   - component: {fileID: 378182703}
   - component: {fileID: 378182705}
   - component: {fileID: 378182706}
+  - component: {fileID: 378182707}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -797,6 +798,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c157c90efc5f5e4792ebd8c5599e1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &378182707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378182702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab490cdef978b3844aac67c0fb657629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &456567418
@@ -2717,7 +2730,6 @@ MonoBehaviour:
   heartPref: {fileID: 1854629225727103024, guid: 3f79dc4a05e515b4aa6fef2fb53455cb,
     type: 3}
   interval: 2
-  currentTime: 0
   sprites:
   - {fileID: 21300000, guid: 6dd26aff0e3ce574b85b55360dca300a, type: 3}
   - {fileID: 21300000, guid: ab3edd0d97ca7ee4993435f325487041, type: 3}

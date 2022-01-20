@@ -115,7 +115,7 @@ public class LampController : MonoBehaviour
             player.SavePlayer();
     }
     private bool CheckHungryOrDirty(){
-        if(BathroomStatus.ToiletStatus >= 1 && ((int)Player.Hunger <= playerController.HungerTrigger || (int)Player.Hygiene <= playerController.HygieneTrigger))
+        if(BathroomStatus.ToiletStatus >= 1 || ((int)Player.Hunger <= playerController.HungerTrigger || (int)Player.Hygiene <= playerController.HygieneTrigger))
             return true;
         else
             return false;

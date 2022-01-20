@@ -13,36 +13,157 @@ MonoBehaviour:
   m_Name: QuestionData
   m_EditorClassIdentifier: 
   questions:
-  - questionInfo: What is this used for?
-    questionType: 1
-    questionImg: {fileID: 21300000, guid: babe6b7fc7df90d4c9f5ab21240d784d, type: 3}
-    questionAudio: {fileID: 0}
-    questionVideo: {fileID: 0}
-    options:
-    - Brushing
-    - Eating
-    - Hand Washing
-    - Sleeping
-    correctAns: Hand Washing
-  - questionInfo: Atleast how many seconds to wash hands
-    questionType: 0
+  - questionInfo: How many seconds do you need to wash hands properly?
+    questionType: 2
+    optionType: 0
     questionImg: {fileID: 0}
     questionAudio: {fileID: 0}
+    questionVideo: {fileID: 32900000, guid: b5ba4df4bde52564784cb820bb69cbef, type: 3}
+    options:
+    - 5 seconds
+    - 20 seconds
+    - 15 seconds
+    - 10 seconds
+    imgOptions: []
+    correctAns: 20 seconds
+  - questionInfo: Pair the Image
+    questionType: 1
+    optionType: 1
+    questionImg: {fileID: 21300000, guid: b91c9a6f5c060984b89c17b5f74beff7, type: 3}
+    questionAudio: {fileID: 0}
     questionVideo: {fileID: 0}
     options:
-    - 10
-    - 5
-    - 15
-    - 20
-    correctAns: 20
+    - square
+    - cube
+    - obloid sphere
+    - sphere
+    imgOptions:
+    - {fileID: 21300000, guid: 72b7114c986985741a35da286bb9004f, type: 3}
+    - {fileID: 21300000, guid: 4f46ffc37e4b68d498f31f03c00b1c4c, type: 3}
+    - {fileID: 21300000, guid: 20bed84c7f6888549a6457e086d4c313, type: 3}
+    - {fileID: 21300000, guid: b5b0d902277c94b4983183fab3ce43b5, type: 3}
+    correctAns: toothbrush
+  - questionInfo: Pair the Image
+    questionType: 1
+    optionType: 1
+    questionImg: {fileID: 21300000, guid: 1b9a40f27ccd0a443b3e1ef92baacbd4, type: 3}
+    questionAudio: {fileID: 0}
+    questionVideo: {fileID: 0}
+    options: []
+    imgOptions:
+    - {fileID: 21300000, guid: b5b0d902277c94b4983183fab3ce43b5, type: 3}
+    - {fileID: 21300000, guid: 20bed84c7f6888549a6457e086d4c313, type: 3}
+    - {fileID: 21300000, guid: 4f46ffc37e4b68d498f31f03c00b1c4c, type: 3}
+    - {fileID: 21300000, guid: 11c7949dc9dd5dd4fbc81184f9f057f2, type: 3}
+    correctAns: cueTipsImg
   - questionInfo: Which food is unhealthy?
     questionType: 0
+    optionType: 1
     questionImg: {fileID: 0}
     questionAudio: {fileID: 0}
     questionVideo: {fileID: 0}
+    options: []
+    imgOptions:
+    - {fileID: 21300000, guid: a93d6cc45bc1c304c9ea31d87b80b72f, type: 3}
+    - {fileID: 21300000, guid: 822eb0a4ca6797a46a61a5a50675aa9f, type: 3}
+    - {fileID: 21300000, guid: 8f0f1bcf2d33ef142aa46a85d9aaca68, type: 3}
+    - {fileID: 21300000, guid: d16d14d57f6fe0843aa82f8f737680f9, type: 3}
+    correctAns: candyImg
+  - questionInfo: Which food is healthy?
+    questionType: 0
+    optionType: 1
+    questionImg: {fileID: 0}
+    questionAudio: {fileID: 0}
+    questionVideo: {fileID: 0}
+    options: []
+    imgOptions:
+    - {fileID: 21300000, guid: a93d6cc45bc1c304c9ea31d87b80b72f, type: 3}
+    - {fileID: 21300000, guid: 982f6b92ba57a3c4792c3d5332a451da, type: 3}
+    - {fileID: 21300000, guid: e5bc6f78a92e6f9459115a88ee67831a, type: 3}
+    - {fileID: 21300000, guid: 1bd9d0a43f58c674ea04bb8f9bc9b9a9, type: 3}
+    correctAns: MilkImg
+  - questionInfo: How many times a day do you need to brush your teeth?
+    questionType: 2
+    optionType: 0
+    questionImg: {fileID: 0}
+    questionAudio: {fileID: 0}
+    questionVideo: {fileID: 32900000, guid: 1086b686a1644e7418f14ceef4a09250, type: 3}
     options:
-    - Candy
-    - Apple
-    - Eggplant
-    - Orange
-    correctAns: Candy
+    - 2 times
+    - 1 time
+    - 3 times
+    - 4 times
+    imgOptions:
+    - {fileID: 21300000, guid: a93d6cc45bc1c304c9ea31d87b80b72f, type: 3}
+    - {fileID: 21300000, guid: 982f6b92ba57a3c4792c3d5332a451da, type: 3}
+    - {fileID: 21300000, guid: e5bc6f78a92e6f9459115a88ee67831a, type: 3}
+    - {fileID: 21300000, guid: 1bd9d0a43f58c674ea04bb8f9bc9b9a9, type: 3}
+    correctAns: 3 times
+  - questionInfo: How long should you sleep?
+    questionType: 2
+    optionType: 0
+    questionImg: {fileID: 0}
+    questionAudio: {fileID: 0}
+    questionVideo: {fileID: 32900000, guid: 70c252dfd1e92c040a983ce2610b45a4, type: 3}
+    options:
+    - 5 hours
+    - 7 hours
+    - 8 hours
+    - 4 hours
+    imgOptions:
+    - {fileID: 21300000, guid: a93d6cc45bc1c304c9ea31d87b80b72f, type: 3}
+    - {fileID: 21300000, guid: 982f6b92ba57a3c4792c3d5332a451da, type: 3}
+    - {fileID: 21300000, guid: e5bc6f78a92e6f9459115a88ee67831a, type: 3}
+    - {fileID: 21300000, guid: 1bd9d0a43f58c674ea04bb8f9bc9b9a9, type: 3}
+    correctAns: 8 hours
+  - questionInfo: Pair the Image
+    questionType: 1
+    optionType: 1
+    questionImg: {fileID: 21300000, guid: d6d2ad6a81b67de4fa104fe1a651e5e5, type: 3}
+    questionAudio: {fileID: 0}
+    questionVideo: {fileID: 0}
+    options:
+    - 5
+    - 7
+    - 8
+    - 4
+    imgOptions:
+    - {fileID: 21300000, guid: 4f46ffc37e4b68d498f31f03c00b1c4c, type: 3}
+    - {fileID: 21300000, guid: ad4ca53b56c86e446adcf5cc4340821f, type: 3}
+    - {fileID: 21300000, guid: b5b0d902277c94b4983183fab3ce43b5, type: 3}
+    - {fileID: 21300000, guid: 72b7114c986985741a35da286bb9004f, type: 3}
+    correctAns: nailClippersImg
+  - questionInfo: Pair the Image
+    questionType: 1
+    optionType: 1
+    questionImg: {fileID: 21300000, guid: be9df2bf4e8f8844c9f2bdf99eaedbfd, type: 3}
+    questionAudio: {fileID: 0}
+    questionVideo: {fileID: 0}
+    options:
+    - 5
+    - 7
+    - 8
+    - 4
+    imgOptions:
+    - {fileID: 21300000, guid: 20bed84c7f6888549a6457e086d4c313, type: 3}
+    - {fileID: 21300000, guid: ad4ca53b56c86e446adcf5cc4340821f, type: 3}
+    - {fileID: 21300000, guid: b5b0d902277c94b4983183fab3ce43b5, type: 3}
+    - {fileID: 21300000, guid: 11c7949dc9dd5dd4fbc81184f9f057f2, type: 3}
+    correctAns: soapImg
+  - questionInfo: Which item is not used during bath time?
+    questionType: 2
+    optionType: 1
+    questionImg: {fileID: 0}
+    questionAudio: {fileID: 0}
+    questionVideo: {fileID: 32900000, guid: 0173a1af64f323c4da80fa39c6761aa4, type: 3}
+    options:
+    - 5
+    - 7
+    - 8
+    - 4
+    imgOptions:
+    - {fileID: 21300000, guid: 11c7949dc9dd5dd4fbc81184f9f057f2, type: 3}
+    - {fileID: 21300000, guid: 72b7114c986985741a35da286bb9004f, type: 3}
+    - {fileID: 21300000, guid: 9467acd378aa264418aad3f14056935e, type: 3}
+    - {fileID: 21300000, guid: 50f19c2c88bf10c4cb8df33e76aa675c, type: 3}
+    correctAns: toothbrush

@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public static Dictionary<string, int> BoughtFood = new Dictionary<string, int>();
     //public static int ToiletStatus = 0;
     public static string LastAte;
-    public static int[] HighScore = new int[2]{0,0};
+    public static int[] HighScore = new int[3]{0,0,0};
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);

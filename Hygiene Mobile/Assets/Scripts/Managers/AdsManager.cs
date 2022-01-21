@@ -54,6 +54,9 @@ public class AdsManager : MonoBehaviour
                 SliceManager.instance.ContinueWithOneLife();
             else if(buttonType == "CatchDouble")
                 SliceManager.instance.DoubleCoins();
+        }else if(currentScene.name == "Quiz"){
+            if(buttonType == "CatchDouble")
+                QuizManager.instance.DoubleCoins();
         }
         
     }

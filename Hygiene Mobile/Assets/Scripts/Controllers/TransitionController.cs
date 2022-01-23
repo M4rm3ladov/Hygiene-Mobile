@@ -18,7 +18,7 @@ public class TransitionController : MonoBehaviour
     {
         if(_levelName != "Kitchen" && KitchenStatus.Started == false){
             KitchenStatus.HandWash = true;
-            Debug.Log("first");
+            //Debug.Log("first");
         }
         
         if(currentScene.name == "Kitchen"  && _levelName != "Store" && KitchenStatus.Started == true){
@@ -55,6 +55,10 @@ public class TransitionController : MonoBehaviour
 
         //wakes up character when switching scene
         Player.SleepState = 1;  
+        if(_levelName == "Closet" || _levelName == "Store")
+            FindObjectOfType<AudioManager>().Play("Cabinet");
+        else if(_levelName == "Sink")
+            FindObjectOfType<AudioManager>().Play("Squeak");
         StartCoroutine(LoadLevel(_levelName));       
     }
 

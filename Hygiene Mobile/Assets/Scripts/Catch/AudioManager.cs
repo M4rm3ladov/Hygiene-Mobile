@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Start() {
         Scene currentScene = SceneManager.GetActiveScene();
+        if(GameObject.Find("CrossFade").GetComponentInChildren<CanvasGroup>().alpha == 1)
         Play("Theme");        
     }
     public void Play(string name){

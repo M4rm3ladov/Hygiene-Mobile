@@ -59,8 +59,7 @@ public class SliceManager : MonoBehaviour
     }
     private void IncreasePacing(){
         spawner.Interval -= .20f;
-        Debug.Log("interval: " + spawner.Interval);
-        Player.GoldCoins += currentCoin;
+        Player.GoldCoins ++;
         player.SavePlayer();
     }
     public void IncreaseScore(){
@@ -138,8 +137,6 @@ public class SliceManager : MonoBehaviour
         continueMenu.SetActive(false);
         coinEarned.text = "" + currentCoin;
         gameOverScore.text = "" + currentScore;
-        Player.GoldCoins += currentCoin;
-        player.SavePlayer();
         gameOverMenu.SetActive(true);
         panelAlpha.SetActive(true);
         Time.timeScale = 0f;
@@ -165,10 +162,11 @@ public class SliceManager : MonoBehaviour
     public void DoubleCoins(){
         FindObjectOfType<AudioManager>().Play("Coin");
         GameObject.Find("Button_Ad").GetComponent<Button>().interactable = false;
+        Player.GoldCoins -= currentCoin;
         currentCoin = currentCoin * 2;
-        coinEarned.text = "" + currentCoin;
         Player.GoldCoins += currentCoin;
         player.SavePlayer();
+        coinEarned.text = "" + currentCoin;
         Time.timeScale = 0f;
     }   
     public void ContinueWithOneLife(){
@@ -180,6 +178,7 @@ public class SliceManager : MonoBehaviour
     private void OnDestroy() {
         if(currentScore > Player.HighScore[1]){
             Player.HighScore[1] = currentScore;
+            //Player.GoldCoins += currentCoin;
             player.SavePlayer();
         }
         Time.timeScale = 1f;

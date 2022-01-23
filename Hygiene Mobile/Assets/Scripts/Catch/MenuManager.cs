@@ -49,7 +49,7 @@ public class MenuManager : MonoBehaviour
                 ConsumeSpawner.instance.Speed += .025f;
                 ConsumeSpawner.instance.DelayTime -= .25f;
                 PlayerAnimationController.instance.moveSpeed += .01f;
-                Player.GoldCoins += currentCoin;
+                Player.GoldCoins ++;
                 player.SavePlayer();
             }else
                 coinRandomCounter++;
@@ -59,7 +59,7 @@ public class MenuManager : MonoBehaviour
             ConsumeSpawner.instance.Speed += .025f;
             ConsumeSpawner.instance.DelayTime -= .25f;
             PlayerAnimationController.instance.moveSpeed += .01f;
-            Player.GoldCoins += currentCoin;
+            Player.GoldCoins ++;
             player.SavePlayer();
         }else if(currentScore % 10 >= 6)
             coinRandomCounter = 1;
@@ -144,8 +144,6 @@ public class MenuManager : MonoBehaviour
         continueMenu.SetActive(false);
         coinEarned.text = "" + currentCoin;
         gameOverScore.text = "" + currentScore;
-        Player.GoldCoins += currentCoin;
-        player.SavePlayer();
         gameOverMenu.SetActive(true);
         panelAlpha.SetActive(true);
         Time.timeScale = 0f;
@@ -171,10 +169,11 @@ public class MenuManager : MonoBehaviour
     public void DoubleCoins(){
         FindObjectOfType<AudioManager>().Play("Coin");
         GameObject.Find("Button_Ad").GetComponent<Button>().interactable = false;
+        Player.GoldCoins -= currentCoin;
         currentCoin = currentCoin * 2;
-        coinEarned.text = "" + currentCoin;
         Player.GoldCoins += currentCoin;
         player.SavePlayer();
+        coinEarned.text = "" + currentCoin;
         Time.timeScale = 0f;
     }   
     public void ContinueWithOneLife(){
@@ -186,6 +185,7 @@ public class MenuManager : MonoBehaviour
     private void OnDestroy() {
         if(currentScore > Player.HighScore[0]){
             Player.HighScore[0] = currentScore;
+            //Player.GoldCoins += currentCoin;
             player.SavePlayer();
         }
         Time.timeScale = 1f;

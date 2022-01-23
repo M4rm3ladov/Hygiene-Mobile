@@ -71,12 +71,14 @@ public class LampController : MonoBehaviour
         if(Player.SleepState == 1)
         {
             if(!CheckHungryOrDirty())
-                TurnOffLight();  
+                TurnOffLight();
+                FindObjectOfType<AudioManager>().Play("Lamp");  
         }
         
         else if(Player.SleepState == 0)
         {   
            TurnOnLight();
+           FindObjectOfType<AudioManager>().Play("Lamp");
         }
     }
     //satisfying the energy need with an alterable value

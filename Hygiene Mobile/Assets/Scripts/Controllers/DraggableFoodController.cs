@@ -63,6 +63,7 @@ public class DraggableFoodController : MonoBehaviour
             player.SavePlayer(); 
             if(Player.Hunger >= needsController._max)
                 return;
+            FindObjectOfType<AudioManager>().Play("Eating");
             FeedTheChar();
             SubtractOrRemoveFoodItem();  
             CheckFoodStashCount();     

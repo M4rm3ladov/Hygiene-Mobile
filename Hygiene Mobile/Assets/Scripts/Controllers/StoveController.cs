@@ -9,7 +9,8 @@ public class StoveController : MonoBehaviour
     ConsumeFoodManager consumeFoodManager;
     private int _clicked = 0;
     private void OnMouseDown() {
-        StoveClicked();           
+        FindObjectOfType<AudioManager>().Play("Table");  
+        StoveClicked();         
     }
     private void StoveClicked(){
         if(KitchenStatus.HandWash == true && KitchenStatus.EatStatus != 0)

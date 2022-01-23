@@ -234,6 +234,7 @@ public class PlayerController : MonoBehaviour
     //wave on character click
     private void OnMouseDown() {
         if(animTransition.GetCurrentAnimatorStateInfo(0).IsName("Idle")){
+            FindObjectOfType<AudioManager>().Play("Hello");
             animTransition.SetTrigger("Wave");
         }      
     }

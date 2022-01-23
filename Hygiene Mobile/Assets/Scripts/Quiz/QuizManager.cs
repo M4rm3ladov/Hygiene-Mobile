@@ -86,8 +86,10 @@ public class QuizManager : MonoBehaviour
     public void IncreaseCoin(){
         currentCoin++;
         coinText.text = "" + currentCoin;
-        Player.GoldCoins += currentCoin;
+        Debug.Log("Before Increment " + Player.GoldCoins);
+        Player.GoldCoins ++;
         player.SavePlayer();
+        Debug.Log("After Increment " + Player.GoldCoins);
     }
 
     public void RestartGame(){
@@ -118,8 +120,6 @@ public class QuizManager : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Applause");  
         coinEarned.text = "" + currentCoin;
         gameOverScore.text = "" + currentScore;
-        Player.GoldCoins += currentCoin;
-        player.SavePlayer();
         gameOverMenu.SetActive(true);
         panelAlpha.SetActive(true);
         btnPause.interactable = false;
@@ -133,16 +133,21 @@ public class QuizManager : MonoBehaviour
     public void DoubleCoins(){
         FindObjectOfType<AudioManager>().Play("Coin");
         GameObject.Find("Button_Ad").GetComponent<Button>().interactable = false;
+        Debug.Log("Before Double " + Player.GoldCoins);
+        Player.GoldCoins -= currentCoin;
         currentCoin = currentCoin * 2;
-        coinEarned.text = "" + currentCoin;
         Player.GoldCoins += currentCoin;
+        Debug.Log("After Double " + Player.GoldCoins);
         player.SavePlayer();
+        coinEarned.text = "" + currentCoin;
         Time.timeScale = 0f;
     }   
     private void OnDestroy() {
         if(currentScore > Player.HighScore[2]){
             Player.HighScore[2] = currentScore;
+            //Player.GoldCoins += currentCoin;
             player.SavePlayer();
+            Debug.Log("Destroyed " + Player.GoldCoins);
         }
         Time.timeScale = 1f;
         gameIsPaused = 0;

@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     private Sprite[] sprites;
     private void Start() {
         currentTime = interval;
-        Spawn();
+        //Spawn();
         //InvokeRepeating("Spawn", interval, interval);
     }
     private void Update() {

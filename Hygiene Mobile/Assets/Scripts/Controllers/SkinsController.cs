@@ -33,6 +33,8 @@ public class SkinsController : MonoBehaviour
     private GameObject BuyButton;
     [SerializeField]
     private GameObject EquipButton;
+    [SerializeField]
+    private GameObject pnlOut;
     //dictionary of hair and clothes index with names as value
     private Dictionary<int, string> hairNames = new Dictionary<int, string>();
     private Dictionary<int, string> clothesNames = new Dictionary<int, string>();
@@ -128,6 +130,9 @@ public class SkinsController : MonoBehaviour
         HairButton.interactable = false;
     }
     #endregion
+    public void ClosePnlOut(){
+        pnlOut.SetActive(false);
+    }
     #region left-right-buttons
     private void PreviousOption(){
         if(buttonOption == 0){
@@ -247,8 +252,11 @@ public class SkinsController : MonoBehaviour
     }
     public void BuyItem(){
         //calculate bought item
-        if(Player.GoldCoins < float.Parse(PriceText.text) )
+        if(Player.GoldCoins < float.Parse(PriceText.text) ){
+            pnlOut.SetActive(true);
             return;
+        }
+        FindObjectOfType<AudioManager>().Play("Buy"); 
         monetaryManager.ComputeBoughtItem(float.Parse(PriceText.text));
         
         EquipItem();
@@ -268,6 +276,8 @@ public class SkinsController : MonoBehaviour
             Player.EquippedSkins[1] = currentOption;
             defaultClothes = currentOption;
         }
+
+        FindObjectOfType<AudioManager>().Play("Equip");
         player.SavePlayer();
     }
 }

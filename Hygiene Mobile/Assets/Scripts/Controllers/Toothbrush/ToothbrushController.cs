@@ -17,6 +17,7 @@ public class ToothbrushController : MonoBehaviour
         toothB.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;
+        FindObjectOfType<AudioManager>().Stop("Brush");
         if(BrushingManager.ToothbrushStep == 1)
             toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[1];
         if(BrushingManager.ToothbrushStep > 1)

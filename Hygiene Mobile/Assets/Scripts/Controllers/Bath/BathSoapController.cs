@@ -15,13 +15,26 @@ public class BathSoapController : MonoBehaviour
         bubblePs = GetComponentInChildren<ParticleSystem>();
     }
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.name != "Body")
+        if(other.name != "Body"){
             bubblePs.Stop();
+            FindObjectOfType<AudioManager>().Stop("Bubble");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.name == "Body")
+            FindObjectOfType<AudioManager>().Play("Bubble");
     }
 
     private void OnTriggerStay2D(Collider2D other) {
         if(BathroomManager.BathStep == 3)
             return;
+            
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began){
+            if(other.name == "Body"){
+                FindObjectOfType<AudioManager>().Play("Bubble");
+            }
+        }
+
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Body"){
                 timeStep -= Time.deltaTime;

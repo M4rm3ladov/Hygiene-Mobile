@@ -34,13 +34,27 @@ public class SinkTowelController : MonoBehaviour
         if(LTrigger == 1)
             lHand.sprite = lHandList[1];
     }
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.name != "RHand" || other.name != "LHand"){
+            FindObjectOfType<AudioManager>().Stop("Cloth");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.name == "RHand" || other.name == "LHand"){
+            FindObjectOfType<AudioManager>().Play("Cloth");
+        }else{
+            FindObjectOfType<AudioManager>().Stop("Cloth");
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D other) {
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
-            if(other.name == "RHand")
+            if(other.name == "RHand"){
                 timeStepR -= Time.deltaTime;
-            if(other.name == "LHand")
+            }
+            else if(other.name == "LHand"){
                 timeStepL -= Time.deltaTime;
+            }
         }
         if(RTrigger < 2){
             if(timeStepR <= 0 )

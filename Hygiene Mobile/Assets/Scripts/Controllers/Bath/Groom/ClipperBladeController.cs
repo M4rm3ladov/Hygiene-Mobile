@@ -22,6 +22,7 @@ public class ClipperBladeController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.name != nName){
             clipperA.enabled = false;
+            FindObjectOfType<AudioManager>().Stop("Nail");
         }
     }
 
@@ -30,6 +31,7 @@ public class ClipperBladeController : MonoBehaviour
         {   
             index = i;
             if(nailsManager.Nails[i].name == other.name){
+                FindObjectOfType<AudioManager>().Play("Nail");
                 nName = nailsManager.Nails[i].name;
                 break;
             }

@@ -18,8 +18,16 @@ public class SinkSoapController : MonoBehaviour
         bubblePs = GetComponentInChildren<ParticleSystem>();
     }
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.name != "RHand" || other.name != "LHand")
+        if(other.name != "RHand" || other.name != "LHand"){
+            FindObjectOfType<AudioManager>().Stop("Bubble");
             bubblePs.Stop();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            if(other.name == "RHand" || other.name == "LHand")
+                FindObjectOfType<AudioManager>().Play("Bubble");
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other) {
@@ -34,8 +42,9 @@ public class SinkSoapController : MonoBehaviour
                 bubblePs.Play();
                 timeStep -= Time.deltaTime;
             }
-            else
+            else{
                 bubblePs.Stop();
+            }
         }
             
         if(timeStep <= 0){

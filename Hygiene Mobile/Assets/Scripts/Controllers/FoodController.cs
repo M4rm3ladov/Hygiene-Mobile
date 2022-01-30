@@ -16,10 +16,15 @@ public class FoodController : MonoBehaviour
     private Text StatsText;
     [SerializeField]
     private Text PriceText;
+    [SerializeField]
+    private GameObject pnlOut;
     private int currentOption = 0;
     private void Start() {
         player = GetComponent<Player>();
         LoadFoodInfo();
+    }
+    public void ClosePanel(){
+        pnlOut.SetActive(false);
     }
     public void PreviousOption(){
         currentOption++;
@@ -40,9 +45,16 @@ public class FoodController : MonoBehaviour
         PriceText.text = foodManager.FoodPrices[currentOption].ToString();
     }
     public void BuyFood(){
+        if(Player.GoldCoins < float.Parse(PriceText.text) ){
+            pnlOut.SetActive(true);
+            return;
+        }
+    
         if(CheckFoodExistsInDictionary())
             Player.BoughtFood.Add(foodManager.Food.sprite.name, 1);
         monetaryManager.ComputeBoughtItem(foodManager.FoodPrices[currentOption]);
+
+        FindObjectOfType<AudioManager>().Play("Buy"); 
         player.SavePlayer();
     }
     private bool CheckFoodExistsInDictionary(){

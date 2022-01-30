@@ -37,12 +37,14 @@ public class BathShampooDispense : MonoBehaviour
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "leftH"){
                 if(!LTrigger){
+                    FindObjectOfType<AudioManager>().Play("Squirt");
                     StartCoroutine(FadeIn(leftSbubble));
                     LTrigger = true;
                     BathroomManager.BathStep += .5f;
                 }
             }else if(other.name == "rightH"){
                 if(!RTrigger){
+                    FindObjectOfType<AudioManager>().Play("Squirt");
                     StartCoroutine(FadeIn(rightSbubble));
                     RTrigger = true;
                     BathroomManager.BathStep += .5f;

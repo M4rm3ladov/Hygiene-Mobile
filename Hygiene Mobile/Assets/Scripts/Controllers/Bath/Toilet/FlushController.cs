@@ -60,6 +60,7 @@ public class FlushController : MonoBehaviour
     }
     private void OnMouseDrag() {
         if(isDragged){
+            FindObjectOfType<AudioManager>().Play("Flush");
             ToiletManager.ToiletStep = 2;
             Vector3 mousePos = new Vector3(xAxis, Input.mousePosition.y, 0f);
             transform.position = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(mousePos) - mouseDragStartPosition);

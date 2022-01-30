@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public static float Energy = 100;
     public static int SleepState = 1;
     public static string LastIn;
-    public static float GoldCoins = 1000;
+    public static float GoldCoins = 0;
     public static int[] EquippedSkins = new int[2]{0,0};
     public static int[][] BoughtSkins = new int[2][]{
         new int[6]{1,0,0,0,0,0},
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         Energy = data.energy;
         SleepState = data.sleepState;
         LastIn = data.lastIn;
-        GoldCoins = data.goldCoins;
+        GoldCoins = 0;//data.goldCoins;
         for (int item = 0; item < data.equippedSkins.Length; item++)
         {
             EquippedSkins[item] = data.equippedSkins[item];

@@ -8,6 +8,7 @@ public class ToothPSqueezeController : MonoBehaviour
     ToothbrushManager toothbrushManager;
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.name == "bristle"){
+            FindObjectOfType<AudioManager>().Play("Squirt");
             toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[1];
             BrushingManager.ToothbrushStep = 1;
         }

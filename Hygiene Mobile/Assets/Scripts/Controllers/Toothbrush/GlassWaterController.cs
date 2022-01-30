@@ -19,6 +19,7 @@ public class GlassWaterController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.name == "tounge"){
+            FindObjectOfType<AudioManager>().Play("Gargle");
             gWater.sprite = gSprite[1];
             BrushingManager.ToothbrushStep = 3;
             mouthManager.Mouth[1].SetActive(false);

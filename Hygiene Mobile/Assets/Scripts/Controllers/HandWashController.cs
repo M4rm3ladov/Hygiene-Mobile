@@ -13,16 +13,26 @@ public class HandWashController : MonoBehaviour
     private Animator lHand;
     private float timeStep = 1.7f;
     private int counter;
+    private bool washing = true;
 
     void Update()
     {
-        if(SinkManager.HandWashStep < 2 || SinkManager.HandWashStep >= 3)
+        if(SinkManager.HandWashStep < 2 || SinkManager.HandWashStep >= 3){
+            FindObjectOfType<AudioManager>().Stop("Hand");
             return;
+        }
 
-        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended){
+            washing = true;
+            FindObjectOfType<AudioManager>().Stop("Hand");
             StopAnimation();
+        }
 
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            if(washing == true){
+                FindObjectOfType<AudioManager>().Play("Hand");
+                washing = false;
+            }
             PlayAnimation();
             timeStep -= Time.deltaTime;
         }

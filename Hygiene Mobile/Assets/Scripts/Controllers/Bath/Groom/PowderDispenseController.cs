@@ -10,12 +10,23 @@ public class PowderDispenseController : MonoBehaviour
         powderPs = GetComponentInChildren<ParticleSystem>();
     }
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.name != "Body")
+        if(other.name != "Body"){
             powderPs.Stop();
+            FindObjectOfType<AudioManager>().Stop("Powder");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.name == "Body")
+            FindObjectOfType<AudioManager>().Play("Powder");
     }
     private void OnTriggerStay2D(Collider2D other) {
         if(BathroomManager.BathStep == 10){
             return;
+        }
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began){
+            if(other.name == "Body"){
+                FindObjectOfType<AudioManager>().Play("Powder");
+            }
         }
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Body"){

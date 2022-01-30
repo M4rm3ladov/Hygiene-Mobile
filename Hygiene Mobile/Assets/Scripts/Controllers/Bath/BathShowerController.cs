@@ -20,13 +20,24 @@ public class BathShowerController : MonoBehaviour
         showerPs.Stop();
     }
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.name != "Hair")
+        if(other.name != "Hair"){
             showerPs.Stop();
+            FindObjectOfType<AudioManager>().Stop("Shower");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.name == "Hair" && BathroomManager.BathStep < 1 || BathroomManager.BathStep >= 4 && BathroomManager.BathStep < 5)
+            FindObjectOfType<AudioManager>().Play("Shower");
     }
     private void OnTriggerStay2D(Collider2D other) {
         if(BathroomManager.BathStep == 1 || BathroomManager.BathStep == 5)
             return;
-  
+            
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began){
+            if(other.name == "Hair" && BathroomManager.BathStep < 1 || BathroomManager.BathStep >= 4 && BathroomManager.BathStep < 5){
+                FindObjectOfType<AudioManager>().Play("Shower");
+            }
+        }
         if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
             if(other.name == "Hair"){
                 showerPs.Play();
@@ -53,6 +64,7 @@ public class BathShowerController : MonoBehaviour
         if(BathroomManager.BathStep > 1 && BathroomManager.BathStep < 5){
             return;
         }
+        FindObjectOfType<AudioManager>().Stop("Shower");
         sShower.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;

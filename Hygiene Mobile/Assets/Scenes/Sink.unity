@@ -2697,6 +2697,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7555627567915804239}
+        m_MethodName: ButtonSoundFx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2649654470429535960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2740,6 +2751,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1513283902}
         m_MethodName: FinishClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7555627567915804239}
+        m_MethodName: ButtonSoundFx
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3077,3 +3099,96 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 29.63}
   m_SizeDelta: {x: 500, y: 30}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!4 &7555627567915804236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555627567915804238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7555627567915804238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7555627567915804236}
+  - component: {fileID: 7555627567915804239}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &7555627567915804239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555627567915804238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bccc5c078c85ec4ea4de1dc28c74c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Click
+    clip: {fileID: 8300000, guid: f9ef477a1cb8bca489d1aefc8f619566, type: 3}
+    volume: 4.08
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: 2f78edc31a6bb3e4cb22f1a098413af9, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Squeak
+    clip: {fileID: 8300000, guid: ceecf1ac66cc6524081e79813fca7ced, type: 3}
+    volume: 4.08
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Bubble
+    clip: {fileID: 8300000, guid: 34b6b8ee740d6c346bb6abadd62b1016, type: 3}
+    volume: 4.08
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Water
+    clip: {fileID: 8300000, guid: c147defe1a3cd674ca32062eb35bd8f8, type: 3}
+    volume: 4.08
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Cloth
+    clip: {fileID: 8300000, guid: 4ee62a07e5b265643a87f8e419113453, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Hand
+    clip: {fileID: 8300000, guid: d60b3aa9b27036f43a1bb38aba8fa79f, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}

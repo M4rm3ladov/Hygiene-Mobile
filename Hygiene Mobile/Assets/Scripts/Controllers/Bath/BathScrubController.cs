@@ -22,6 +22,24 @@ public class BathScrubController : MonoBehaviour
             virus.Add(GameObject.Find("Body").transform.GetChild(i).gameObject);
         }
     }
+    private void OnTriggerEnter2D(Collider2D other) {
+        for (int i = 0; i < virus.Count; i++)
+        {
+            index = i;
+            if(virus[i].name == other.name){
+                FindObjectOfType<AudioManager>().Play("Scrub");
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        for (int i = 0; i < virus.Count; i++)
+        {
+            index = i;
+            if(virus[i].name != other.name){
+                FindObjectOfType<AudioManager>().Stop("Scrub");
+            }
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D other) {
         for (int i = 0; i < virus.Count; i++)
@@ -50,6 +68,7 @@ public class BathScrubController : MonoBehaviour
         if(BathroomManager.BathStep < 3){
             return;
         }
+        FindObjectOfType<AudioManager>().Stop("Scrub");
         sScrub.sortingOrder = 0;
         isDragged = false;
         transform.position = spriteDragStartPosition;

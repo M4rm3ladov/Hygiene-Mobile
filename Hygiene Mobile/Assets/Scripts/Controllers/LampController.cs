@@ -70,11 +70,11 @@ public class LampController : MonoBehaviour
     private void OnMouseDown() {
         if(Player.SleepState == 1)
         {
-            if(!CheckHungryOrDirty())
+            if(!CheckHungryOrDirty()){
                 TurnOffLight();
                 FindObjectOfType<AudioManager>().Play("Lamp");  
+            }    
         }
-        
         else if(Player.SleepState == 0)
         {   
            TurnOnLight();

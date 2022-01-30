@@ -36,7 +36,7 @@ public class ToiletManager : MonoBehaviour
     }
 
     private void Start() {
-        ToiletStep = 3;
+        ToiletStep = 0;
         if(PlayerPrefs.GetInt("gender") == 0)
             player = GameObject.Find("Player").GetComponent<Player>();
         else if(PlayerPrefs.GetInt("gender") == 1)

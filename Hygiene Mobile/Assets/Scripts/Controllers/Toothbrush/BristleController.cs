@@ -16,9 +16,18 @@ public class BristleController : MonoBehaviour
     private  string vName;
     private int index;
     private float addend = 0.047f;
-    /*private void OnTriggerEnter2D(Collider2D other) {
-        timeStep = 1f;
-    }*/
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.name == "V1" || other.name == "V2"
+        || other.name == "V4" || other.name == "V3"
+        || other.name == "V5" || other.name == "V6"
+        || other.name == "V7" || other.name == "V8"
+        || other.name == "V10" || other.name == "V9"
+        || other.name == "V11" ){ 
+            //if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved){
+                FindObjectOfType<AudioManager>().Play("Brush");
+            //}
+        }
+    }
     private void OnTriggerStay2D(Collider2D other) {
         if(mouthManager.Mouth[0].activeSelf){
             PlayFrontTeethMecanics(other);
@@ -39,6 +48,14 @@ public class BristleController : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
+        if(other.name != "V1" || other.name != "V2"
+        || other.name != "V4" || other.name != "V3"
+        || other.name != "V5" || other.name != "V6"
+        || other.name != "V7" || other.name != "V8"
+        || other.name != "V10" || other.name != "V9"
+        || other.name != "V11"){ 
+                FindObjectOfType<AudioManager>().Stop("Brush");    
+        }
         /*if(SinkManager.ToothbrushStep == 1)
             return;
         toothbrushManager.Toothbrush.sprite = toothbrushManager.ToothBSpriteOptions[0];*/

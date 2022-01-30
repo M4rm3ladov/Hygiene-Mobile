@@ -21,13 +21,42 @@ public class AudioManager : MonoBehaviour
     private void Start() {
         Scene currentScene = SceneManager.GetActiveScene();
         if(GameObject.Find("CrossFade").GetComponentInChildren<CanvasGroup>().alpha == 1)
-        Play("Theme");        
+            Play("Theme");        
+    }
+    public void ToggleSoundEffects(bool value){
+        if(!value){
+            foreach (Sound s in sounds)
+            {
+                if(s.name != "Theme")
+                    s.source.volume = 0;
+            }
+            return;
+        }
+
+        foreach (Sound s in sounds)
+        {
+            if(s.name != "Theme")
+                s.source.volume = 4.08f;
+        }
+    }
+    public void AdjustVolume(string name, float sliderValue){
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if(s == null)
+            return;
+        s.source.volume = sliderValue;
+        Debug.Log(s.source.volume);
     }
     public void Play(string name){
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if(s == null)
             return;
         s.source.Play();
+    }
+    public void Stop(string name){
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if(s == null)
+            return;
+        s.source.Stop();
     }
     public void ButtonSoundFx(){
         Play("Click");

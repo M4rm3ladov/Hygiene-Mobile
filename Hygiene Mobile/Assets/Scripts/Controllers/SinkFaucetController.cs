@@ -111,12 +111,14 @@ public class SinkFaucetController : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if(SinkManager.HandWashStep > .5f && SinkManager.HandWashStep < 3 || SinkManager.HandWashStep > 5)
+        if(SinkManager.HandWashStep > .5f && SinkManager.HandWashStep < 3 || SinkManager.HandWashStep > 5 || SinkManager.HandWashStep > 4 && SinkManager.HandWashStep < 5)
             return;
-        
+
+        FindObjectOfType<AudioManager>().Play("Squeak");
         if(!fSwitch){
             fSwitch = true;
             water.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("Water");
             if(SinkManager.HandWashStep >= 3)
                 SinkManager.HandWashStep = 4;
             if(SinkManager.HandWashStep == 0)
@@ -128,6 +130,7 @@ public class SinkFaucetController : MonoBehaviour
 
         fSwitch = false;  
         water.SetActive(false);
+        FindObjectOfType<AudioManager>().Stop("Water");
         if(SinkManager.HandWashStep == 5){
             SinkManager.HandWashStep = 6;
             return;

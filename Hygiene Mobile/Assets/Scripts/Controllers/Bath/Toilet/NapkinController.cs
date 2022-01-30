@@ -68,6 +68,7 @@ public class NapkinController : MonoBehaviour
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         spriteDragStartPosition = transform.position;
+        FindObjectOfType<AudioManager>().Play("Paper");
     }
     private void OnMouseDrag() {
         if(isDragged){

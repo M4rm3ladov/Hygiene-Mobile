@@ -55,9 +55,9 @@ public class TransitionController : MonoBehaviour
 
         //wakes up character when switching scene
         Player.SleepState = 1;  
-        if(_levelName == "Closet" || _levelName == "Store")
+        if(_levelName == "Closet" || _levelName == "Store" || _levelName == "CR")
             FindObjectOfType<AudioManager>().Play("Cabinet");
-        else if(_levelName == "Sink")
+        else if(_levelName == "Sink" || _levelName == "Bathtub")
             FindObjectOfType<AudioManager>().Play("Squeak");
         StartCoroutine(LoadLevel(_levelName));       
     }

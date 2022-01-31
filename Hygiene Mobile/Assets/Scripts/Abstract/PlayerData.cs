@@ -20,6 +20,8 @@ public class PlayerData
     //public int toiletStatus;
     public string lastAte;
     public int[] highScore = new int[3];
+    public float volume;
+    public bool soundOn;
     public PlayerData(Player player)
     {
         hygiene = Player.Hygiene;
@@ -46,6 +48,8 @@ public class PlayerData
         lastAte = Player.LastAte;
         for (int item = 0; item < Player.HighScore.Length; item++){
             highScore[item] = Player.HighScore[item];
-        }      
+        }
+        volume = Player.Volume;
+        soundOn = Player.SoundOn;      
     }
 }

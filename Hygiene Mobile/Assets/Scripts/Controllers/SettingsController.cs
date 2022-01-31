@@ -14,12 +14,25 @@ public class SettingsController : MonoBehaviour
     [SerializeField]
     private GameObject img;
     private GameObject[] gObject;
+    Player player;
+    private void Awake() {
+        if(PlayerPrefs.GetInt("gender") == 0)
+            player = GameObject.Find("Player").GetComponent<Player>();
+        else if(PlayerPrefs.GetInt("gender") == 1)
+            player = GameObject.Find("Girl").GetComponent<Player>();
+        volumeSlider.value = Player.Volume;
+        soundToggle.isOn = Player.SoundOn;
+    }
 
     public void ChangeVolume(){
         FindObjectOfType<AudioManager>().AdjustVolume("Theme", volumeSlider.value);
+        Player.Volume = volumeSlider.value;
+        player.SavePlayer();
     }
     public void ToggleSound(){
         FindObjectOfType<AudioManager>().ToggleSoundEffects(soundToggle.isOn);
+        Player.SoundOn = soundToggle.isOn;
+        player.SavePlayer();
     }
     public void ShowSettings(){
         gObject = GameObject.FindGameObjectsWithTag("Interactable");

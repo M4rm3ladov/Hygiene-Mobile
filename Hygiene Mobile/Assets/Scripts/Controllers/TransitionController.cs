@@ -11,6 +11,15 @@ public class TransitionController : MonoBehaviour
     [SerializeField]
     private string _levelName;
     private Scene currentScene;
+    PlayerController playerController;
+    private void Start() {
+        if(PlayerPrefs.GetInt("gender") == 0)
+            playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        else if(PlayerPrefs.GetInt("gender") == 1)
+            playerController = GameObject.Find("Girl").GetComponent<PlayerController>();
+        
+        Debug.Log(BathroomStatus.ToiletStatus & playerController.HygieneTrigger & playerController.HungerTrigger & playerController.TiredTrigger);
+    }
     private void OnMouseDown() {
         LoadNextLevel();
     }
@@ -18,7 +27,6 @@ public class TransitionController : MonoBehaviour
     {
         if(_levelName != "Kitchen" && KitchenStatus.Started == false){
             KitchenStatus.HandWash = true;
-            //Debug.Log("first");
         }
         
         if(currentScene.name == "Kitchen"  && _levelName != "Store" && KitchenStatus.Started == true){
@@ -59,6 +67,11 @@ public class TransitionController : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Cabinet");
         else if(_levelName == "Sink" || _levelName == "Bathtub")
             FindObjectOfType<AudioManager>().Play("Squeak");
+
+        if(_levelName == "Games"){
+            if(BathroomStatus.ToiletStatus >= 1 || ((int)Player.Hunger <= playerController.HungerTrigger || (int)Player.Hygiene <= playerController.HygieneTrigger || (int)Player.Energy <= playerController.TiredTrigger))
+                return;
+        }
         StartCoroutine(LoadLevel(_levelName));       
     }
 

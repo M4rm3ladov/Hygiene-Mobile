@@ -17,6 +17,8 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             s.source.playOnAwake = s.playOnAwake;
         }
+        ToggleSoundEffects(Player.SoundOn);
+        AdjustVolume("Theme", Player.Volume);
     }
     private void Start() {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -44,7 +46,6 @@ public class AudioManager : MonoBehaviour
         if(s == null)
             return;
         s.source.volume = sliderValue;
-        Debug.Log(s.source.volume);
     }
     public void Play(string name){
         Sound s = Array.Find(sounds, sound => sound.name == name);

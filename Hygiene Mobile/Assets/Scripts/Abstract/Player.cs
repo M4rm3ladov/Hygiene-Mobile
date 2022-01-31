@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public static float Energy = 100;
     public static int SleepState = 1;
     public static string LastIn;
-    public static float GoldCoins = 0;
+    public static float GoldCoins = 100;
     public static int[] EquippedSkins = new int[2]{0,0};
     public static int[][] BoughtSkins = new int[2][]{
         new int[6]{1,0,0,0,0,0},
@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     //public static int ToiletStatus = 0;
     public static string LastAte;
     public static int[] HighScore = new int[3]{0,0,0};
+    public static float Volume = .15f;
+    public static bool SoundOn = true;
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour
         Energy = data.energy;
         SleepState = data.sleepState;
         LastIn = data.lastIn;
-        GoldCoins = 0;//data.goldCoins;
+        GoldCoins = data.goldCoins;
         for (int item = 0; item < data.equippedSkins.Length; item++)
         {
             EquippedSkins[item] = data.equippedSkins[item];
@@ -52,6 +54,8 @@ public class Player : MonoBehaviour
         {
             HighScore[item] = data.highScore[item];
         }
+        Volume = data.volume;
+        SoundOn = data.soundOn;
     }
     private void OnApplicationQuit() {
         LastIn = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt");

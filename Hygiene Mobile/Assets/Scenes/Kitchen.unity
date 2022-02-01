@@ -1933,6 +1933,16 @@ PrefabInstance:
       propertyPath: handWashBubble
       value: 
       objectReference: {fileID: 652376421}
+    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+        type: 3}
+      propertyPath: hygieneTrigger
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+        type: 3}
+      propertyPath: tiredTrigger
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce4d5ff0148f5c41a295f6af274a6f7, type: 3}
 --- !u!1001 &1408877370
@@ -2507,7 +2517,7 @@ PrefabInstance:
     - target: {fileID: 6448886126123997180, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6448886127595100788, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
@@ -8443,8 +8453,8 @@ MonoBehaviour:
   hungerBubble: {fileID: 2039873924}
   tiredBubble: {fileID: 754734274}
   toiletTrigger: 1
-  hygieneTrigger: 0
-  tiredTrigger: 0
+  hygieneTrigger: 10
+  tiredTrigger: 10
   hungerTrigger: 20
   animTransition: {fileID: 5518195858067067424}
 --- !u!1 &5518195858067067431

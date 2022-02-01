@@ -123,6 +123,8 @@ public class QuizManager : MonoBehaviour
         gameOverMenu.SetActive(true);
         panelAlpha.SetActive(true);
         btnPause.interactable = false;
+        for(int i = 0; i < 3; i++)
+            Life[i].CrossFadeAlpha(0.5f, 0, true);
         Time.timeScale = 0f;
         gameIsPaused = -1;
     }

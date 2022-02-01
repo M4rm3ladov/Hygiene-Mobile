@@ -1253,7 +1253,7 @@ PrefabInstance:
     - target: {fileID: 6448886126123997180, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6448886127595100788, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
@@ -4651,6 +4651,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2096757252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2096757254}
+  - component: {fileID: 2096757253}
+  m_Layer: 0
+  m_Name: Notification
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2096757253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096757252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f0f9415ae0a5d42b1116b7c04fb36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2096757254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096757252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2108122009
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,6 +5050,16 @@ PrefabInstance:
       propertyPath: handWashBubble
       value: 
       objectReference: {fileID: 1253723161}
+    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+        type: 3}
+      propertyPath: tiredTrigger
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+        type: 3}
+      propertyPath: hygieneTrigger
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce4d5ff0148f5c41a295f6af274a6f7, type: 3}
 --- !u!1 &1011413980873625396 stripped
@@ -5661,6 +5714,16 @@ PrefabInstance:
       propertyPath: handWashBubble
       value: 
       objectReference: {fileID: 1253723161}
+    - target: {fileID: 5518195858154967453, guid: 3dba374639fb63e4691ea23a2f99691b,
+        type: 3}
+      propertyPath: tiredTrigger
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518195858154967453, guid: 3dba374639fb63e4691ea23a2f99691b,
+        type: 3}
+      propertyPath: hygieneTrigger
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5518195858154967455, guid: 3dba374639fb63e4691ea23a2f99691b,
         type: 3}
       propertyPath: RightLegSpriteOptions.Array.data[0]

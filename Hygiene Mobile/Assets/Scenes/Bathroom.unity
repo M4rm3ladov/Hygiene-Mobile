@@ -685,6 +685,16 @@ PrefabInstance:
       propertyPath: handWashBubble
       value: 
       objectReference: {fileID: 708518485928363911}
+    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+        type: 3}
+      propertyPath: hygieneTrigger
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369109844249004876, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
+        type: 3}
+      propertyPath: tiredTrigger
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4369109844249004878, guid: 5ce4d5ff0148f5c41a295f6af274a6f7,
         type: 3}
       propertyPath: m_Enabled
@@ -898,7 +908,7 @@ PrefabInstance:
     - target: {fileID: 6448886126123997180, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6448886127595100791, guid: 13539c3c6c8b517479c29212210cb24b,
         type: 3}
@@ -1025,6 +1035,16 @@ PrefabInstance:
       propertyPath: handWashBubble
       value: 
       objectReference: {fileID: 708518485928363911}
+    - target: {fileID: 5518195858154967453, guid: 3dba374639fb63e4691ea23a2f99691b,
+        type: 3}
+      propertyPath: hygieneTrigger
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518195858154967453, guid: 3dba374639fb63e4691ea23a2f99691b,
+        type: 3}
+      propertyPath: tiredTrigger
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5518195858154967455, guid: 3dba374639fb63e4691ea23a2f99691b,
         type: 3}
       propertyPath: LeftLegSpriteOptions.Array.data[0]

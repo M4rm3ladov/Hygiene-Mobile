@@ -13,12 +13,7 @@ public class TransitionController : MonoBehaviour
     private Scene currentScene;
     PlayerController playerController;
     private void Start() {
-        if(PlayerPrefs.GetInt("gender") == 0)
-            playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        else if(PlayerPrefs.GetInt("gender") == 1)
-            playerController = GameObject.Find("Girl").GetComponent<PlayerController>();
         
-        Debug.Log(BathroomStatus.ToiletStatus & playerController.HygieneTrigger & playerController.HungerTrigger & playerController.TiredTrigger);
     }
     private void OnMouseDown() {
         LoadNextLevel();
@@ -68,9 +63,18 @@ public class TransitionController : MonoBehaviour
         else if(_levelName == "Sink" || _levelName == "Bathtub")
             FindObjectOfType<AudioManager>().Play("Squeak");
 
+        if(currentScene.name == "Bedroom" || currentScene.name == "Bathroom" || currentScene.name == "Kithchen"){
+            if(PlayerPrefs.GetInt("gender") == 0)
+                playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+            else if(PlayerPrefs.GetInt("gender") == 1)
+                playerController = GameObject.Find("Girl").GetComponent<PlayerController>();     
+        }
+
         if(_levelName == "Games"){
-            if(BathroomStatus.ToiletStatus >= 1 || ((int)Player.Hunger <= playerController.HungerTrigger || (int)Player.Hygiene <= playerController.HygieneTrigger || (int)Player.Energy <= playerController.TiredTrigger))
-                return;
+            if(currentScene.name != "Catch" && currentScene.name != "Quiz" && currentScene.name != "Slice"){
+                if(BathroomStatus.ToiletStatus >= 1 || ((int)Player.Hunger <= playerController.HungerTrigger || (int)Player.Hygiene <= playerController.HygieneTrigger || (int)Player.Energy <= playerController.TiredTrigger))
+                    return;
+            }
         }
         StartCoroutine(LoadLevel(_levelName));       
     }

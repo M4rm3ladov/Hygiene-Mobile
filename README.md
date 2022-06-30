@@ -1,2 +1,2 @@
 # Hygiene-Mobile
-Casptone Project
+Mobile game that teaches hygiene to children

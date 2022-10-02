@@ -49,12 +49,12 @@ A mobile game to teach children hygiene built with Unity
 
 ### Mini Game 1
 
-![Minigame1](https://github.com/M4rm3ladov/Hygiene-Mobile/blob/main/Screenshots/Mini%20Game%201.jpg?raw=true)
+<img src="Screenshots/Mini Game 1.jpg" width="400px" height="auto">
 
 ### Mini Game 2
 
-![Minigame2](https://github.com/M4rm3ladov/Hygiene-Mobile/blob/main/Screenshots/Mini%20Game%202.jpg?raw=true)
+<img src="Screenshots/Mini Game 2.jpg" width="400px" height="auto">
 
 ### Game Over Mini Game
 
-![GameOverMinigame](https://github.com/M4rm3ladov/Hygiene-Mobile/blob/main/Screenshots/Game%20Over%20Mini%20Game.jpg?raw=true)
+<img src="Screenshots/Game Over Mini Game.jpg" width="400px" height="auto">

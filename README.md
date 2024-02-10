@@ -1,6 +1,6 @@
-# Mobile game for children
+# Hygiene Mobile <img src="https://imgur.com/KC4bV2z.jpg" width="30" height="auto">
 
-A mobile game to teach children hygiene built with Unity. Inspired by tamagotchi and pou during COVID pandemic.
+A mobile game to teach children hygiene built with Unity. Inspired by Tamagotchi and Pou during COVID pandemic.
 
 ## Video Demo
 <a href="https://youtu.be/fubblikFll4"><img src="https://img.youtube.com/vi/fubblikFll4/hqdefault.jpg" width="50%" heigth="50%"></a>

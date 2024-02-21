@@ -2,9 +2,6 @@
 
 A mobile game to teach children hygiene built with Unity. Inspired by Tamagotchi and Pou during COVID pandemic.
 
-## APK
-https://drive.google.com/file/d/1JN1REvbq3Rh-gXV9us2xorlNA23c7QCb/view?usp=sharing
-
 ## Video Demo
 <a href="https://youtu.be/fubblikFll4"><img src="https://img.youtube.com/vi/fubblikFll4/hqdefault.jpg" width="50%" heigth="50%"></a>
 
